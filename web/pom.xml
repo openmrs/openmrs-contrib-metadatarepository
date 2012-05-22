@@ -78,7 +78,8 @@
                     </scanTargetPatterns>
                 </configuration>
             </plugin>
-            <plugin>
+            <!-- Commenting out to make it work on JDK 1.7
+			<plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>native2ascii-maven-plugin</artifactId>
                 <version>1.0-alpha-1</version>
@@ -120,6 +121,7 @@
                     </execution>
                 </executions>
             </plugin>
+			-->
         </plugins>
         <resources>
             <resource>
