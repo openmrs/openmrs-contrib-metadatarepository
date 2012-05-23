@@ -12,7 +12,7 @@
     
     <artifactId>web</artifactId>
     <packaging>war</packaging>
-    <name>AppFuse Modular Application - Web (Spring MVC)</name>
+    <name>Metadata Server - Web (Spring MVC)</name>
 
     <build>
         <plugins>
@@ -78,8 +78,7 @@
                     </scanTargetPatterns>
                 </configuration>
             </plugin>
-            <!-- Commenting out to make it work on JDK 1.7
-			<plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>native2ascii-maven-plugin</artifactId>
                 <version>1.0-alpha-1</version>
@@ -121,24 +120,19 @@
                     </execution>
                 </executions>
             </plugin>
-			-->
         </plugins>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
-                <!-- Commenting out to make it work on JDK 1.7
-				<excludes>
+                <excludes>
                     <exclude>ApplicationResources*.properties</exclude>
                 </excludes>
-				-->
                 <filtering>true</filtering>
             </resource>
-            <!-- Commenting out to make it work on JDK 1.7
-			<resource>
+            <resource>
                 <directory>target/resources</directory>
                 <filtering>true</filtering>
             </resource>
-			-->
         </resources>
         <testResources>
             <testResource>

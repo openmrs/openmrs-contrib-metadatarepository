@@ -6,9 +6,9 @@
     <artifactId>metadataserver</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>AppFuse Modular Application</name>
-    <url>http://www.mycompany.com</url>
-
+    <name>Metadata Server</name>
+    <url>https://wiki.openmrs.org/display/projects/Metadata+Sharing+Server+Project</url>
+    <description>Central repository of OpenMRS meta data</description>
     <prerequisites>
         <maven>2.2.1</maven>
     </prerequisites>
@@ -411,7 +411,7 @@
         <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
         <jdbc.url>jdbc:mysql://localhost/${db.name}?createDatabaseIfNotExist=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;autoReconnect=true</jdbc.url>
         <jdbc.username>root</jdbc.username>
-        <jdbc.password/>
+        <jdbc.password>apple</jdbc.password>
 
         <!-- Properties calculated by AppFuse when running full-source plugin -->
         <aspectj.version>1.6.10</aspectj.version>
