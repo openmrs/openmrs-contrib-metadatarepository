@@ -126,15 +126,19 @@
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
-                <excludes>
+                <!-- Commenting out to make it work on JDK 1.7
+				<excludes>
                     <exclude>ApplicationResources*.properties</exclude>
                 </excludes>
+				-->
                 <filtering>true</filtering>
             </resource>
-            <resource>
+            <!-- Commenting out to make it work on JDK 1.7
+			<resource>
                 <directory>target/resources</directory>
                 <filtering>true</filtering>
             </resource>
+			-->
         </resources>
         <testResources>
             <testResource>
