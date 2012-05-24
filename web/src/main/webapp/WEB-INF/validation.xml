@@ -101,5 +101,16 @@
                 <arg key="user.passwordHint"/>
             </field>
         </form>
+        <form name="package">
+    <field property="packageName" depends="required">
+        <arg key="package.name"/>
+    </field>
+    <field property="packageDescription" depends="required">
+        <arg key="package.description"/>
+    </field>
+     <field property="packageVersion" depends="required">
+        <arg key="package.version"/>
+    </field>
+</form>
     </formset>
 </form-validation>
