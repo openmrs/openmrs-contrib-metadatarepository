@@ -20,13 +20,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
+
 @Entity @Table(name="package")
 public class Package extends BaseObject {
     private static final long serialVersionUID = 1L;
 	private Long id;
-    private String packageName;
-    private String packageDescription;
-    private Long packageVersion;
+    private String name;
+    private String description;
+    private Long version;
     
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
@@ -37,59 +40,61 @@ public class Package extends BaseObject {
         this.id = id;
     }
 
-    @Column(name="package_name", length=50)
+    @Column(name="name", length=50)
     public String getPackageName() {
-        return packageName;
+        return name;
     }
     
-    public void setPackageName(String packageName) {
-        this.packageName = packageName;
+    public void setPackageName(String name) {
+        this.name = name;
     }
     
-    @Column(name="package_description", length=100) 
+    @Column(name="description", length=255) 
     public String getPackageDescription() {
-        return packageDescription;
+        return description;
     }
 
-    public void setPackageDescription(String packageDescription) {
-        this.packageDescription = packageDescription;
+    public void setPackageDescription(String description) {
+        this.description = description;
     }
 
-    @Column(name="package_version", length=10)
+    @Column(name="version")
     public Long getVersion() {
-        return packageVersion;
+        return version;
     }
     
-    public void setPackageVersion(Long packageVersion) {
-        this.packageVersion = packageVersion;
+    public void setPackageVersion(Long version) {
+        this.version = version;
     }
     
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) 
+        	return true;
+        if (!getClass().equals(o.getClass())) 
+        	return false;
 
         Package p = (Package) o;
 
-        if (packageName != null ? !packageName.equals(p.packageName) : p.packageName != null) 
+        if (name != null ? !name.equals(p.name) : p.name != null) 
         	return false;
-        if (packageDescription != null ? !packageDescription.equals(p.packageDescription) : p.packageDescription != null)
+        if (description != null ? !description.equals(p.description) : p.description != null)
         	return false;
-        if (packageVersion != null ? !packageVersion.equals(p.packageVersion) : p.packageVersion != null)
+        if (version != null ? !version.equals(p.version) : p.version != null)
         	return false;
         
         return true;
     }
     
     public int hashCode() {
-        return (packageName != null ? packageName.hashCode() : 0);
+        return (name != null ? name.hashCode() : 0);
     }
     public String toString() {
-        return "Package{" +
-                "id=" + id +
-                ", packageName='" + packageName + '\'' +
-                ", packageDescription='" + packageDescription + '\'' +
-                ", packageVersion='" + packageVersion + '\'' +
-                '}';
+        ToStringBuilder sb = new ToStringBuilder(this,ToStringStyle.DEFAULT_STYLE)
+        .append("name",this.name)
+        .append("description",this.description)
+        .append("version",this.version);
+        
+        return sb.toString();
     }
 
 
