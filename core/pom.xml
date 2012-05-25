@@ -10,7 +10,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     
-    <artifactId>core</artifactId>
+    <artifactId>metadataserver-core</artifactId>
     <packaging>jar</packaging>
     <name>Metadata Server - Core</name>
     

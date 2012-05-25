@@ -10,7 +10,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     
-    <artifactId>web</artifactId>
+    <artifactId>metadataserver-web</artifactId>
     <packaging>war</packaging>
     <name>Metadata Server - Web (Spring MVC)</name>
 
@@ -152,7 +152,7 @@
         </dependency>
         <dependency>
             <groupId>${project.parent.groupId}</groupId>
-            <artifactId>core</artifactId>
+            <artifactId>metadataserver-core</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>

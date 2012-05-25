@@ -13,11 +13,14 @@
  */
 package org.openmrs.contrib.webapp.controller;
 
+import java.util.Locale;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.openmrs.contrib.model.Package;
 import org.apache.commons.lang.StringUtils;
 import org.openmrs.contrib.service.GenericManager;
-import org.openmrs.contrib.model.Package;
-import org.openmrs.contrib.webapp.controller.BaseFormController;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -26,68 +29,61 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.Locale;
-
-
-	@Controller
-	@RequestMapping("/packageform*")
-	public class PackageFormController extends BaseFormController {
-	    private GenericManager<Package, Long> packageManager = null;
-	 
-	    @Autowired
-	    public void setPackageManager(@Qualifier("packageManager") GenericManager<Package, Long> packageManager) {
-	        this.packageManager = packageManager;
-	    }
-	 
-	    public PackageFormController() {
-	        setCancelView("redirect:package");
-	        setSuccessView("redirect:package");
-	    }
-	 
-	    @ModelAttribute
-	    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
-	    protected Package showForm(HttpServletRequest request)
-	    throws Exception {
-	        String id = request.getParameter("id");
-
-	        if (!StringUtils.isBlank(id)) {
-	            return packageManager.get(new Long(id));
-	        }
-
-	        return new Package();
-	    }
-
-	    @RequestMapping(method = RequestMethod.POST)
-	    public String onSubmit(Package pkg, BindingResult errors, HttpServletRequest request,
-	                           HttpServletResponse response)
-	    throws Exception {
-	        if (request.getParameter("cancel") != null) {
-	            return getCancelView();
-	        }
-
-	        log.debug("entering 'onSubmit' method...");
-
-	        boolean isNew = (pkg.getId() == null);
-	        String success = getSuccessView();
-	        Locale locale = request.getLocale();
-
-	        if (request.getParameter("delete") != null) {
-	            packageManager.remove(pkg.getId());
-	            saveMessage(request, getText("person.deleted", locale));
-	        } else {
-	            packageManager.save(pkg);
-	            String key = (isNew) ? "package.added" : "package.updated";
-	            saveMessage(request, getText(key, locale));
-
-	            if (!isNew) {
-	                success = "redirect:packageform?id=" + pkg.getId();
-	            }
-	        }
-
-	        return success;
-	    }
-
+@Controller
+@RequestMapping("/packageform*")
+public class PackageFormController extends BaseFormController {
+	
+	private GenericManager<Package, Long> packageManager = null;
+	
+	@Autowired
+	public void setPackageManager(@Qualifier("packageManager") GenericManager<Package, Long> packageManager) {
+		this.packageManager = packageManager;
 	}
-
+	
+	public PackageFormController() {
+		setCancelView("redirect:package");
+		setSuccessView("redirect:package");
+	}
+	
+	@ModelAttribute
+	@RequestMapping(method = { RequestMethod.GET, RequestMethod.POST })
+	protected Package showForm(HttpServletRequest request) throws Exception {
+		String id = request.getParameter("id");
+		
+		if (!StringUtils.isBlank(id)) {
+			return packageManager.get(new Long(id));
+		}
+		
+		return new Package();
+	}
+	
+	@RequestMapping(method = RequestMethod.POST)
+	public String onSubmit(Package pkg, BindingResult errors, HttpServletRequest request, HttpServletResponse response)
+	    throws Exception {
+		if (request.getParameter("cancel") != null) {
+			return getCancelView();
+		}
+		
+		log.debug("entering 'onSubmit' method...");
+		
+		boolean isNew = (pkg.getId() == null);
+		String success = getSuccessView();
+		Locale locale = request.getLocale();
+		
+		if (request.getParameter("delete") != null) {
+			packageManager.remove(pkg.getId());
+			saveMessage(request, getText("person.deleted", locale));
+		} else {
+			packageManager.save(pkg);
+			String key = (isNew) ? "package.added" : "package.updated";
+			saveMessage(request, getText(key, locale));
+			
+			if (!isNew) {
+				success = "redirect:packageform?id=" + pkg.getId();
+			}
+		}
+		
+		return success;
+	}
+	
+}
