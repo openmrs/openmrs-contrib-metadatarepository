@@ -32,7 +32,7 @@ public class PackageDaoTest extends BaseDaoTestCase{
 
 	    @Test
 	    public void testGetPackage() throws Exception {
-	        Package pkg = dao.getPackageByName(pkg.getPackageName());
+	        Package pkg = dao.getPackageByName("pkg");
 	        assertNotNull(pkg);
 	    }
 	   
