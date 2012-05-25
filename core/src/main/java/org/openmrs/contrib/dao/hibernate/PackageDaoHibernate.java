@@ -35,16 +35,33 @@ public class PackageDaoHibernate extends GenericDaoHibernate<Package, Long> impl
     public PackageDaoHibernate() {
         super(Package.class);
     }
+    /**
+     * {@inheritDoc}
+     */
+    @SuppressWarnings("unchecked")
+    public List<Package> getPackages() {
+        return getHibernateTemplate().find("from Package p order by upper(p.name)");
+    }
 
-	public Package getPackageByName(String pkgname) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+    /**
+     * {@inheritDoc}
+     */
+    public Package getPackageByName(String pkgname) {
+        List packages = getHibernateTemplate().find("from Packages where name=?", pkgname);
+        if (packages.isEmpty()) {
+            return null;
+        } else {
+            return (Package) packages.get(0);
+        }
+    }
 	
-	public void removePackage(String pkgname) {
-		// TODO Auto-generated method stub
-		
-	}
+	/**
+     * {@inheritDoc}
+     */
+    public void removePackage(String pkgname) {
+        Object pkg = getPackageByName(pkgname);
+        getHibernateTemplate().delete(pkg);
+    }
+	
 
 }
