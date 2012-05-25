@@ -31,6 +31,22 @@ public class Package extends BaseObject {
     private String description;
     private Long version;
     
+    /**
+     * Default constructor - creates a new instance with no values set.
+     */
+    public Package(){
+    	
+    }
+    
+    /**
+     * Create a new instance and set the name.
+     *
+     * @param name name of the package.
+     */
+    public Package(final String name ){
+    	this.name=name;
+    }
+    
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
         return id;
@@ -96,9 +112,5 @@ public class Package extends BaseObject {
         
         return sb.toString();
     }
-
-
-    
-    
 
 }
