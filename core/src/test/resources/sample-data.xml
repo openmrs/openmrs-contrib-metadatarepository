@@ -99,7 +99,7 @@
          <value description="id">-1</value>
          <value description="name">testpkg</value>
          <value description="description"><![CDATA[test desc]]></value>
-         <value description="version">1.0</value>
+         <value description="version">-2</value>
          </row>
     </table>
 </dataset>

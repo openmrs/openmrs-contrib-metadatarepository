@@ -79,7 +79,7 @@ public class Package extends BaseObject {
         return version;
     }
     
-    public void setPackageVersion(Long version) {
+    public void setVersion(Long version) {
         this.version = version;
     }
     

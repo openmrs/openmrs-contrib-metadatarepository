@@ -24,21 +24,21 @@ import static org.junit.Assert.*;
 
 public class PackageManagerTest extends BaseManagerTestCase {
 	 private Log log = LogFactory.getLog(PackageManagerTest.class);
-	 @Autowired
+	 
 	 private PackageManager magr;
 	 private Package pkg;
 	 
 	 @Test
 	 public void testGetPackage() throws Exception{
 		 
-		 pkg = magr.get(1L);
+		 pkg = magr.get(-1L);
 		 assertNotNull(pkg);
 		 log.debug(pkg);
 	 }
 	 
 	 @Test
 	 public void testSavePackage() throws Exception {
-		 pkg = magr.get(1L);
+		 pkg = magr.get(-1L);
 		 pkg.setPackageDescription("test desc");
 		 
 		 log.debug("saving package with updated package description: " + pkg);
@@ -56,7 +56,7 @@ public class PackageManagerTest extends BaseManagerTestCase {
 		 magr.remove(pkg.getId());
 		 
 		 try {
-	            pkg = magr.get(1L);
+	            pkg = magr.get(-1L);
 	            fail("Expected 'Exception' not thrown");
 	        } catch (Exception e) {
 	            log.debug(e);
