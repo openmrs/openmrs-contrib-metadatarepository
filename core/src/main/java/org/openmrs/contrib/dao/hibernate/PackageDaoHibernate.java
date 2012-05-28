@@ -30,7 +30,7 @@ import java.util.List;
 public class PackageDaoHibernate extends GenericDaoHibernate<Package, Long> implements PackageDao {
 
 	/**
-     * Constructor that sets the entity to User.class.
+     * Constructor that sets the entity to Package.class.
      */
     public PackageDaoHibernate() {
         super(Package.class);

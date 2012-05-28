@@ -23,7 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import static org.junit.Assert.*;
 
 public class PackageManagerTest extends BaseManagerTestCase {
-	 private Log log = LogFactory.getLog(UserManagerTest.class);
+	 private Log log = LogFactory.getLog(PackageManagerTest.class);
 	 @Autowired
 	 private PackageManager magr;
 	 private Package pkg;
@@ -31,7 +31,7 @@ public class PackageManagerTest extends BaseManagerTestCase {
 	 @Test
 	 public void testGetPackage() throws Exception{
 		 
-		 pkg = magr.getPackageByPackagename("pkg");
+		 pkg = magr.get(1L);
 		 assertNotNull(pkg);
 		 log.debug(pkg);
 	 }

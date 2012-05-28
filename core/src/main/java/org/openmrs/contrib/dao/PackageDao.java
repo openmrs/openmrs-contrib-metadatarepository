@@ -15,17 +15,20 @@
 package org.openmrs.contrib.dao;
 
 import org.openmrs.contrib.model.Package;
-
+/**
+ * Package Data Access Object (GenericDao) interface.
+ *
+ */
 
 public interface PackageDao extends GenericDao<Package, Long>{
 	
 	 /**
      * Gets package information based on packagename
      * @param packagename the packagename
-     * @return populated package object
+     * @return List of the packages
      */
 	
-   Package getPackageByName(String pkgname);
+   <List> Package getPackageByName(String pkgname);
   
   
    /**

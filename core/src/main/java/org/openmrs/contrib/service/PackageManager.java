@@ -20,6 +20,12 @@ import org.openmrs.contrib.model.Package;
 
 import java.util.List;
 
+/**
+ * Business Service Interface to handle communication between web and
+ * persistence layer.
+ *
+ */
+
 public interface PackageManager extends GenericManager<Package, Long> {
 	
 	/**
@@ -28,40 +34,13 @@ public interface PackageManager extends GenericManager<Package, Long> {
      */
     void setPackageDao(PackageDao packageDao);
     
-    /**
-     * Retrieves a package by packageId.  An exception is thrown if package not found
-     *
-     * @param packageId the identifier for the package
-     * @return Package
-     */
-    Package getPackage(String packageId);
     
     /**
      * Finds a package by their packagename.
      * @param packagename
-     * @return Package a populated package object
-     */
-    Package getPackageByPackagename(String packageName);
-    
-    /**
-     * Retrieves a list of all users.
      * @return List
      */
-    List<Package> getPackages();
-    
-    /**
-     * Removes a package from the database by their packageId
-     *
-     * @param packageId the package's id
-     */
-    void removePackage(String packageId);
-    
-    /**
-     * Search a package for search terms.
-     * @param searchTerm the search terms.
-     * @return a list of matches, or all if no searchTerm.
-     */
-    List<Package> search(String searchTerm);
+    List<Package> getPackageByPackagename(String packageName);
     
 
 }

@@ -26,37 +26,30 @@ public class PackageDaoTest extends BaseDaoTestCase{
 	
 	 @Test
 	    public void testGetPackageInvalid() throws Exception {
-	        Package pkg = dao.getPackageByName("badpackagename");
+	        Package pkg = dao.get(1000L);
 	        assertNull(pkg);
 	    }
 
 	    @Test
 	    public void testGetPackage() throws Exception {
-	        Package pkg = dao.getPackageByName("pkg");
+	        Package pkg = dao.get(1L);
 	        assertNotNull(pkg);
 	    }
 	   
 	    @Test
-	    public void testGetPackageByDescription() throws Exception {
+	    public void testSavePackage() throws Exception {
 	        Package pkg = dao.getPackageByName("name");
 	        pkg.setPackageDescription("test desc");
 	        dao.save(pkg);
 	        flush();
 	        
-	        pkg = dao.getPackageByName("name");
 	        assertEquals("test desc", pkg.getPackageDescription());
 	    }
        
 	    @Test
-	    public void testAddAndRemovePackage() throws Exception {
+	    public void testRemovePackage() throws Exception {
 	        Package pkg = new Package("testpkg");
-	        pkg.setPackageDescription("new pkg desc");
-	        dao.save(pkg);
-	        flush();
-	        
-	        pkg = dao.getPackageByName("testpkg");
-	        assertNotNull(pkg.getPackageDescription());
-
+	       
 	        dao.removePackage("testpkg");
 	        flush();
 
