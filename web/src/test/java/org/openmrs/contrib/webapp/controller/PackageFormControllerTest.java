@@ -41,7 +41,7 @@ public class PackageFormControllerTest  {
         request = newGet("/packageform");
         request.addParameter("id", "1");
 
-        pkg = form.showForm(request);
+        pkg = form.showForm(1L);
         assertNotNull(pkg);
     }
 
@@ -50,12 +50,12 @@ public class PackageFormControllerTest  {
         request = newGet("/packageform");
         request.addParameter("id", "1");
 
-        pkg = form.showForm(request);
+        pkg = form.showForm(1L);
         assertNotNull(pkg);
 
         request = newPost("/packageform");
 
-        pkg = form.showForm(request);
+        pkg = form.showForm(1L);
         // update required fields
 
         BindingResult errors = new DataBinder(pkg).getBindingResult();

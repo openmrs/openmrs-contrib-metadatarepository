@@ -90,4 +90,16 @@
             <value description="role_id">-1</value>
         </row>
     </table>
+    <table name="package">
+       <column>id</column>
+       <column>name</column>
+       <column>description</column>
+       <column>version</column>
+       <row>
+         <value description="id">1</value>
+         <value description="name">testpkg</value>
+         <value description="description"><![CDATA[test desc]]></value>
+         <value description="version">-2</value>
+         </row>
+    </table>
 </dataset>
