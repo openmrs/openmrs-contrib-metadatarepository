@@ -32,14 +32,14 @@ public class PackageManagerTest extends BaseManagerTestCase {
 	 @Test
 	 public void testGetPackage() throws Exception{
 		 
-		 pkg = magr.get(-1L);
+		 pkg = magr.get(1L);
 		 assertNotNull(pkg);
 		 log.debug(pkg);
 	 }
 	 
 	 @Test
 	 public void testSavePackage() throws Exception {
-		 pkg = magr.get(-1L);
+		 pkg = magr.get(1L);
 		 pkg.setPackageDescription("test desc");
 		 
 		 log.debug("saving package with updated package description: " + pkg);
@@ -50,8 +50,8 @@ public class PackageManagerTest extends BaseManagerTestCase {
 	
 	 @Test
 	    public void testRemovePackage() throws Exception {
-		 pkg = magr.get(-1L);
-		  magr.remove(-1L);
+		 pkg = magr.get(1L);
+		  magr.remove(1L);
 		  
 	 }
 	

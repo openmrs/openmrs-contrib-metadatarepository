@@ -31,18 +31,5 @@ public class PackageManagerImpl extends GenericManagerImpl<Package, Long> implem
 		this.dao=packageDao;
 		this.packageDao=packageDao;
 	}
-	/**
-     * {@inheritDoc}
-     */
-    public Package save(Package pkg) {
-        return dao.save(pkg);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public void remove(String pkgname) {
-        packageDao.remove(new Long(pkgname));
-    }
-	
+		
 }

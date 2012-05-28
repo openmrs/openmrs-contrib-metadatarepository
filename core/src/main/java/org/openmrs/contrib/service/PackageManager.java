@@ -14,7 +14,7 @@
 
 package org.openmrs.contrib.service;
 
-import org.openmrs.contrib.dao.PackageDao;
+
 import org.openmrs.contrib.model.Package;
 
 /**
@@ -25,11 +25,7 @@ import org.openmrs.contrib.model.Package;
 
 public interface PackageManager extends GenericManager<Package, Long> {
 	
-	/**
-     * Convenience method for testing - allows you to mock the DAO and set it on an interface.
-     * @param packageDao the PackageDao implementation to use
-     */
-    void setPackageDao(PackageDao packageDao);
+	
      
 
 }
