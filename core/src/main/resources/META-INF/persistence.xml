@@ -5,6 +5,7 @@
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>org.openmrs.contrib.model.User</class>
         <class>org.openmrs.contrib.model.Role</class>
+        <class>org.openmrs.contrib.model.Package</class>
         
         <!-- 
         Adding more <class>f.q.c.Name</class> elements here is not required.  

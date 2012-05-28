@@ -8,5 +8,6 @@
         <session-factory>
             <mapping class="org.openmrs.contrib.model.User"/>
             <mapping class="org.openmrs.contrib.model.Role"/>
+            <mapping class="org.openmrs.contrib.model.Package"/>
         </session-factory>
     </hibernate-configuration>
