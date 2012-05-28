@@ -17,9 +17,6 @@ package org.openmrs.contrib.service;
 import org.openmrs.contrib.dao.PackageDao;
 import org.openmrs.contrib.model.Package;
 
-
-import java.util.List;
-
 /**
  * Business Service Interface to handle communication between web and
  * persistence layer.
@@ -33,14 +30,6 @@ public interface PackageManager extends GenericManager<Package, Long> {
      * @param packageDao the PackageDao implementation to use
      */
     void setPackageDao(PackageDao packageDao);
-    
-    
-    /**
-     * Finds a package by their packagename.
-     * @param packagename
-     * @return List
-     */
-    List<Package> getPackageByPackagename(String packageName);
-    
+     
 
 }

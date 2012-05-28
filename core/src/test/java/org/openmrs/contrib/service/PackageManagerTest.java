@@ -38,7 +38,7 @@ public class PackageManagerTest extends BaseManagerTestCase {
 	 
 	 @Test
 	 public void testSavePackage() throws Exception {
-		 pkg = magr.getPackageByPackagename("pkg");
+		 pkg = magr.get(1L);
 		 pkg.setPackageDescription("test desc");
 		 
 		 log.debug("saving package with updated package description: " + pkg);
@@ -53,10 +53,10 @@ public class PackageManagerTest extends BaseManagerTestCase {
 		 
 		 pkg = (Package) populate(pkg);
 		 
-		 magr.removePackage(pkg.getId().toString());
+		 magr.remove(pkg.getId());
 		 
 		 try {
-	            pkg = magr.getPackageByPackagename("pkg");
+	            pkg = magr.get(1L);
 	            fail("Expected 'Exception' not thrown");
 	        } catch (Exception e) {
 	            log.debug(e);

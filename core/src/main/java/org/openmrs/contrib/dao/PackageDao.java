@@ -22,20 +22,6 @@ import org.openmrs.contrib.model.Package;
 
 public interface PackageDao extends GenericDao<Package, Long>{
 	
-	 /**
-     * Gets package information based on packagename
-     * @param packagename the packagename
-     * @return List of the packages
-     */
-	
-   <List> Package getPackageByName(String pkgname);
-  
-  
-   /**
-    * Removes a package from the database by name
-    * @param packagename the package's name
-    */
-   void removePackage(String pkgname);
  
  
 }

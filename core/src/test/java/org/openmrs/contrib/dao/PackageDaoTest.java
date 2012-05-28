@@ -38,7 +38,7 @@ public class PackageDaoTest extends BaseDaoTestCase{
 	   
 	    @Test
 	    public void testSavePackage() throws Exception {
-	        Package pkg = dao.getPackageByName("name");
+	        Package pkg = dao.get(1L);
 	        pkg.setPackageDescription("test desc");
 	        dao.save(pkg);
 	        flush();
@@ -50,10 +50,10 @@ public class PackageDaoTest extends BaseDaoTestCase{
 	    public void testRemovePackage() throws Exception {
 	        Package pkg = new Package("testpkg");
 	       
-	        dao.removePackage("testpkg");
+	        dao.remove(1L);
 	        flush();
 
-	        pkg = dao.getPackageByName("testpkg");
+	        pkg = dao.get(1L);
 	        assertNull(pkg);
 	    }
 
