@@ -28,6 +28,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/packageform*")
@@ -36,7 +37,7 @@ public class PackageFormController extends BaseFormController {
 	private GenericManager<Package, Long> packageManager = null;
 	
 	@Autowired
-	public void setPackageManager(@Qualifier("packageManager") GenericManager<Package, Long> packageManager) {
+	public void setPackageManager(GenericManager<Package, Long> packageManager) {
 		this.packageManager = packageManager;
 	}
 	
@@ -47,11 +48,10 @@ public class PackageFormController extends BaseFormController {
 	
 	@ModelAttribute
 	@RequestMapping(method = { RequestMethod.GET, RequestMethod.POST })
-	protected Package showForm(HttpServletRequest request) throws Exception {
-		String id = request.getParameter("id");
+	protected Package showForm(@RequestParam(required=false) final Long id) throws Exception {
 		
-		if (!StringUtils.isBlank(id)) {
-			return packageManager.get(new Long(id));
+		if (id!=null) {
+			return packageManager.get(id);
 		}
 		
 		return new Package();
