@@ -28,8 +28,8 @@ public class PackageManagerImpl extends GenericManagerImpl<Package, Long> implem
     PackageDao packageDao;
 	@Autowired
 	public void setPackageDao(PackageDao packageDao) {
-		
-		
+		this.dao=packageDao;
+		this.packageDao=packageDao;
 	}
 	/**
      * {@inheritDoc}

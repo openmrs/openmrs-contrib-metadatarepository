@@ -50,19 +50,9 @@ public class PackageManagerTest extends BaseManagerTestCase {
 	
 	 @Test
 	    public void testRemovePackage() throws Exception {
-		 pkg = new Package();
-		 
-		 pkg = (Package) populate(pkg);
-		 
-		 magr.remove(pkg.getId());
-		 
-		 try {
-	            pkg = magr.get(-1L);
-	            fail("Expected 'Exception' not thrown");
-	        } catch (Exception e) {
-	            log.debug(e);
-	            assertNotNull(e);
-	        }
+		 pkg = magr.get(-1L);
+		  magr.remove(-1L);
+		  
 	 }
 	
 	
