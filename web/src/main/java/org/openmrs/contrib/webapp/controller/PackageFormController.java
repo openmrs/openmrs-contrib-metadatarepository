@@ -19,10 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.openmrs.contrib.model.Package;
-import org.apache.commons.lang.StringUtils;
-import org.openmrs.contrib.service.GenericManager;
+import org.openmrs.contrib.service.PackageManager;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,10 +32,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/packageform*")
 public class PackageFormController extends BaseFormController {
 	
-	private GenericManager<Package, Long> packageManager = null;
+	private PackageManager packageManager = null;
 	
 	@Autowired
-	public void setPackageManager(GenericManager<Package, Long> packageManager) {
+	public void setPackageManager(PackageManager packageManager) {
 		this.packageManager = packageManager;
 	}
 	
@@ -48,9 +46,9 @@ public class PackageFormController extends BaseFormController {
 	
 	@ModelAttribute
 	@RequestMapping(method = { RequestMethod.GET, RequestMethod.POST })
-	protected Package showForm(@RequestParam(required=false) final Long id) throws Exception {
+	protected Package showForm(@RequestParam(required = false) final Long id) throws Exception {
 		
-		if (id!=null) {
+		if (id != null) {
 			return packageManager.get(id);
 		}
 		
