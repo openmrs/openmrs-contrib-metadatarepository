@@ -35,11 +35,11 @@ public class PackageDaoTest extends BaseDaoTestCase{
 	    @Test
 	    public void testSavePackage() throws Exception {
 	        Package pkg = dao.get(1L);
-	        pkg.setPackageDescription("test desc");
+	        pkg.setDescription("test desc");
 	        dao.save(pkg);
 	        flush();
 	        
-	        assertEquals("test desc", pkg.getPackageDescription());
+	        assertEquals("test desc", pkg.getDescription());
 	    }
        
 	    @Test

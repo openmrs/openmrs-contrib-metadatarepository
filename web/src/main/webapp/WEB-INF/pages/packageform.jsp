@@ -4,24 +4,24 @@
     <meta name="heading" content="<fmt:message key='packageDetail.heading'/>"/>
     <script type="text/javascript" src="<c:url value='/scripts/selectbox.js'/>"></script>
 </head>
-<form:form commandName="package" method="post" action="packageform" id="packageForm">
+<form:form commandName="package" method="post" action="packageform" id="packageform">
 <form:errors path="*" cssClass="error" element="div"/>
 <form:hidden path="id"/>
 <ul>
     <li>
         <appfuse:label styleClass="desc" key="package.name"/>
-        <form:errors path="packageName" cssClass="fieldError"/>
-        <form:input path="packageName" id="packageName" cssClass="text medium" cssErrorClass="text medium error" maxlength="50"/>
+        <form:errors path="name" cssClass="fieldError"/>
+        <form:input path="name" id="name" cssClass="text medium" cssErrorClass="text medium error" maxlength="50"/>
     </li>
     <li>
         <appfuse:label styleClass="desc" key="package.description"/>
-        <form:errors path="packageDescription" cssClass="fieldError"/>
-        <form:input path="packageDescription" id="packageDescription" cssClass="text medium" cssErrorClass="text medium error" maxlength="100"/>
+        <form:errors path="description" cssClass="fieldError"/>
+        <form:input path="description" id="description" cssClass="text medium" cssErrorClass="text medium error" maxlength="100"/>
     </li>
     <li>
         <appfuse:label styleClass="desc" key="package.version"/>
-        <form:errors path="packageVersion" cssClass="fieldError"/>
-        <form:input path="packageVersion" id="packageVersion" cssClass="text medium" cssErrorClass="text medium error" maxlength="10"/>
+        <form:errors path="version" cssClass="fieldError"/>
+        <form:input path="version" id="version" cssClass="text medium" cssErrorClass="text medium error" maxlength="10"/>
     </li>
  
     <li class="buttonBar bottom">
@@ -36,5 +36,5 @@
 </form:form>
  
 <script type="text/javascript">
-    Form.focusFirstElement($('packageForm'));
+    Form.focusFirstElement($('packageform'));
 </script>

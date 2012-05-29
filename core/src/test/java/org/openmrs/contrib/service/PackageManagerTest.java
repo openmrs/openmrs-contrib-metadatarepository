@@ -40,7 +40,7 @@ public class PackageManagerTest extends BaseManagerTestCase {
 	 @Test
 	 public void testSavePackage() throws Exception {
 		 pkg = magr.get(1L);
-		 pkg.setPackageDescription("test desc");
+		 pkg.setDescription("test desc");
 		 
 		 log.debug("saving package with updated package description: " + pkg);
 		 pkg = magr.save(pkg);

@@ -57,20 +57,20 @@ public class Package extends BaseObject {
     }
 
     @Column(name="name", length=50)
-    public String getPackageName() {
+    public String getName() {
         return name;
     }
     
-    public void setPackageName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
     
     @Column(name="description", length=255) 
-    public String getPackageDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setPackageDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
