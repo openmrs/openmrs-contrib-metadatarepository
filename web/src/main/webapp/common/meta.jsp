@@ -6,4 +6,4 @@
         <meta http-equiv="Expires" content="0"/>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="generator" content="AppFuse 2.0" /> <!-- leave this for stats please -->
-        <link rel="icon" href="<c:url value="/images/favicon.ico"/>"/>
+        <link rel="icon" href="<c:url value="/images/openmrs-favicon.ico"/>"/>

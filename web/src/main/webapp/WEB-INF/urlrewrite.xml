@@ -55,8 +55,8 @@
         <to>/crossdomain.xml</to>
     </rule>
     <rule>
-        <from>/favicon.ico</from>
-        <to>/favicon.ico</to>
+        <from>/openmrs-favicon.ico</from>
+        <to>/openmrs-favicon.ico</to>
     </rule>
     <rule>
         <from>/login*</from>
