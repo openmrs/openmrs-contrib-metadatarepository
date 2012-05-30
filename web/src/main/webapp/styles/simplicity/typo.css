@@ -74,6 +74,7 @@
 
         div#branding p {
             margin: 0;
+            padding:1;
             line-height: 1em;
         }
 

@@ -5,7 +5,7 @@
 </c:if>
 
 <div id="branding">
-    <h1><a href="<c:url value='/'/>"><fmt:message key="webapp.name"/></a></h1>
+    <h1><a href="<c:url value='/'/>"><img src="<c:url value="/images/openmrs-logo.png"/>" alt="<fmt:message key="webapp.name"/>"/></a></h1>
     <p><fmt:message key="webapp.tagline"/></p>
 </div>
 <hr />
