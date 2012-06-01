@@ -5,7 +5,11 @@
 </c:if>
 
 <div id="branding">
-    <h1><a href="<c:url value='/'/>"><img src="<c:url value="/images/openmrs-logo.png"/>" alt="<fmt:message key="webapp.name"/>"/></a></h1>
+    <div id="newpad">
+    <a href="<c:url value='/'/>"><img src="<c:url value="/images/openmrs-logo.png"/>" alt="<fmt:message key="webapp.name"/>"/></a></div>
+    <!-- <div id="hpad">
+    <h1>Metadata&nbspRepository</h1>
+    </div> -->
     <p><fmt:message key="webapp.tagline"/></p>
 </div>
 <hr />

@@ -44,7 +44,8 @@ public class FileUploadController extends BaseFormController {
 
     public FileUploadController() {
         setCancelView("redirect:/mainMenu");
-        setSuccessView("uploadDisplay");
+        //setSuccessView("uploadDisplay");
+        setSuccessView("redirect:/packageform");
     }
 
     @ModelAttribute
@@ -108,16 +109,7 @@ public class FileUploadController extends BaseFormController {
         //close the stream
         stream.close();
 
-        // place the data into the request for retrieval on next page
-        request.setAttribute("friendlyName", fileUpload.getName());
-        request.setAttribute("fileName", file.getOriginalFilename());
-        request.setAttribute("contentType", file.getContentType());
-        request.setAttribute("size", file.getSize() + " bytes");
-        request.setAttribute("location", dirPath.getAbsolutePath() + Constants.FILE_SEP + file.getOriginalFilename());
-
-        String link = request.getContextPath() + "/resources" + "/" + request.getRemoteUser() + "/";
-        request.setAttribute("link", link + file.getOriginalFilename());
-
+        
         return getSuccessView();
     }
 }

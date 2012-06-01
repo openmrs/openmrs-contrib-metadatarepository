@@ -41,7 +41,7 @@ public class PackageFormController extends BaseFormController {
 	
 	public PackageFormController() {
 		setCancelView("redirect:package");
-		setSuccessView("redirect:package");
+		setSuccessView("uploadDisplay");
 	}
 	
 	@ModelAttribute
@@ -81,6 +81,10 @@ public class PackageFormController extends BaseFormController {
 			}
 		}
 		
+         request.setAttribute("pkgName", pkg.getName());
+		 request.setAttribute("pkgDescription", pkg.getDescription());
+		 request.setAttribute("pkgVersion",pkg.getVersion());
+	    
 		return success;
 	}
 	

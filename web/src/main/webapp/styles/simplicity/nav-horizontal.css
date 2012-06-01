@@ -52,6 +52,9 @@
         text-decoration: none;
         background-color: #ebf5fc;
     }
+    div #nav{
+      padding-top: 10px;
+    }
     div#nav a.current {
         display: inline-block;
         /* hide from ie/mac \*/
@@ -95,7 +98,7 @@
                 display: block;
                 text-decoration: none;
                 color: #777;
-                width: 90px;
+                width: 140px;
                 text-align: center;
                 white-space: nowrap;
             }
