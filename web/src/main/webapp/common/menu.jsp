@@ -4,8 +4,6 @@
 <ul id="primary-nav" class="menuList">
     <li class="pad">&nbsp;</li>
     <c:if test="${empty pageContext.request.remoteUser}"><li><a href="<c:url value="/login"/>" class="current"><fmt:message key="login.title"/></a></li></c:if>
-    <li class="pad">&nbsp;</li>
-    <c:if test="${empty pageContext.request.remoteUser}"><li><a href="<c:url value="/fileupload"/>" class="current"><fmt:message key="upload.title"/></a></li></c:if>
     <menu:displayMenu name="MainMenu"/>
     <menu:displayMenu name="UserMenu"/>
     <menu:displayMenu name="AdminMenu"/>
