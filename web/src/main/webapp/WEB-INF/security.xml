@@ -11,8 +11,8 @@
         <intercept-url pattern="/app/admin/**" access="ROLE_ADMIN"/>
         <intercept-url pattern="/app/passwordHint*" access="ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER"/>
         <intercept-url pattern="/app/signup*" access="ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER"/>
-        <intercept-url pattern="/app/**" access="ROLE_ADMIN,ROLE_USER"/>
-        <intercept-url pattern="/app/mainMenu*" access="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS"/>
+        <!--<intercept-url pattern="/app/**" access="ROLE_ADMIN,ROLE_USER"/> -->
+        <intercept-url pattern="/app/fileupload*" access="ROLE_ADMIN,ROLE_USER"/>
         <form-login login-page="/login" authentication-failure-url="/login?error=true" login-processing-url="/j_security_check"/>
         <remember-me user-service-ref="userDao" key="e37f4b31-0c45-11dd-bd0b-0800200c9a66"/>
     </http>

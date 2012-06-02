@@ -6,7 +6,7 @@
     <meta name="menu" content="MainMenu"/>
 </head>
 
-<p><fmt:message key="mainMenu.message"/></p>
+<c:if test="${!empty pageContext.request.remoteUser}"><p><fmt:message key="mainMenu.message"/></p></c:if>
 
 <div class="separator"></div>
 

@@ -64,15 +64,9 @@
         }
 
         div#branding h1 {
-            /*font-size: 2.6em;
-            letter-spacing: -1px;
-            margin: 0;*/
-            /*line-height: 1.5em;*/
+          
             color: #3e9ade;    
         }
-        /*div#hpad {
-           padding-left:300px;
-        }*/
         
         div#branding p {
             margin: 0;
