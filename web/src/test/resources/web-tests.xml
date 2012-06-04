@@ -35,7 +35,7 @@
             <steps>
                 &login;
                 <invoke description="get Logout Page" url="/logout"/>
-                <verifytitle description="we should see the login title" text=".*${login.title}.*" regex="true"/>
+                <verifytitle description="we should see the mainMenu title" text=".*${mainMenu.title}.*" regex="true"/>
             </steps>
         </webtest>
     </target>
@@ -45,11 +45,11 @@
         <webtest name="passwordHint">
             &config;
             <steps>
-                <invoke description="get Login Page" url="/"/>
+                <invoke description="get Login Page" url="/login"/>
                 <verifytitle description="we should see the login title" text=".*${login.title}.*" regex="true"/>
                 <invoke description="click password hint link" url="/passwordHint?username=admin"/>
-                <verifytitle description="we should see the login title again"
-                    text=".*${login.title}.*" regex="true"/>
+                <verifytitle description="we should see the mainMenu title again"
+                    text=".*${mainMenu.title}.*" regex="true"/>
             </steps>
         </webtest>
     </target>
@@ -205,8 +205,7 @@
                 <setinputfield description="set name" name="name" value="Canoo Test File"/>
                 <setFileField description="set file" name="file" fileName="pom.xml"/>
                 <clickbutton label="${button.upload}" description="Click Upload"/>
-                <verifytitle description="show file data if upload OK" text=".*${display.title}.*" regex="true"/>
-                <verifytext description="verify original filename displayed on page" text="pom.xml"/>
+                <verifytitle description="show file data if upload OK" text=".*${packageDetail.title}.*" regex="true"/>
             </steps>
         </webtest>
     </target>
