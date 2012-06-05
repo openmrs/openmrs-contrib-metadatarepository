@@ -14,7 +14,6 @@
 
 package org.openmrs.contrib.webapp.controller;
 
-import org.openmrs.contrib.Constants;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;

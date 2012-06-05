@@ -81,7 +81,7 @@ public class BaseFormController implements ServletContextAware {
     public UserManager getUserManager() {
         return this.userManager;
     }
-
+   
     @SuppressWarnings("unchecked")
     public void saveError(HttpServletRequest request, String error) {
         List errors = (List) request.getSession().getAttribute("errors");

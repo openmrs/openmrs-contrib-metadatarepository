@@ -70,7 +70,7 @@ public class PackageFormController extends BaseFormController {
 		
 		if (request.getParameter("delete") != null) {
 			packageManager.remove(pkg.getId());
-			saveMessage(request, getText("person.deleted", locale));
+			saveMessage(request, getText("package.deleted", locale));
 		} else {
 			packageManager.save(pkg);
 			String key = (isNew) ? "package.added" : "package.updated";
