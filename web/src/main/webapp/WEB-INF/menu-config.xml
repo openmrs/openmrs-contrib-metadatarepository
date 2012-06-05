@@ -4,7 +4,7 @@
         <Displayer name="Velocity" type="net.sf.navigator.displayer.VelocityMenuDisplayer"/>
     </Displayers>
     <Menus>
-        <Menu name="MainMenu" title="mainMenu.title" page="/mainMenu" roles="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS"/>
+        <Menu name="MainMenu" title="packageMenu.title" page="/mainMenu" roles="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS"/>
         <Menu name="UserMenu" title="menu.user" description="User Menu" page="/userform" roles="ROLE_ADMIN,ROLE_USER"/>
         <Menu name="FileUpload" title="menu.selectFile" page="/fileupload" roles="ROLE_USER"/>
         <Menu name="AdminMenu" title="menu.admin" description="Admin Menu" roles="ROLE_ADMIN" width="120" page="/admin/users">
