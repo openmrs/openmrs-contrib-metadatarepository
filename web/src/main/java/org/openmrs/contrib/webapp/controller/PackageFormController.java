@@ -40,7 +40,7 @@ public class PackageFormController extends BaseFormController {
 	}
 	
 	public PackageFormController() {
-		setCancelView("redirect:package");
+		setCancelView("redirect:mainMenu");
 		setSuccessView("uploadDisplay");
 	}
 	
