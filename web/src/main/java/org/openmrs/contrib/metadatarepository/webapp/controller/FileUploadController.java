@@ -14,6 +14,7 @@
 
 package org.openmrs.contrib.metadatarepository.webapp.controller;
 
+import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -49,12 +50,12 @@ public class FileUploadController extends BaseFormController {
 
     @ModelAttribute
     @RequestMapping(method = RequestMethod.GET)
-    public FileUpload showForm() {
-        return new FileUpload();
+    public MetadataPackage showForm() {
+        return new MetadataPackage();
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String onSubmit(FileUpload fileUpload, BindingResult errors, HttpServletRequest request)
+    public String onSubmit(MetadataPackage metadataPackage, BindingResult errors, HttpServletRequest request)
             throws Exception {
 
         if (request.getParameter("cancel") != null) {
@@ -62,7 +63,7 @@ public class FileUploadController extends BaseFormController {
         }
 
         if (validator != null) { // validator is null during testing
-            validator.validate(fileUpload, errors);
+            validator.validate(metadataPackage, errors);
 
             if (errors.hasErrors()) {
                 return "fileupload";
@@ -70,7 +71,7 @@ public class FileUploadController extends BaseFormController {
         }
 
         // validate a file was entered
-        if (fileUpload.getFile().length == 0) {
+        if (metadataPackage.getFile().length == 0) {
             Object[] args =
                     new Object[]{getText("uploadForm.file", request.getLocale())};
             errors.rejectValue("file", "errors.required", args, "File");

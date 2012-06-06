@@ -4,7 +4,7 @@
     <meta name="heading" content="<fmt:message key='packageDetail.heading'/>"/>
     <script type="text/javascript" src="<c:url value='/scripts/selectbox.js'/>"></script>
 </head>
-<form:form commandName="package" method="post" action="packageform" id="packageform">
+<form:form commandName="metadataPackage" method="post" action="packageform" id="packageform">
 <form:errors path="*" cssClass="error" element="div"/>
 <form:hidden path="id"/>
 <ul>
