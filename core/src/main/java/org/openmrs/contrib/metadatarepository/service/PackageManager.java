@@ -15,7 +15,7 @@
 package org.openmrs.contrib.metadatarepository.service;
 
 
-import org.openmrs.contrib.metadatarepository.model.Package;
+import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
 
 /**
  * Business Service Interface to handle communication between web and
@@ -23,7 +23,7 @@ import org.openmrs.contrib.metadatarepository.model.Package;
  *
  */
 
-public interface PackageManager extends GenericManager<Package, Long> {
+public interface PackageManager extends GenericManager<MetadataPackage, Long> {
 	
 	
      

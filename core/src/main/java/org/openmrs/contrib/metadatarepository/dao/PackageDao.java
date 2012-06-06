@@ -14,13 +14,13 @@
 
 package org.openmrs.contrib.metadatarepository.dao;
 
-import org.openmrs.contrib.metadatarepository.model.Package;
+import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
 /**
  * Package Data Access Object (GenericDao) interface.
  *
  */
 
-public interface PackageDao extends GenericDao<Package, Long>{
+public interface PackageDao extends GenericDao<MetadataPackage, Long>{
 	
  
  

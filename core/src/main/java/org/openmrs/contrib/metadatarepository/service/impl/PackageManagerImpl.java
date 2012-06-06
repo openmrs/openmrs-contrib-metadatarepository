@@ -14,7 +14,7 @@
 
 package org.openmrs.contrib.metadatarepository.service.impl;
 import org.openmrs.contrib.metadatarepository.dao.PackageDao;
-import org.openmrs.contrib.metadatarepository.model.Package;
+import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
 import org.openmrs.contrib.metadatarepository.service.PackageManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ import org.springframework.stereotype.Service;
  * Implementation of PackageManager interface.
  */
 @Service("packageManager")
-public class PackageManagerImpl extends GenericManagerImpl<Package, Long> implements PackageManager {
+public class PackageManagerImpl extends GenericManagerImpl<MetadataPackage, Long> implements PackageManager {
 
     PackageDao packageDao;
 	@Autowired

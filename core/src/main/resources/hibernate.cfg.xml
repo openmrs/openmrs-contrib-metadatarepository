@@ -8,6 +8,6 @@
         <session-factory>
             <mapping class="org.openmrs.contrib.metadatarepository.model.User"/>
             <mapping class="org.openmrs.contrib.metadatarepository.model.Role"/>
-            <mapping class="org.openmrs.contrib.metadatarepository.model.Package"/>
+            <mapping class="org.openmrs.contrib.metadatarepository.model.MetadataPackage"/>
         </session-factory>
     </hibernate-configuration>

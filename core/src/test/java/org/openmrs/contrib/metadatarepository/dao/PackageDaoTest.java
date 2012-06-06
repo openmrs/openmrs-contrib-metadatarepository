@@ -15,7 +15,7 @@
 package org.openmrs.contrib.metadatarepository.dao;
 
 import org.openmrs.contrib.metadatarepository.dao.PackageDao;
-import org.openmrs.contrib.metadatarepository.model.Package;
+import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -29,13 +29,13 @@ public class PackageDaoTest extends BaseDaoTestCase{
 
 	    @Test
 	    public void testGetPackage() throws Exception {
-	        Package pkg = dao.get(1L);
+	        MetadataPackage pkg = dao.get(1L);
 	        assertNotNull(pkg);
 	    }
 	   
 	    @Test
 	    public void testSavePackage() throws Exception {
-	        Package pkg = dao.get(1L);
+	        MetadataPackage pkg = dao.get(1L);
 	        pkg.setDescription("test desc");
 	        dao.save(pkg);
 	        flush();
@@ -46,7 +46,7 @@ public class PackageDaoTest extends BaseDaoTestCase{
 	    @Test
 	    public void testRemovePackage() throws Exception {
 	        //Package pkg = new Package("testpkg");
-	         Package pkg =dao.get(1L);
+	         MetadataPackage pkg =dao.get(1L);
 	        dao.remove(1L);
 	        flush();
 	    }

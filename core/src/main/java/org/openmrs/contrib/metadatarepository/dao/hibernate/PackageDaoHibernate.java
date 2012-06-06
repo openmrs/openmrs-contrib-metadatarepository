@@ -17,7 +17,7 @@ package org.openmrs.contrib.metadatarepository.dao.hibernate;
 
 import org.hibernate.SessionFactory;
 import org.openmrs.contrib.metadatarepository.dao.PackageDao;
-import org.openmrs.contrib.metadatarepository.model.Package;
+import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.orm.hibernate3.SessionFactoryUtils;
@@ -27,31 +27,31 @@ import javax.persistence.Table;
 import java.util.List;
 
 @Repository("packageDao")
-public class PackageDaoHibernate extends GenericDaoHibernate<Package, Long> implements PackageDao {
+public class PackageDaoHibernate extends GenericDaoHibernate<MetadataPackage, Long> implements PackageDao {
 
 	/**
      * Constructor that sets the entity to Package.class.
      */
     public PackageDaoHibernate() {
-        super(Package.class);
+        super(MetadataPackage.class);
     }
     /**
      * {@inheritDoc}
      */
     @SuppressWarnings("unchecked")
-    public List<Package> getPackages() {
+    public List<MetadataPackage> getPackages() {
         return getHibernateTemplate().find("from Package p order by upper(p.name)");
     }
 
     /**
      * {@inheritDoc}
      */
-    public Package getPackageByName(String pkgname) {
+    public MetadataPackage getPackageByName(String pkgname) {
         List packages = getHibernateTemplate().find("from Packages where name=?", pkgname);
         if (packages.isEmpty()) {
             return null;
         } else {
-            return (Package) packages.get(0);
+            return (MetadataPackage) packages.get(0);
         }
     }
 	

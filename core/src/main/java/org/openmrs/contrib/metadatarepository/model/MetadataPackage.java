@@ -19,22 +19,26 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
 @Entity @Table(name="package")
-public class Package extends BaseObject {
+public class MetadataPackage extends BaseObject {
     private static final long serialVersionUID = 1L;
 	private Long id;
     private String name;
     private String description;
     private Long version;
+   
+    @Transient
+    private byte[] file;
     
     /**
      * Default constructor - creates a new instance with no values set.
      */
-    public Package(){
+    public MetadataPackage(){
     	
     }
     
@@ -43,7 +47,7 @@ public class Package extends BaseObject {
      *
      * @param name name of the package.
      */
-    public Package(final String name ){
+    public MetadataPackage(final String name ){
     	this.name=name;
     }
     
@@ -83,13 +87,21 @@ public class Package extends BaseObject {
         this.version = version;
     }
     
+    public void setFile(byte[] file) {
+        this.file = file;
+    }
+
+    public byte[] getFile() {
+        return file;
+    }
+    
     public boolean equals(Object o) {
         if (this == o) 
         	return true;
         if (!getClass().equals(o.getClass())) 
         	return false;
 
-        Package p = (Package) o;
+        MetadataPackage p = (MetadataPackage) o;
 
         if (name != null ? !name.equals(p.name) : p.name != null) 
         	return false;

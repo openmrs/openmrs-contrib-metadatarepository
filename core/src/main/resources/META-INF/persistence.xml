@@ -5,7 +5,7 @@
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>org.openmrs.contrib.metadatarepository.model.User</class>
         <class>org.openmrs.contrib.metadatarepository.model.Role</class>
-        <class>org.openmrs.contrib.metadatarepository.model.Package</class>
+        <class>org.openmrs.contrib.metadatarepository.model.MetadataPackage</class>
         
         <!-- 
         Adding more <class>f.q.c.Name</class> elements here is not required.  

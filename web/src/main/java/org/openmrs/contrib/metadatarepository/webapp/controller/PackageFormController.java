@@ -18,7 +18,7 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.openmrs.contrib.metadatarepository.model.Package;
+import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
 import org.openmrs.contrib.metadatarepository.service.PackageManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,17 +46,17 @@ public class PackageFormController extends BaseFormController {
 	
 	@ModelAttribute
 	@RequestMapping(method = { RequestMethod.GET, RequestMethod.POST })
-	protected Package showForm(@RequestParam(required = false) final Long id) throws Exception {
+	protected MetadataPackage showForm(@RequestParam(required = false) final Long id) throws Exception {
 		
 		if (id != null) {
 			return packageManager.get(id);
 		}
 		
-		return new Package();
+		return new MetadataPackage();
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String onSubmit(Package pkg, BindingResult errors, HttpServletRequest request, HttpServletResponse response)
+	public String onSubmit(MetadataPackage pkg, BindingResult errors, HttpServletRequest request, HttpServletResponse response)
 	    throws Exception {
 		if (request.getParameter("cancel") != null) {
 			return getCancelView();

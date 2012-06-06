@@ -13,7 +13,7 @@
  */
 package org.openmrs.contrib.metadatarepository.webapp.controller;
 
-import org.openmrs.contrib.metadatarepository.model.Package;
+import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
 import org.openmrs.contrib.metadatarepository.webapp.controller.PackageFormController;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -34,7 +34,7 @@ public class PackageFormControllerTest extends BaseControllerTestCase {
 	
 	private MockHttpServletRequest request;
 	
-	private Package pkg;
+	private MetadataPackage pkg;
 	
 	protected transient final Log log = LogFactory.getLog(getClass());
 	
@@ -71,7 +71,7 @@ public class PackageFormControllerTest extends BaseControllerTestCase {
 	public void testRemove() throws Exception {
 		request = newPost("/packageform");
 		request.addParameter("delete", "");
-		pkg = new Package();
+		pkg = new MetadataPackage();
 		pkg.setId(1L);
 		
 		BindingResult errors = new DataBinder(pkg).getBindingResult();
