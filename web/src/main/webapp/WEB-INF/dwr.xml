@@ -4,10 +4,10 @@
 <dwr>
     <allow>
         <create creator="spring" javascript="UserManager">
-            <param name="class" value="org.openmrs.contrib.service.UserManager"/>
+            <param name="class" value="org.openmrs.contrib.metadatarepository.service.UserManager"/>
             <param name="beanName" value="userManager"/>
             <include method="getUsers"/>
         </create>
-        <convert converter="bean" match="org.openmrs.contrib.model.User"/>
+        <convert converter="bean" match="org.openmrs.contrib.metadatarepository.model.User"/>
     </allow>
 </dwr>

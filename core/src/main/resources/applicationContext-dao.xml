@@ -32,7 +32,7 @@
     <context:annotation-config/>
 
     <!-- Activates scanning of @Repository -->
-    <context:component-scan base-package="org.openmrs.contrib.dao"/>
+    <context:component-scan base-package="org.openmrs.contrib.metadatarepository.dao"/>
 
     <!-- Compass Search Section -->
 

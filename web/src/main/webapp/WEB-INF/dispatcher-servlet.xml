@@ -26,7 +26,7 @@
         <property name="useCodeAsDefaultMessage" value="true"/>
     </bean> 
 
-    <context:component-scan base-package="org.openmrs.contrib.webapp"/>
+    <context:component-scan base-package="org.openmrs.contrib.metadatarepository.webapp"/>
 
     <!-- Configures the @Controller programming model -->
     <mvc:annotation-driven/>

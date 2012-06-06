@@ -3,9 +3,9 @@
 
     <persistence-unit name="ApplicationEntityManager" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <class>org.openmrs.contrib.model.User</class>
-        <class>org.openmrs.contrib.model.Role</class>
-        <class>org.openmrs.contrib.model.Package</class>
+        <class>org.openmrs.contrib.metadatarepository.model.User</class>
+        <class>org.openmrs.contrib.metadatarepository.model.Role</class>
+        <class>org.openmrs.contrib.metadatarepository.model.Package</class>
         
         <!-- 
         Adding more <class>f.q.c.Name</class> elements here is not required.  

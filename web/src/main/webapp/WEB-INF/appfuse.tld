@@ -9,7 +9,7 @@
     <uri>http://www.appfuse.org/tags/spring</uri>
     <tag>
         <name>label</name>
-        <tag-class>org.openmrs.contrib.webapp.taglib.LabelTag</tag-class>
+        <tag-class>org.openmrs.contrib.metadatarepository.webapp.taglib.LabelTag</tag-class>
         <attribute>
             <name>key</name>
             <required>true</required>
@@ -33,8 +33,8 @@
     </tag>
     <tag>
         <name>constants</name>
-        <tag-class>org.openmrs.contrib.webapp.taglib.ConstantsTag</tag-class>
-        <tei-class>org.openmrs.contrib.webapp.taglib.ConstantsTei</tei-class>
+        <tag-class>org.openmrs.contrib.metadatarepository.webapp.taglib.ConstantsTag</tag-class>
+        <tei-class>org.openmrs.contrib.metadatarepository.webapp.taglib.ConstantsTei</tei-class>
         <attribute>
             <name>className</name>
         </attribute>
@@ -47,7 +47,7 @@
     </tag>
     <tag>
         <name>country</name>
-        <tag-class>org.openmrs.contrib.webapp.taglib.CountryTag</tag-class>
+        <tag-class>org.openmrs.contrib.metadatarepository.webapp.taglib.CountryTag</tag-class>
         <attribute>
             <name>name</name>
             <required>false</required>

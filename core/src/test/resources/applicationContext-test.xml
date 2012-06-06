@@ -13,16 +13,16 @@
     </bean>
 
     <!-- Advice Class -->
-    <bean id="userSecurityAdvice" class="org.openmrs.contrib.service.UserSecurityAdvice"/>
+    <bean id="userSecurityAdvice" class="org.openmrs.contrib.metadatarepository.service.UserSecurityAdvice"/>
 
-    <bean id="userManager" class="org.openmrs.contrib.service.impl.UserManagerImpl">
+    <bean id="userManager" class="org.openmrs.contrib.metadatarepository.service.impl.UserManagerImpl">
         <property name="passwordEncoder">
             <bean class="org.springframework.security.authentication.encoding.ShaPasswordEncoder"/>
         </property>
     </bean>
 
     <bean id="target" class="org.springframework.aop.framework.ProxyFactoryBean">
-        <property name="proxyInterfaces" value="org.openmrs.contrib.service.UserManager"/>
+        <property name="proxyInterfaces" value="org.openmrs.contrib.metadatarepository.service.UserManager"/>
         <property name="interceptorNames">
             <list>
                 <idref local="userSecurityInterceptor"/>

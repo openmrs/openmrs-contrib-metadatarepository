@@ -7,7 +7,7 @@
    <global>
 
       <validator name="twofields"
-         classname="org.openmrs.contrib.webapp.util.ValidationUtil"
+         classname="org.openmrs.contrib.metadatarepository.webapp.util.ValidationUtil"
          method="validateTwoFields"
          methodParams="java.lang.Object,
                        org.apache.commons.validator.ValidatorAction,
