@@ -5,14 +5,14 @@
 
     <parent>
         <groupId>org.openmrs.contrib</groupId>
-        <artifactId>metadataserver</artifactId>
+        <artifactId>metadatarepository</artifactId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     
-    <artifactId>metadataserver-web</artifactId>
+    <artifactId>metadatarepository-web</artifactId>
     <packaging>war</packaging>
-    <name>Metadata Server - Web (Spring MVC)</name>
+    <name>Metadata Repository - Web (Spring MVC)</name>
 
     <build>
         <plugins>
@@ -152,7 +152,7 @@
         </dependency>
         <dependency>
             <groupId>${project.parent.groupId}</groupId>
-            <artifactId>metadataserver-core</artifactId>
+            <artifactId>metadatarepository-core</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>

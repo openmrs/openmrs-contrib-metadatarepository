@@ -3,12 +3,12 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.openmrs.contrib</groupId>
-    <artifactId>metadataserver</artifactId>
+    <artifactId>metadatarepository</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>Metadata Server</name>
-    <url>https://wiki.openmrs.org/display/projects/Metadata+Sharing+Server+Project</url>
-    <description>Central repository of OpenMRS meta data</description>
+    <name>Metadata Repository</name>
+    <url>https://wiki.openmrs.org/display/projects/Metadata+Repository+Project</url>
+    <description>Central repository of OpenMRS metadata</description>
     <prerequisites>
         <maven>2.2.1</maven>
     </prerequisites>
