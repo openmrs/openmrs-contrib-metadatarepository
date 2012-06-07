@@ -39,7 +39,7 @@ import java.io.OutputStream;
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible</a>
  */
 @Controller
-@RequestMapping("/fileupload*")
+@RequestMapping("/packageupload*")
 public class FileUploadController extends BaseFormController {
 
     public FileUploadController() {
@@ -66,7 +66,7 @@ public class FileUploadController extends BaseFormController {
             validator.validate(metadataPackage, errors);
 
             if (errors.hasErrors()) {
-                return "fileupload";
+                return "packageupload";
             }
         }
 
@@ -76,7 +76,7 @@ public class FileUploadController extends BaseFormController {
                     new Object[]{getText("uploadForm.file", request.getLocale())};
             errors.rejectValue("file", "errors.required", args, "File");
 
-            return "fileupload";
+            return "packageupload";
         }
 
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;

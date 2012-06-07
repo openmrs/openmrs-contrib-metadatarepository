@@ -30,7 +30,7 @@
             <input type="button" name="done" id="done" value="Done"
                 onclick="location.href='mainMenu'" />
             <input type="button" style="width: 120px" value="Upload Another"
-                onclick="location.href='fileupload'" />
+                onclick="location.href='packageupload'" />
         </td>
     </tr>
 </table>

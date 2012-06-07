@@ -24,7 +24,7 @@
 
 <div class="separator"></div>
 
-<form:form commandName="metadataPackage" method="post" action="fileupload" enctype="multipart/form-data"
+<form:form commandName="metadataPackage" method="post" action="packageupload" enctype="multipart/form-data"
     onsubmit="return validateFileUpload(this)" id="uploadForm">
 <ul>
     <li class="info">
