@@ -24,6 +24,7 @@ import org.openmrs.contrib.metadatarepository.Constants;
 import org.openmrs.contrib.metadatarepository.webapp.controller.PackageController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
+import org.openmrs.contrib.metadatarepository.webapp.controller.BaseControllerTestCase;
 
 public class PackageControllerTest extends BaseControllerTestCase {
 	

@@ -24,6 +24,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.DataBinder;
+import org.openmrs.contrib.metadatarepository.webapp.controller.BaseControllerTestCase;
 
 import static org.junit.Assert.*;
 

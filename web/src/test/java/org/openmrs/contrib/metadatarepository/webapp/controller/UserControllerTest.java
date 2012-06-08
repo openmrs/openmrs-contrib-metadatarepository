@@ -19,6 +19,7 @@ import org.compass.gps.CompassGps;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
+import org.openmrs.contrib.metadatarepository.webapp.controller.BaseControllerTestCase;
 
 import java.util.List;
 import java.util.Map;

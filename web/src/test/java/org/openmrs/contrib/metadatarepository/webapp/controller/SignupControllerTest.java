@@ -25,6 +25,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.DataBinder;
 import org.subethamail.wiser.Wiser;
+import org.openmrs.contrib.metadatarepository.webapp.controller.BaseControllerTestCase;
 
 import javax.servlet.http.HttpServletResponse;
 

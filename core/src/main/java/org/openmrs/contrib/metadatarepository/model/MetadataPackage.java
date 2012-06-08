@@ -24,7 +24,7 @@ import javax.persistence.Transient;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
-
+import org.openmrs.contrib.metadatarepository.model.BaseObject;
 
 @Entity @Table(name="package")
 public class MetadataPackage extends BaseObject {
@@ -88,11 +88,11 @@ public class MetadataPackage extends BaseObject {
     public void setVersion(Long version) {
         this.version = version;
     }
-    @Transient
+    
     public void setFile(byte[] file) {
         this.file = file;
     }
-
+    @Transient
     public byte[] getFile() {
         return file;
     }

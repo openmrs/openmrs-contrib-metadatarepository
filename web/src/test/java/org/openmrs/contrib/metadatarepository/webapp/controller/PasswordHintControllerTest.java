@@ -19,7 +19,7 @@ import org.openmrs.contrib.metadatarepository.webapp.controller.PasswordHintCont
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.subethamail.wiser.Wiser;
-
+import org.openmrs.contrib.metadatarepository.webapp.controller.BaseControllerTestCase;
 import static org.junit.Assert.*;
 
 public class PasswordHintControllerTest extends BaseControllerTestCase {
