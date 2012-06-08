@@ -18,11 +18,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
+
 
 @Entity @Table(name="package")
 public class MetadataPackage extends BaseObject {
@@ -32,7 +34,7 @@ public class MetadataPackage extends BaseObject {
     private String description;
     private Long version;
    
-    @Transient
+    
     private byte[] file;
     
     /**
@@ -86,7 +88,7 @@ public class MetadataPackage extends BaseObject {
     public void setVersion(Long version) {
         this.version = version;
     }
-    
+    @Transient
     public void setFile(byte[] file) {
         this.file = file;
     }

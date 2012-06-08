@@ -15,6 +15,9 @@
 package org.openmrs.contrib.metadatarepository.webapp.controller;
 
 import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
+import org.openmrs.contrib.metadatarepository.service.PackageManager;
+import org.openmrs.contrib.metadatarepository.service.impl.PackageManagerImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,10 +27,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
+
 
 /**
  * Controller class to upload Files.
@@ -42,6 +42,10 @@ import java.io.OutputStream;
 @RequestMapping("/packageupload*")
 public class FileUploadController extends BaseFormController {
 
+	@Autowired
+	private PackageManager packageManager;
+	
+	
     public FileUploadController() {
         setCancelView("redirect:/mainMenu");
         //setSuccessView("uploadDisplay");
@@ -81,34 +85,9 @@ public class FileUploadController extends BaseFormController {
 
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         CommonsMultipartFile file = (CommonsMultipartFile) multipartRequest.getFile("file");
-
-        // the directory to upload to
-        String uploadDir = getServletContext().getRealPath("/resources") + "/" + request.getRemoteUser() + "/";
-
-        // Create the directory if it doesn't exist
-        File dirPath = new File(uploadDir);
-
-        if (!dirPath.exists()) {
-            dirPath.mkdirs();
-        }
-
-        //retrieve the file data
-        InputStream stream = file.getInputStream();
-
-        //write the file to the file specified
-        OutputStream bos = new FileOutputStream(uploadDir + file.getOriginalFilename());
-        int bytesRead;
-        byte[] buffer = new byte[8192];
-
-        while ((bytesRead = stream.read(buffer, 0, 8192)) != -1) {
-            bos.write(buffer, 0, bytesRead);
-        }
-
-        bos.close();
-
-        //close the stream
-        stream.close();
-
+         
+        packageManager.save(metadataPackage);
+        
         
         return getSuccessView();
     }
