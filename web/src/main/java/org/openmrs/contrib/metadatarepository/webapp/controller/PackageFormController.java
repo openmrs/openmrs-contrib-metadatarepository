@@ -33,12 +33,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class PackageFormController extends BaseFormController {
 	
 	private PackageManager packageManager = null;
+	//PackageDao packageDao;
 	
 	@Autowired
 	public void setPackageManager(PackageManager packageManager) {
 		this.packageManager = packageManager;
 	}
 	
+	/*@Autowired
+	public PackageDao getPackageDao() {
+		return packageDao;
+	}
+
+	@Autowired
+	public void setPackageDao(PackageDao packageDao) {
+		this.packageDao = packageDao;
+	}*/
+
 	public PackageFormController() {
 		setCancelView("redirect:mainMenu");
 		setSuccessView("uploadDisplay");
@@ -80,11 +91,16 @@ public class PackageFormController extends BaseFormController {
 				success = "redirect:packageform?id=" + pkg.getId();
 			}
 		}
-		
+		 /*log.debug(request.getSession().getAttribute("filename"));
+		MetadataPackage metadataPackage = packageDao.get(request.getSession().getAttribute("filename"));
+		metadataPackage.setDescription(request.getParameter("pkgDescription"));
+		metadataPackage.setName(request.getParameter("pkgName"));
+		metadataPackage.setVersion(request.getParameter("pkgVersion"));
+		packageDao.save(metadataPackage);*/
          request.setAttribute("pkgName", pkg.getName());
 		 request.setAttribute("pkgDescription", pkg.getDescription());
 		 request.setAttribute("pkgVersion",pkg.getVersion());
-	    
+	      
 		return success;
 	}
 	

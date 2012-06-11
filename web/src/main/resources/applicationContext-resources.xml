@@ -11,6 +11,7 @@
             <list>
                 <value>classpath:jdbc.properties</value>
                 <value>classpath:mail.properties</value>
+                <value>classpath:application.properties</value>
             </list>
         </property>
     </bean>
@@ -27,5 +28,8 @@
         <property name="maxWait" value="1000"/>
         <property name="poolPreparedStatements" value="true"/>
         <property name="defaultAutoCommit" value="true"/>
+    </bean>
+    <bean id="packageManager" class="org.openmrs.contrib.metadatarepository.service.impl.PackageManagerImpl">
+    <property name="packagelocation" value="${packages.location}"/>
     </bean>
 </beans>

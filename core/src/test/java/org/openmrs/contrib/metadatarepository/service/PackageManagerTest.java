@@ -13,11 +13,18 @@
  */
  
 package org.openmrs.contrib.metadatarepository.service;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
 import org.openmrs.contrib.metadatarepository.service.PackageManager;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
+import org.openmrs.contrib.metadatarepository.service.BaseManagerTestCase;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -54,6 +61,13 @@ public class PackageManagerTest extends BaseManagerTestCase {
 		 pkg = magr.get(1L);
 		  magr.remove(1L);
 		  
+	 }
+	 @Test
+	 public void testSaveFile() throws IOException{
+		 
+		BufferedOutputStream bis = new BufferedOutputStream(new FileOutputStream("abc.txt"));
+		bis.write("hello".getBytes());
+	     
 	 }
 	
 	

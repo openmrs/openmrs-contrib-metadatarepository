@@ -82,12 +82,13 @@ public class FileUploadController extends BaseFormController {
 
             return "packageupload";
         }
-
+     
+         
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         CommonsMultipartFile file = (CommonsMultipartFile) multipartRequest.getFile("file");
          
-        packageManager.save(metadataPackage);
-        
+        String filename = (packageManager.save(metadataPackage)).getFilename();
+        request.getSession().setAttribute("filename", filename);
         
         return getSuccessView();
     }

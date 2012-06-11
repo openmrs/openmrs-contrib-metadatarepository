@@ -36,8 +36,17 @@ public class MetadataPackage extends BaseObject {
    
     
     private byte[] file;
+    private String filename;
     
-    /**
+    public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+
+	/**
      * Default constructor - creates a new instance with no values set.
      */
     public MetadataPackage(){
