@@ -23,7 +23,7 @@ public class APIException extends RuntimeException{
 
 		private static final long serialVersionUID = 4150482305178810162L;
 		
-		public APIException(final String message){
+		public APIException(final String message,Exception e){
 			super(message);
 		}
 	}

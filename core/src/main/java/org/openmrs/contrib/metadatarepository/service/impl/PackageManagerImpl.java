@@ -55,7 +55,7 @@ public class PackageManagerImpl extends GenericManagerImpl<MetadataPackage, Long
 		    saveFile(filename,metadataPackage.getFile());
 		}catch(IOException e){
 		    remove(metadataPackage.getId());
-	    	throw new APIException("Failed to save the package on the disk");
+	    	throw new APIException("Failed to save the package",e);
 		 }
 		}
 		return metadatapackage;	
@@ -82,7 +82,7 @@ public class PackageManagerImpl extends GenericManagerImpl<MetadataPackage, Long
         bos.write(file);
         bos.close();
        }catch(IOException e){
-    	   throw new APIException("error writing a file");
+    	   throw new APIException("error writing a file",e);
        }
        finally {
     	   try{
