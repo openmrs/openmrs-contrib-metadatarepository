@@ -14,7 +14,7 @@
 
 package org.openmrs.contrib.metadatarepository.service;
 
-public class FileException extends RuntimeException{
+public class APIException extends RuntimeException{
 	 /**
      * Constructor for FileException.
      *
@@ -23,7 +23,7 @@ public class FileException extends RuntimeException{
 
 		private static final long serialVersionUID = 4150482305178810162L;
 		
-		public FileException(final String message){
+		public APIException(final String message){
 			super(message);
 		}
 	}

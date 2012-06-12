@@ -20,7 +20,7 @@ import java.io.IOException;
 
 import org.openmrs.contrib.metadatarepository.dao.PackageDao;
 import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
-import org.openmrs.contrib.metadatarepository.service.FileException;
+import org.openmrs.contrib.metadatarepository.service.APIException;
 import org.openmrs.contrib.metadatarepository.service.PackageManager;
 import org.openmrs.contrib.metadatarepository.service.impl.GenericManagerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,35 +45,27 @@ public class PackageManagerImpl extends GenericManagerImpl<MetadataPackage, Long
 	 @Value("${packages.storage.dir}")
 	 String packagesStorageDir;
 	 
-	 public String getPackagelocation() {
-			return packagesStorageDir;
-		}
-
-		public void setPackagelocation(String packagesStorageDir) {
-			this.packagesStorageDir = packagesStorageDir;
-		}
-
-	
 	public MetadataPackage savePackage(MetadataPackage metadataPackage) {
+		
+		boolean saveFile = (metadataPackage.getId() == null);
 		MetadataPackage metadatapackage = super.save(metadataPackage);
+		String filename =metadatapackage.getId().toString()+".zip";
+		if(saveFile){
 		try{
-			
-			String filename =metadatapackage.getId().toString()+".zip";
 		    saveFile(filename,metadataPackage.getFile());
 		}catch(IOException e){
-		  
-			throw new FileException("Failed to save the package on the disk");
+		     File f = new File(packagesStorageDir,filename);
+		     f.delete();
+			throw new APIException("Failed to save the package on the disk");
+		 }
 		}
-		return metadatapackage;
+		return metadatapackage;	
 	}
-
+	
 	protected void saveFile(final String filename,byte[] file) throws IOException{
-		
-		 // the directory to upload to
-        String uploadDir = this.packagesStorageDir;
-        log.debug(file);
+	
         // Create the directory if it doesn't exist
-        File dirPath = new File(uploadDir);
+        File dirPath = new File(packagesStorageDir);
 
         if (!dirPath.exists()) {
             dirPath.mkdir();
@@ -81,7 +73,7 @@ public class PackageManagerImpl extends GenericManagerImpl<MetadataPackage, Long
        
        
          if(log.isDebugEnabled())
-        	 log.debug("Saving file"+dirPath.toString());
+        	 log.debug("Saving file to "+dirPath.toString());
                
         //write the file to the file specified
         File packagedata = new File(dirPath,filename);
@@ -89,21 +81,24 @@ public class PackageManagerImpl extends GenericManagerImpl<MetadataPackage, Long
        try{
         bos = new FileOutputStream(packagedata);
         bos.write(file);
+        bos.close();
        }catch(IOException e){
-    	   e.printStackTrace();
-    	   throw new FileException("error writing a file");
+    	   throw new APIException("error writing a file");
        }
-       if(bos!=null){
-    	   try{
-    		   bos.close();
-    	   }catch(IOException e){
-    		 //Close quietly not to hide the previous exception
-    		   log.error(e);
-    	   }
-       }
+       try {
+      	 if (bos != null) {
+      	   bos.close();
+      	  }
+      	 }catch (IOException e) {
+      	   //close quietly
+      		 log.error(e);
+      	  }
+      }
+       
+      
+    	 
         
-     }
-	
+    
 	
 	
 		

@@ -81,7 +81,7 @@ public class PackageFormController extends BaseFormController {
 			}
 		}
 		
-		String id = (String) request.getSession().getAttribute("filename");
+		String id = (String) request.getSession().getAttribute("id");
 		
 		MetadataPackage metadataPackage = packageManager.get(Long.parseLong(id));
 		metadataPackage.setName(pkg.getName());

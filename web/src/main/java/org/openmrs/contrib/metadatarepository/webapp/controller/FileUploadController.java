@@ -89,7 +89,7 @@ public class FileUploadController extends BaseFormController {
          
         MetadataPackage meta = packageManager.savePackage(metadataPackage);
         String id = meta.getId().toString();
-        request.getSession().setAttribute("filename", id);
+        request.getSession().setAttribute("id", id);
         
         return getSuccessView();
     }
