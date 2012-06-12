@@ -87,8 +87,9 @@ public class FileUploadController extends BaseFormController {
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         CommonsMultipartFile file = (CommonsMultipartFile) multipartRequest.getFile("file");
          
-        String filename = (packageManager.save(metadataPackage)).getFilename();
-        request.getSession().setAttribute("filename", filename);
+        MetadataPackage meta = packageManager.savePackage(metadataPackage);
+        String id = meta.getId().toString();
+        request.getSession().setAttribute("filename", id);
         
         return getSuccessView();
     }

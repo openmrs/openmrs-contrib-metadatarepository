@@ -33,23 +33,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class PackageFormController extends BaseFormController {
 	
 	private PackageManager packageManager = null;
-	//PackageDao packageDao;
 	
 	@Autowired
 	public void setPackageManager(PackageManager packageManager) {
 		this.packageManager = packageManager;
 	}
 	
-	/*@Autowired
-	public PackageDao getPackageDao() {
-		return packageDao;
-	}
-
-	@Autowired
-	public void setPackageDao(PackageDao packageDao) {
-		this.packageDao = packageDao;
-	}*/
-
 	public PackageFormController() {
 		setCancelView("redirect:mainMenu");
 		setSuccessView("uploadDisplay");
@@ -83,7 +72,7 @@ public class PackageFormController extends BaseFormController {
 			packageManager.remove(pkg.getId());
 			saveMessage(request, getText("package.deleted", locale));
 		} else {
-			packageManager.save(pkg);
+			 
 			String key = (isNew) ? "package.added" : "package.updated";
 			saveMessage(request, getText(key, locale));
 			
@@ -91,12 +80,16 @@ public class PackageFormController extends BaseFormController {
 				success = "redirect:packageform?id=" + pkg.getId();
 			}
 		}
-		 /*log.debug(request.getSession().getAttribute("filename"));
-		MetadataPackage metadataPackage = packageDao.get(request.getSession().getAttribute("filename"));
-		metadataPackage.setDescription(request.getParameter("pkgDescription"));
-		metadataPackage.setName(request.getParameter("pkgName"));
-		metadataPackage.setVersion(request.getParameter("pkgVersion"));
-		packageDao.save(metadataPackage);*/
+		
+		String id = (String) request.getSession().getAttribute("filename");
+		
+		MetadataPackage metadataPackage = packageManager.get(Long.parseLong(id));
+		metadataPackage.setName(pkg.getName());
+		metadataPackage.setDescription(pkg.getDescription());
+		metadataPackage.setVersion(pkg.getVersion());
+		packageManager.save(metadataPackage);
+		log.debug(metadataPackage.toString());
+		
          request.setAttribute("pkgName", pkg.getName());
 		 request.setAttribute("pkgDescription", pkg.getDescription());
 		 request.setAttribute("pkgVersion",pkg.getVersion());

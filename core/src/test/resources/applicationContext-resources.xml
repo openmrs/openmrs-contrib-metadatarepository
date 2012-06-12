@@ -19,8 +19,4 @@
         <property name="username" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>
     </bean>
-    <bean id="packageManager" class="org.openmrs.contrib.metadatarepository.service.impl.PackageManagerImpl">
-    <property name="packagelocation" value="${packages.location}"/>
-    </bean>
-
 </beans>

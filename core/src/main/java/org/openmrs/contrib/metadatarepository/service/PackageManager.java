@@ -28,6 +28,6 @@ import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
 public interface PackageManager extends GenericManager<MetadataPackage, Long> {
 	
 	
-     
+     public MetadataPackage savePackage(MetadataPackage object);
 
 }

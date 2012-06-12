@@ -24,7 +24,7 @@ import org.openmrs.contrib.metadatarepository.service.FileException;
 import org.openmrs.contrib.metadatarepository.service.PackageManager;
 import org.openmrs.contrib.metadatarepository.service.impl.GenericManagerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 
@@ -41,34 +41,36 @@ public class PackageManagerImpl extends GenericManagerImpl<MetadataPackage, Long
 		this.dao=packageDao;
 		this.packageDao=packageDao;
 	}
-	
-	 String packagelocation;
+	 
+	 @Value("${packages.storage.dir}")
+	 String packagesStorageDir;
+	 
 	 public String getPackagelocation() {
-			return packagelocation;
+			return packagesStorageDir;
 		}
 
-		public void setPackagelocation(String packagelocation) {
-			this.packagelocation = packagelocation;
+		public void setPackagelocation(String packagesStorageDir) {
+			this.packagesStorageDir = packagesStorageDir;
 		}
 
-	@Override
-	public MetadataPackage save(MetadataPackage metadataPackage) {
+	
+	public MetadataPackage savePackage(MetadataPackage metadataPackage) {
+		MetadataPackage metadatapackage = super.save(metadataPackage);
 		try{
-		String filename = saveFile(metadataPackage.getFile());
-		metadataPackage.setFilename(filename);
-		
+			
+			String filename =metadatapackage.getId().toString()+".zip";
+		    saveFile(filename,metadataPackage.getFile());
 		}catch(IOException e){
 		  
 			throw new FileException("Failed to save the package on the disk");
 		}
-		return metadataPackage;
+		return metadatapackage;
 	}
 
-
-	protected String saveFile(byte[] file) throws IOException{
+	protected void saveFile(final String filename,byte[] file) throws IOException{
 		
 		 // the directory to upload to
-        String uploadDir = this.packagelocation;
+        String uploadDir = this.packagesStorageDir;
         log.debug(file);
         // Create the directory if it doesn't exist
         File dirPath = new File(uploadDir);
@@ -76,22 +78,16 @@ public class PackageManagerImpl extends GenericManagerImpl<MetadataPackage, Long
         if (!dirPath.exists()) {
             dirPath.mkdir();
         }
-        MetadataPackage m = new MetadataPackage();
+       
        
          if(log.isDebugEnabled())
         	 log.debug("Saving file"+dirPath.toString());
-              m =  dao.save(m);
-              m.getId();
-         String filename = m.getId().toString()+".zip";
+               
         //write the file to the file specified
         File packagedata = new File(dirPath,filename);
         FileOutputStream bos;
        try{
         bos = new FileOutputStream(packagedata);
-        /*log.debug(bos);
-        log.debug("000000000000");
-        log.debug(file.length);
-        log.debug("!!!!!!!!!!");*/
         bos.write(file);
        }catch(IOException e){
     	   e.printStackTrace();
@@ -105,7 +101,7 @@ public class PackageManagerImpl extends GenericManagerImpl<MetadataPackage, Long
     		   log.error(e);
     	   }
        }
-        return filename;
+        
      }
 	
 	
