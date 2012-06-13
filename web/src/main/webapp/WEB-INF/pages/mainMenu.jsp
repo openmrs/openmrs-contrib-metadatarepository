@@ -13,10 +13,7 @@
 <input type="button" style="margin-right: 5px"
     onclick="location.href='<c:url value="/packageupload"/>'"
     value="<fmt:message key="button.add"/>"/>
-
-<input type="button" onclick="location.href='<c:url value="/mainMenu"/>'"
-    value="<fmt:message key="button.done"/>"/>
-
+<input type="button" style="margin-right: 5px" value="Download"/>
 
 <display:table name="packageList" cellspacing="0" cellpadding="0" requestURI="" 
     defaultsort="1" id="packages" pagesize="25" class="table" export="true">
@@ -26,7 +23,7 @@
     <display:column property="version" sortable="true" titleKey="package.version" style="width: 25%" />
     <display:column property="email" titleKey="package.version" media="csv xml excel pdf"/>
     <display:column sortProperty="selected" sortable="true" titleKey="package.selected" style="width: 16%; padding-left: 15px" media="html">
-        <input type="checkbox" disabled="disabled" <c:if test="${package.selected}">checked="checked"</c:if>/>
+         <input type="checkbox" disabled="disabled" <c:if test="${package.selected}">checked="checked"</c:if>/>
     </display:column>
     <display:column property="selected" titleKey="package.selected" media="csv xml excel pdf"/>
 
@@ -41,9 +38,7 @@
 <input type="button" style="margin-right: 5px"
     onclick="location.href='<c:url value="/packageupload"/>'"
     value="<fmt:message key="button.add"/>"/>
-
-<input type="button" onclick="location.href='<c:url value="/mainMenu"/>'"
-    value="<fmt:message key="button.done"/>"/>
+<input type="button" style="margin-right: 5px" value="Download"/>
 
 <script type="text/javascript">
     highlightTableRows("packages");

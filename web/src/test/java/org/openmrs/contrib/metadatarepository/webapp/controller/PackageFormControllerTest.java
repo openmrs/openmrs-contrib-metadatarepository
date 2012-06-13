@@ -28,64 +28,64 @@ import org.springframework.validation.DataBinder;
 import static org.junit.Assert.*;
 
 public class PackageFormControllerTest extends BaseControllerTestCase {
-	
+
 	@Autowired
 	private PackageFormController form;
-	
+
 	private MockHttpServletRequest request;
-	
+
 	private MetadataPackage pkg;
-	
+
 	protected transient final Log log = LogFactory.getLog(getClass());
-	
+
 	@Test
 	public void testEdit() throws Exception {
 		log.debug("testing edit...");
 		request = newGet("/packageform");
 		request.addParameter("id", "1");
-		
+
 		pkg = form.showForm(1L);
 		assertNotNull(pkg);
 	}
-	
+
 	@Test
 	public void testSave() throws Exception {
 		request = newGet("/packageform");
 		request.addParameter("id", "1");
-		
+
 		pkg = form.showForm(1L);
 		assertNotNull(pkg);
-		
+
 		request = newPost("/packageform");
-		
+
 		pkg = form.showForm(1L);
 		// update required fields
-		
+
 		BindingResult errors = new DataBinder(pkg).getBindingResult();
 		form.onSubmit(pkg, errors, request, new MockHttpServletResponse());
 		assertFalse(errors.hasErrors());
 		assertNotNull(request.getSession().getAttribute("successMessages"));
 	}
-	
+
 	@Test
 	public void testRemove() throws Exception {
 		request = newPost("/packageform");
 		request.addParameter("delete", "");
 		pkg = new MetadataPackage();
 		pkg.setId(1L);
-		
+
 		BindingResult errors = new DataBinder(pkg).getBindingResult();
 		form.onSubmit(pkg, errors, request, new MockHttpServletResponse());
-		
+
 		assertNotNull(request.getSession().getAttribute("successMessages"));
 	}
-	
+
 	public MockHttpServletRequest newPost(String url) {
 		return new MockHttpServletRequest("POST", url);
 	}
-	
+
 	public MockHttpServletRequest newGet(String url) {
 		return new MockHttpServletRequest("GET", url);
 	}
-	
+
 }

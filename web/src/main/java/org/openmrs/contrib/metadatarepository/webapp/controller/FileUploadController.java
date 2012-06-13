@@ -28,14 +28,13 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 
-
 /**
  * Controller class to upload Files.
  * <p/>
  * <p>
  * <a href="FileUploadFormController.java.html"><i>View Source</i></a>
  * </p>
- *
+ * 
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible</a>
  */
 @Controller
@@ -44,53 +43,51 @@ public class FileUploadController extends BaseFormController {
 
 	@Autowired
 	private PackageManager packageManager;
-	
-	
-    public FileUploadController() {
-        setCancelView("redirect:/mainMenu");
-        //setSuccessView("uploadDisplay");
-        setSuccessView("redirect:/packageform");
-    }
 
-    @ModelAttribute
-    @RequestMapping(method = RequestMethod.GET)
-    public MetadataPackage showForm() {
-        return new MetadataPackage();
-    }
+	public FileUploadController() {
+		setCancelView("redirect:/mainMenu");
+		// setSuccessView("uploadDisplay");
+		setSuccessView("redirect:/packageform");
+	}
 
-    @RequestMapping(method = RequestMethod.POST)
-    public String onSubmit(MetadataPackage metadataPackage, BindingResult errors, HttpServletRequest request)
-            throws Exception {
+	@ModelAttribute
+	@RequestMapping(method = RequestMethod.GET)
+	public MetadataPackage showForm() {
+		return new MetadataPackage();
+	}
 
-        if (request.getParameter("cancel") != null) {
-            return getCancelView();
-        }
+	@RequestMapping(method = RequestMethod.POST)
+	public String onSubmit(MetadataPackage metadataPackage,
+			BindingResult errors, HttpServletRequest request) throws Exception {
 
-        if (validator != null) { // validator is null during testing
-            validator.validate(metadataPackage, errors);
+		if (request.getParameter("cancel") != null) {
+			return getCancelView();
+		}
 
-            if (errors.hasErrors()) {
-                return "packageupload";
-            }
-        }
+		if (validator != null) { // validator is null during testing
+			validator.validate(metadataPackage, errors);
 
-        // validate a file was entered
-        if (metadataPackage.getFile().length == 0) {
-            Object[] args =
-                    new Object[]{getText("uploadForm.file", request.getLocale())};
-            errors.rejectValue("file", "errors.required", args, "File");
+			if (errors.hasErrors()) {
+				return "packageupload";
+			}
+		}
 
-            return "packageupload";
-        }
-     
-         
-        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-        CommonsMultipartFile file = (CommonsMultipartFile) multipartRequest.getFile("file");
-         
-        MetadataPackage meta = packageManager.savePackage(metadataPackage);
-        String id = meta.getId().toString();
-        request.getSession().setAttribute("id", id);
-        
-        return getSuccessView();
-    }
+		// validate a file was entered
+		if (metadataPackage.getFile().length == 0) {
+			Object[] args = new Object[] { getText("uploadForm.file",
+					request.getLocale()) };
+			errors.rejectValue("file", "errors.required", args, "File");
+
+			return "packageupload";
+		}
+
+		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+		CommonsMultipartFile file = (CommonsMultipartFile) multipartRequest
+				.getFile("file");
+
+		MetadataPackage meta = packageManager.savePackage(metadataPackage);
+		String id = meta.getId().toString();
+		request.getSession().setAttribute("id", id);
+		return getSuccessView();
+	}
 }
