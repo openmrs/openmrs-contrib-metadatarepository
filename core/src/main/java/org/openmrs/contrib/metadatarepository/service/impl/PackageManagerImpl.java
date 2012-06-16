@@ -99,15 +99,18 @@ public class PackageManagerImpl extends
 	}
 
 	public MetadataPackage loadFile(String id) throws IOException {
-		final byte[] data = new byte[1024];	
+		byte[] data = null;
 		File f = new File(packagesStorageDir + "/" + id + ".zip");
+		log.debug(f.getAbsolutePath());
+
 		if (f.exists()) {
 			try {
 				FileInputStream fis = new FileInputStream(f);
+				data = new byte[fis.available()];
 				fis.read(data);
 
 			} catch (FileNotFoundException e) {
-
+				log.debug(f.getPath());
 				throw new APIException("Error downloading the file", e);
 			}
 		}
@@ -115,6 +118,7 @@ public class PackageManagerImpl extends
 		MetadataPackage pkg = dao.get(Long.parseLong(id));
 		pkg.setFile(data);
 		return pkg;
+
 	}
 
 }

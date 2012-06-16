@@ -64,7 +64,9 @@ public class PackageFormController extends BaseFormController {
 			@RequestParam(required = false) final String id,
 			HttpServletResponse response) throws IOException {
 		MetadataPackage p = packageManager.loadFile(id);
-		response.setContentType("application/x-zip");
+		response.setContentType("application/x-zip-compressed");
+		response.setHeader("Content-disposition", "attatchment;filename=\""
+				+ id + ".zip");
 		IOUtils.copy(new ByteArrayInputStream(p.getFile()),
 				response.getOutputStream());
 
