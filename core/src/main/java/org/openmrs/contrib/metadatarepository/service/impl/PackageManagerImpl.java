@@ -101,8 +101,6 @@ public class PackageManagerImpl extends
 	public MetadataPackage loadFile(String id) throws IOException {
 		byte[] data = null;
 		File f = new File(packagesStorageDir + "/" + id + ".zip");
-		log.debug(f.getAbsolutePath());
-
 		if (f.exists()) {
 			try {
 				FileInputStream fis = new FileInputStream(f);
@@ -110,7 +108,7 @@ public class PackageManagerImpl extends
 				fis.read(data);
 
 			} catch (FileNotFoundException e) {
-				log.debug(f.getPath());
+
 				throw new APIException("Error downloading the file", e);
 			}
 		}
