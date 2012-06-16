@@ -13,6 +13,7 @@
  */
 
 package org.openmrs.contrib.metadatarepository.model;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,103 +27,109 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.openmrs.contrib.metadatarepository.model.BaseObject;
 
-@Entity @Table(name="package")
+@Entity
+@Table(name = "package")
 public class MetadataPackage extends BaseObject {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	private Long id;
-    private String name;
-    private String description;
-    private Long version;
-    private byte[] file;
-    
+	private String name;
+	private String description;
+	private Long version;
+	private byte[] file;
+
 	/**
-     * Default constructor - creates a new instance with no values set.
-     */
-    public MetadataPackage(){
-    	
-    }
-    
-    /**
-     * Create a new instance and set the name.
-     *
-     * @param name name of the package.
-     */
-    public MetadataPackage(final String name ){
-    	this.name=name;
-    }
-    
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    public Long getId() {
-        return id;
-    }
-    
-    public void setId(Long id) {
-        this.id = id;
-    }
+	 * Default constructor - creates a new instance with no values set.
+	 */
+	public MetadataPackage() {
 
-    @Column(name="name", length=50)
-    public String getName() {
-        return name;
-    }
-    
-    public void setName(String name) {
-        this.name = name;
-    }
-    
-    @Column(name="description", length=255) 
-    public String getDescription() {
-        return description;
-    }
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	/**
+	 * Create a new instance and set the name.
+	 * 
+	 * @param name
+	 *            name of the package.
+	 */
+	public MetadataPackage(final String name) {
+		this.name = name;
+	}
 
-    @Column(name="version")
-    public Long getVersion() {
-        return version;
-    }
-    
-    public void setVersion(Long version) {
-        this.version = version;
-    }
-    
-    public void setFile(byte[] file) {
-        this.file = file;
-    }
-    @Transient
-    public byte[] getFile() {
-        return file;
-    }
-    
-    public boolean equals(Object o) {
-        if (this == o) 
-        	return true;
-        if (!getClass().equals(o.getClass())) 
-        	return false;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	public Long getId() {
+		return id;
+	}
 
-        MetadataPackage p = (MetadataPackage) o;
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-        if (name != null ? !name.equals(p.name) : p.name != null) 
-        	return false;
-        if (description != null ? !description.equals(p.description) : p.description != null)
-        	return false;
-        if (version != null ? !version.equals(p.version) : p.version != null)
-        	return false;
-        
-        return true;
-    }
-    
-    public int hashCode() {
-        return (name != null ? name.hashCode() : 0);
-    }
-    public String toString() {
-        ToStringBuilder sb = new ToStringBuilder(this,ToStringStyle.DEFAULT_STYLE)
-        .append("name",this.name)
-        .append("description",this.description)
-        .append("version",this.version);
-        
-        return sb.toString();
-    }
+	@Column(name = "name", length = 50)
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Column(name = "description", length = 255)
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	@Column(name = "version")
+	public Long getVersion() {
+		return version;
+	}
+
+	public void setVersion(Long version) {
+		this.version = version;
+	}
+
+	public void setFile(byte[] file) {
+		this.file = file;
+	}
+
+	@Transient
+	public byte[] getFile() {
+		return file;
+	}
+
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (!getClass().equals(o.getClass()))
+			return false;
+
+		MetadataPackage p = (MetadataPackage) o;
+
+		if (name != null ? !name.equals(p.name) : p.name != null)
+			return false;
+		if (description != null ? !description.equals(p.description)
+				: p.description != null)
+			return false;
+		if (version != null ? !version.equals(p.version) : p.version != null)
+			return false;
+
+		return true;
+	}
+
+	public int hashCode() {
+		return (name != null ? name.hashCode() : 0);
+	}
+
+	public String toString() {
+		ToStringBuilder sb = new ToStringBuilder(this,
+				ToStringStyle.DEFAULT_STYLE).append("name", this.name)
+				.append("description", this.description)
+				.append("version", this.version);
+
+		return sb.toString();
+	}
 
 }

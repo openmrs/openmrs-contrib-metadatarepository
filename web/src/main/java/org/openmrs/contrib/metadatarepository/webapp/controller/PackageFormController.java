@@ -13,11 +13,14 @@
  */
 package org.openmrs.contrib.metadatarepository.webapp.controller;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.IOUtils;
 import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
 import org.openmrs.contrib.metadatarepository.service.PackageManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +57,19 @@ public class PackageFormController extends BaseFormController {
 		}
 
 		return new MetadataPackage();
+	}
+
+	@RequestMapping(value = "/packagedownload")
+	public void downloadPackage(
+			@RequestParam(required = false) final String id,
+			HttpServletResponse response) throws IOException {
+		MetadataPackage p = packageManager.loadFile(id);
+		response.setContentType("application/x-zip");
+		IOUtils.copy(new ByteArrayInputStream(p.getFile()),
+				response.getOutputStream());
+
+		response.flushBuffer();
+
 	}
 
 	@RequestMapping(method = RequestMethod.POST)

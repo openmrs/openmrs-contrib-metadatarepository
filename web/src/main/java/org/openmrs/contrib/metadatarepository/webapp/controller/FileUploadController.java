@@ -23,8 +23,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
+
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -46,7 +46,6 @@ public class FileUploadController extends BaseFormController {
 
 	public FileUploadController() {
 		setCancelView("redirect:/mainMenu");
-		// setSuccessView("uploadDisplay");
 		setSuccessView("redirect:/packageform");
 	}
 
@@ -81,13 +80,9 @@ public class FileUploadController extends BaseFormController {
 			return "packageupload";
 		}
 
-		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-		CommonsMultipartFile file = (CommonsMultipartFile) multipartRequest
-				.getFile("file");
-
 		MetadataPackage meta = packageManager.savePackage(metadataPackage);
 		String id = meta.getId().toString();
-		request.getSession().setAttribute("id", id);
+		request.setAttribute("id", meta.getId());
 		return getSuccessView();
 	}
 }

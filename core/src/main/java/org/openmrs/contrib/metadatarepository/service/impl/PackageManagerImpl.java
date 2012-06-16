@@ -13,10 +13,12 @@
  */
 
 package org.openmrs.contrib.metadatarepository.service.impl;
+
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
 
 import org.openmrs.contrib.metadatarepository.dao.PackageDao;
 import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
@@ -27,79 +29,92 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-
 /**
  * Implementation of PackageManager interface.
  */
 @Service("packageManager")
-public class PackageManagerImpl extends GenericManagerImpl<MetadataPackage, Long> implements PackageManager {
+public class PackageManagerImpl extends
+		GenericManagerImpl<MetadataPackage, Long> implements PackageManager {
 
-    PackageDao packageDao;
-    
+	PackageDao packageDao;
+
 	@Autowired
 	public void setPackageDao(PackageDao packageDao) {
-		this.dao=packageDao;
-		this.packageDao=packageDao;
+		this.dao = packageDao;
+		this.packageDao = packageDao;
 	}
-	 
-	 @Value("${packages.storage.dir}")
-	 String packagesStorageDir;
-	 
+
+	@Value("${packages.storage.dir}")
+	String packagesStorageDir;
+
 	public MetadataPackage savePackage(MetadataPackage metadataPackage) {
-		
+
 		boolean saveFile = (metadataPackage.getId() == null);
 		MetadataPackage metadatapackage = super.save(metadataPackage);
-		String filename =metadatapackage.getId().toString()+".zip";
-		if(saveFile){
-		try{
-		    saveFile(filename,metadataPackage.getFile());
-		}catch(IOException e){
-		    remove(metadataPackage.getId());
-	    	throw new APIException("Failed to save the package",e);
-		 }
+		String filename = metadatapackage.getId().toString() + ".zip";
+		if (saveFile) {
+			try {
+				saveFile(filename, metadataPackage.getFile());
+			} catch (IOException e) {
+				remove(metadataPackage.getId());
+				throw new APIException("Failed to save the package", e);
+			}
 		}
-		return metadatapackage;	
+		return metadatapackage;
 	}
-	
-	protected void saveFile(final String filename,byte[] file) throws IOException{
-	
-        // Create the directory if it doesn't exist
-        File dirPath = new File(packagesStorageDir);
 
-        if (!dirPath.exists()) {
-            dirPath.mkdir();
-        }
-       
-       
-         if(log.isDebugEnabled())
-        	 log.debug("Saving file to "+dirPath.toString());
-               
-        //write the file to the file specified
-        File packagedata = new File(dirPath,filename);
-        FileOutputStream bos =null;
-       try{
-        bos = new FileOutputStream(packagedata);
-        bos.write(file);
-        bos.close();
-       }catch(IOException e){
-    	   throw new APIException("error writing a file",e);
-       }
-       finally {
-    	   try{
-      	 if (bos != null) {
-      	   bos.close();
-      	  }
-      	 }catch (IOException e) {
-      	   //close quietly
-      		 log.error(e);
-      	  }
-      }
-       
+	protected void saveFile(final String filename, byte[] file)
+			throws IOException {
+
+		// Create the directory if it doesn't exist
+		File dirPath = new File(packagesStorageDir);
+
+		if (!dirPath.exists()) {
+			dirPath.mkdir();
+		}
+
+		if (log.isDebugEnabled())
+			log.debug("Saving file to " + dirPath.toString());
+
+		// write the file to the file specified
+		File packagedata = new File(dirPath, filename);
+		FileOutputStream bos = null;
+		try {
+			bos = new FileOutputStream(packagedata);
+			bos.write(file);
+			bos.close();
+		} catch (IOException e) {
+			throw new APIException("error writing a file", e);
+		} finally {
+			try {
+				if (bos != null) {
+					bos.close();
+				}
+			} catch (IOException e) {
+				// close quietly
+				log.error(e);
+			}
+		}
+
 	}
-    	 
-        
-    
-	
-	
-		
+
+	public MetadataPackage loadFile(String id) throws IOException {
+		final byte[] data = new byte[1024];	
+		File f = new File(packagesStorageDir + "/" + id + ".zip");
+		if (f.exists()) {
+			try {
+				FileInputStream fis = new FileInputStream(f);
+				fis.read(data);
+
+			} catch (FileNotFoundException e) {
+
+				throw new APIException("Error downloading the file", e);
+			}
+		}
+
+		MetadataPackage pkg = dao.get(Long.parseLong(id));
+		pkg.setFile(data);
+		return pkg;
+	}
+
 }
