@@ -34,8 +34,9 @@
 		style="width: 16%; padding-left: 15px"
 		url="/packageform/packagedownload?from=list" paramId="id"
 		paramProperty="id">
-		<img src="/images/download.png" alt="Download" height="30px"
-			width="30px" />
+		<input type="button"
+			onclick="location.href='<c:url value="/packageform/packagedownload?from=list"/>'"
+			value="download" />
 	</display:column>
 	<display:column titleKey="Edit" style="width: 16%; padding-left: 15px"
 		url="/packageform?from=list" paramId="id" paramProperty="id">

@@ -28,6 +28,6 @@ public interface PackageManager extends GenericManager<MetadataPackage, Long> {
 
 	public MetadataPackage savePackage(MetadataPackage object);
 
-	public MetadataPackage loadFile(String id) throws IOException;
+	public MetadataPackage loadPackage(Long id) throws IOException;
 
 }

@@ -81,8 +81,8 @@ public class FileUploadController extends BaseFormController {
 		}
 
 		MetadataPackage meta = packageManager.savePackage(metadataPackage);
-		String id = meta.getId().toString();
-		request.setAttribute("id", meta.getId());
-		return getSuccessView();
-	}
+		Long id = meta.getId();
+		
+		return getSuccessView()+ "?id=" + meta.getId();
+		}
 }

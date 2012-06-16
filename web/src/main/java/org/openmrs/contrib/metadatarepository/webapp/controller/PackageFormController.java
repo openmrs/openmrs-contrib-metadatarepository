@@ -60,10 +60,9 @@ public class PackageFormController extends BaseFormController {
 	}
 
 	@RequestMapping(value = "/packagedownload")
-	public void downloadPackage(
-			@RequestParam(required = false) final String id,
+	public void downloadPackage(@RequestParam(required = false) final Long id,
 			HttpServletResponse response) throws IOException {
-		MetadataPackage p = packageManager.loadFile(id);
+		MetadataPackage p = packageManager.loadPackage(id);
 		response.setContentType("application/x-zip-compressed");
 		response.setHeader("Content-disposition", "attatchment;filename=\""
 				+ id + ".zip");
@@ -84,7 +83,6 @@ public class PackageFormController extends BaseFormController {
 
 		log.debug("entering 'onSubmit' method...");
 
-		boolean isNew = (pkg.getId() == null);
 		String success = getSuccessView();
 		Locale locale = request.getLocale();
 
@@ -93,12 +91,8 @@ public class PackageFormController extends BaseFormController {
 			saveMessage(request, getText("package.deleted", locale));
 		} else {
 
-			String key = (isNew) ? "package.added" : "package.updated";
-			saveMessage(request, getText(key, locale));
+			saveMessage(request, getText("package.added", locale));
 
-			if (!isNew) {
-				success = "redirect:packageform?id=" + pkg.getId();
-			}
 		}
 
 		packageManager.save(pkg);
