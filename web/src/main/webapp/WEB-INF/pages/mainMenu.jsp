@@ -5,7 +5,13 @@
 <meta name="heading" content="<fmt:message key='mainMenu.heading'/>" />
 <meta name="menu" content="MainMenu" />
 </head>
-
+<div id="search">
+<form method="get" action="${ctx}/mainMenu" id="searchForm">
+    <input type="text" size="20" name="q" id="query" value="${param.q}"
+           placeholder="Enter search terms"/>
+    <input type="submit" value="<fmt:message key="button.search"/>"/>
+</form>
+</div>
 <c:if test="${!empty pageContext.request.remoteUser}">
 	<p>
 		<fmt:message key="mainMenu.message" />

@@ -19,6 +19,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 import org.openmrs.contrib.metadatarepository.dao.PackageDao;
 import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
@@ -129,5 +130,11 @@ public class PackageManagerImpl extends
 		return pkg;
 
 	}
-
+    
+	/**
+     * {@inheritDoc}
+     */
+	public List<MetadataPackage> search(String searchTerm) {
+		return super.search(searchTerm, MetadataPackage.class);
+	}
 }

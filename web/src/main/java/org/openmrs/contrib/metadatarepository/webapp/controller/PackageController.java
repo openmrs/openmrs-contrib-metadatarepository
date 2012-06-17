@@ -36,7 +36,7 @@ public class PackageController {
 	
 	 @RequestMapping(method = RequestMethod.GET)
 	 public ModelAndView handleRequest(@RequestParam(required = false, value = "q") String query) throws Exception {
-		 return new ModelAndView("/mainMenu",Constants.PACKAGE_LIST,magr.search(query, getClass()));
+		 return new ModelAndView("/mainMenu",Constants.PACKAGE_LIST,magr.search(query));
 	 }
 	
 }

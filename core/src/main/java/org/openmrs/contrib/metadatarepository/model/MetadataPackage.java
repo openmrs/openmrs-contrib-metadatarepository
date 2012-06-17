@@ -19,16 +19,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
+import org.compass.annotations.Searchable;
+import org.compass.annotations.SearchableId;
+import org.compass.annotations.SearchableProperty;
 import org.openmrs.contrib.metadatarepository.model.BaseObject;
 
 @Entity
 @Table(name = "package")
+@Searchable
 public class MetadataPackage extends BaseObject {
 	private static final long serialVersionUID = 1L;
 	private Long id;
@@ -36,6 +41,9 @@ public class MetadataPackage extends BaseObject {
 	private String description;
 	private Long version;
 	private byte[] file;
+
+	@ManyToOne
+	User user;
 
 	/**
 	 * Default constructor - creates a new instance with no values set.
@@ -56,6 +64,7 @@ public class MetadataPackage extends BaseObject {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@SearchableId
 	public Long getId() {
 		return id;
 	}
@@ -65,6 +74,7 @@ public class MetadataPackage extends BaseObject {
 	}
 
 	@Column(name = "name", length = 50)
+	@SearchableProperty
 	public String getName() {
 		return name;
 	}
@@ -74,6 +84,7 @@ public class MetadataPackage extends BaseObject {
 	}
 
 	@Column(name = "description", length = 255)
+	@SearchableProperty
 	public String getDescription() {
 		return description;
 	}
@@ -83,6 +94,7 @@ public class MetadataPackage extends BaseObject {
 	}
 
 	@Column(name = "version")
+	@SearchableProperty
 	public Long getVersion() {
 		return version;
 	}
