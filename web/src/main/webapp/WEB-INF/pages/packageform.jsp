@@ -23,7 +23,7 @@
         <form:errors path="version" cssClass="fieldError"/>
         <form:input path="version" id="version" cssClass="text medium" cssErrorClass="text medium error" maxlength="10"/>
     </li>
- 
+     
     <li class="buttonBar bottom">
         <input type="submit" class="button" name="save" value="<fmt:message key="button.save"/>"/>
         <c:if test="${not empty package.id}">

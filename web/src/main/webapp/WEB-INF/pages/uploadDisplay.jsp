@@ -23,6 +23,10 @@
         <th>Package Version:</th>
         <td><c:out value="${pkgVersion}"/></td>
     </tr>
+    <tr>
+        <th>Package Username:</th>
+        <td><c:out value="${pkgUsername}"/></td>
+    </tr>
    
     <tr>
         <td></td>

@@ -45,6 +45,14 @@ public class MetadataPackage extends BaseObject {
 	@ManyToOne
 	User user;
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	/**
 	 * Default constructor - creates a new instance with no values set.
 	 */

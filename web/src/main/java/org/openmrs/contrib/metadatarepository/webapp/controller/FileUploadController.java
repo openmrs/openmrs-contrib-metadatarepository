@@ -79,7 +79,7 @@ public class FileUploadController extends BaseFormController {
 
 			return "packageupload";
 		}
-
+          
 		MetadataPackage meta = packageManager.savePackage(metadataPackage);
 		Long id = meta.getId();
 		

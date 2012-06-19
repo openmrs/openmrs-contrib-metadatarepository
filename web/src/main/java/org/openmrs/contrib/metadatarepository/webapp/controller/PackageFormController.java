@@ -22,7 +22,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
 import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
+import org.openmrs.contrib.metadatarepository.model.User;
 import org.openmrs.contrib.metadatarepository.service.PackageManager;
+import org.openmrs.contrib.metadatarepository.service.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -36,6 +38,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class PackageFormController extends BaseFormController {
 
 	private PackageManager packageManager = null;
+	private UserManager userManager = null;
+
+	@Autowired
+	public void setUserManager(UserManager userManager) {
+		this.userManager = userManager;
+	}
 
 	@Autowired
 	public void setPackageManager(PackageManager packageManager) {
@@ -94,12 +102,17 @@ public class PackageFormController extends BaseFormController {
 			saveMessage(request, getText("package.added", locale));
 
 		}
-
+		// Need to change
+		User uname;
+		uname = userManager.getUserByUsername(request.getRemoteUser());
+		log.debug("******" + uname);
+		pkg.setUser(uname);
 		packageManager.save(pkg);
 
 		request.setAttribute("pkgName", pkg.getName());
 		request.setAttribute("pkgDescription", pkg.getDescription());
 		request.setAttribute("pkgVersion", pkg.getVersion());
+		request.setAttribute("pkgUsername", request.getRemoteUser());
 
 		return success;
 	}
