@@ -44,15 +44,7 @@ public class MetadataPackage extends BaseObject {
 	private byte[] file;
 
 	@ManyToOne
-	User user;
-	@JoinColumn(name="id")
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+	private User user;
 
 	/**
 	 * Default constructor - creates a new instance with no values set.
@@ -121,6 +113,16 @@ public class MetadataPackage extends BaseObject {
 		return file;
 	}
 
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 	public boolean equals(Object o) {
 		if (this == o)
 			return true;
@@ -152,5 +154,8 @@ public class MetadataPackage extends BaseObject {
 
 		return sb.toString();
 	}
+
+	
+
 
 }

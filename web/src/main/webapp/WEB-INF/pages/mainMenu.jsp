@@ -50,6 +50,8 @@
 			onclick="location.href='<c:url value="/packageform?from=list"/>'"
 			value="edit" />
 	</display:column>
+	<display:column property="user" sortable="true"
+		titleKey="package.publisher" style="width: 25%" />
 	<display:setProperty name="paging.banner.item_name" value="package" />
 	<display:setProperty name="paging.banner.items_name" value="packages" />
 
