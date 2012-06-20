@@ -52,12 +52,12 @@ public class PackageFormControllerTest extends BaseControllerTestCase {
 	public void testSave() throws Exception {
 		request = newGet("/packageform");
 		request.addParameter("id", "1");
-		request.setRemoteUser("admin");
 		pkg = form.showForm(1L);
 		assertNotNull(pkg);
 
 		request = newPost("/packageform");
 
+		request.setRemoteUser("admin");
 		pkg = form.showForm(1L);
 		// update required fields
 

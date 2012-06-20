@@ -100,22 +100,21 @@ public class PackageFormController extends BaseFormController {
 		} else {
 
 			saveMessage(request, getText("package.added", locale));
+			
+			User uname;
+			uname = userManager.getUserByUsername(request.getRemoteUser());
+			pkg.setUser(uname); 
+			
+			packageManager.save(pkg);
+
+			request.setAttribute("pkgName", pkg.getName());
+			request.setAttribute("pkgDescription", pkg.getDescription());
+			request.setAttribute("pkgVersion", pkg.getVersion());
+			request.setAttribute("pkgPublisher", request.getRemoteUser());
 
 		}
 		
-		User uname;
-		uname = userManager.getUserByUsername(request.getRemoteUser());
-		log.debug("******" + uname);
-		pkg.setUser(uname);// this will display the entire user details which we dont want 
-		//pkg.getUser().setUsername(uname.getUsername());
-		//pkg.setUser(uname.getUsername());  
-        
-		packageManager.save(pkg);
-
-		request.setAttribute("pkgName", pkg.getName());
-		request.setAttribute("pkgDescription", pkg.getDescription());
-		request.setAttribute("pkgVersion", pkg.getVersion());
-		request.setAttribute("pkgPublisher", request.getRemoteUser());
+		
 
 		return success;
 	}
