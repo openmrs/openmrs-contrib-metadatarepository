@@ -102,9 +102,8 @@ public class PackageFormController extends BaseFormController {
 			saveMessage(request, getText("package.added", locale));
 			
 			User uname;
-			uname = userManager.getUserByUsername(request.getRemoteUser());
-			pkg.setUser(uname); 
-			
+			uname= userManager.getUserByUsername(request.getRemoteUser());
+		    pkg.getUser().getUsername();
 			packageManager.save(pkg);
 
 			request.setAttribute("pkgName", pkg.getName());
