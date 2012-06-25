@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/mainMenu*")
+@RequestMapping(value="/mainMenu*", method = RequestMethod.GET)
 public class PackageController {
    
 	private PackageManager magr = null;
@@ -38,5 +38,10 @@ public class PackageController {
 	 public ModelAndView handleRequest(@RequestParam(required = false, value = "q") String query) throws Exception {
 		 return new ModelAndView("/mainMenu",Constants.PACKAGE_LIST,magr.search(query));
 	 }
+	 
+	 @RequestMapping(value="/mypackages*", method = RequestMethod.GET)
+	 public void myPackages() {
+
+		}
 	
 }

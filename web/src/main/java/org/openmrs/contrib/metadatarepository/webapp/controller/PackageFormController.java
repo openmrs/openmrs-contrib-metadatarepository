@@ -80,11 +80,6 @@ public class PackageFormController extends BaseFormController {
 
 	}
 
-	@RequestMapping(value = "/mypackages")
-	public void myPackagesFilter() {
-
-	}
-
 	@RequestMapping(method = RequestMethod.POST)
 	public String onSubmit(MetadataPackage pkg, BindingResult errors,
 			HttpServletRequest request, HttpServletResponse response)
