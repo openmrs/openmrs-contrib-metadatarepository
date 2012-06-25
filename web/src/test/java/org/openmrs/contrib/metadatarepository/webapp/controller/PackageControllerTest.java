@@ -16,9 +16,12 @@ package org.openmrs.contrib.metadatarepository.webapp.controller;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
+import java.util.List;
 import java.util.Map;
 
+import org.compass.gps.CompassGps;
 import org.junit.Test;
 import org.openmrs.contrib.metadatarepository.Constants;
 import org.openmrs.contrib.metadatarepository.webapp.controller.PackageController;
@@ -27,7 +30,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.openmrs.contrib.metadatarepository.webapp.controller.BaseControllerTestCase;
 
 public class PackageControllerTest extends BaseControllerTestCase {
-	
+	 @Autowired
+	    private CompassGps compassGps;
 	@Autowired
 	private PackageController c;
 	
@@ -38,5 +42,15 @@ public class PackageControllerTest extends BaseControllerTestCase {
         assertNotNull(m.get(Constants.PACKAGE_LIST));
         assertEquals("/mainMenu", mav.getViewName());
     }
+	 @Test
+	    public void testSearch() throws Exception {
+	        compassGps.index();
+	        ModelAndView mav = c.handleRequest("testpkg");
+	        Map m = mav.getModel();
+	        List results = (List) m.get(Constants.PACKAGE_LIST);
+	        assertNotNull(results);
+	        assertTrue(results.size() >= 1);
+	        assertEquals("/mainMenu", mav.getViewName());
+	    }
 
 }

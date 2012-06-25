@@ -59,7 +59,6 @@ public class PackageFormController extends BaseFormController {
 	@RequestMapping(method = { RequestMethod.GET, RequestMethod.POST })
 	protected MetadataPackage showForm(
 			@RequestParam(required = false) final Long id) throws Exception {
-
 		if (id != null) {
 			return packageManager.get(id);
 		}
@@ -78,6 +77,11 @@ public class PackageFormController extends BaseFormController {
 				response.getOutputStream());
 
 		response.flushBuffer();
+
+	}
+
+	@RequestMapping(value = "/mypackages")
+	public void myPackagesFilter() {
 
 	}
 
@@ -104,8 +108,7 @@ public class PackageFormController extends BaseFormController {
 			User uname;
 			uname = userManager.getUserByUsername(request.getRemoteUser());
 			pkg.setUser(uname);
-			pkg.getUser().getUsername();
-			log.debug("*****"+ pkg.getUser().getUsername());
+
 			packageManager.save(pkg);
 
 			request.setAttribute("pkgName", pkg.getName());
