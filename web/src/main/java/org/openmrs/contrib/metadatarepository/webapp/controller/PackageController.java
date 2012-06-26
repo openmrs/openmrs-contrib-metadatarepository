@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value="/mainMenu*", method = RequestMethod.GET)
+
 public class PackageController {
    
 	private PackageManager magr = null;
@@ -34,14 +34,16 @@ public class PackageController {
 		this.magr= packagemanager;
 	}
 	
-	 @RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value="/mainMenu*", method = RequestMethod.GET)
 	 public ModelAndView handleRequest(@RequestParam(required = false, value = "q") String query) throws Exception {
 		 return new ModelAndView("/mainMenu",Constants.PACKAGE_LIST,magr.search(query));
 	 }
 	 
+	//need to change!
 	 @RequestMapping(value="/mypackages*", method = RequestMethod.GET)
-	 public void myPackages() {
-
-		}
+	 public ModelAndView myPackages(@RequestParam(required = false, value = "q") String query) throws Exception {
+		 return new ModelAndView("/mainMenu",Constants.PACKAGE_LIST,magr.search(query));
+	 }
+	 
 	
 }

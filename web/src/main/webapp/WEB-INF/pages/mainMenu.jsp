@@ -40,15 +40,17 @@
 		style="width: 16%; padding-left: 15px"
 		url="/packageform/packagedownload?from=list" paramId="id"
 		paramProperty="id">
-		<input type="button"
+		<!--  <input type="button"
 			onclick="location.href='<c:url value="/packageform/packagedownload?from=list"/>'"
-			value="download" />
+			value="download" />-->
+			<img src="/images/download.png" alt="download" />
 	</display:column>
 	<display:column titleKey="Edit" style="width: 16%; padding-left: 15px"
 		url="/packageform?from=list" paramId="id" paramProperty="id">
-		<input type="button"
+		<!-- <input type="button"
 			onclick="location.href='<c:url value="/packageform?from=list"/>'"
-			value="edit" />
+			value="edit" /> -->
+			<img src="/images/edit.png" alt="download" />
 	</display:column>
 	<display:column property="user" sortable="true"
 		titleKey="package.publisher" style="width: 25%" />
