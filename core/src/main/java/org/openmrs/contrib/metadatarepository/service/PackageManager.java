@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
-
+import org.openmrs.contrib.metadatarepository.model.User;
 
 /**
  * Business Service Interface to handle communication between web and
@@ -31,8 +31,9 @@ public interface PackageManager extends GenericManager<MetadataPackage, Long> {
 	public MetadataPackage savePackage(MetadataPackage object);
 
 	public MetadataPackage loadPackage(Long id) throws IOException;
-	
+
 	List<MetadataPackage> search(String searchTerm);
-	public List searchByUser(String query);
-	
+
+	public List searchByUser(String query, User user);
+
 }

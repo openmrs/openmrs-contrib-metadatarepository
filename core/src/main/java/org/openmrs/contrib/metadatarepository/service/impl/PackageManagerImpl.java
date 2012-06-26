@@ -39,7 +39,7 @@ public class PackageManagerImpl extends
 		GenericManagerImpl<MetadataPackage, Long> implements PackageManager {
 
 	PackageDao packageDao;
-    
+
 	@Autowired
 	public void setPackageDao(PackageDao packageDao) {
 		this.dao = packageDao;
@@ -131,23 +131,26 @@ public class PackageManagerImpl extends
 		return pkg;
 
 	}
-    
+
 	/**
-     * {@inheritDoc}
-     */
+	 * {@inheritDoc}
+	 */
 	public List<MetadataPackage> search(String searchTerm) {
 		return super.search(searchTerm, MetadataPackage.class);
 	}
-	
-	public List searchByUser(String query){
-		List userList = search(query,User.class);
-		User id=(User)userList.get(0);
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public List searchByUser(String query, User user) {
+		List userList = search(query, User.class);
+		User id = (User) userList.get(0);
 		Long userId = id.getId();
-		List<MetadataPackage> packageList =search(userId+"",MetadataPackage.class);
-		log.debug("The data retrieved is "+packageList);
-		log.debug("Id is "+userId);
+		List<MetadataPackage> packageList = search(userId + "",
+				MetadataPackage.class);
+		log.debug("The data retrieved is " + packageList);
+		log.debug("Id is " + userId);
 		return packageList;
 	}
 
-	
 }

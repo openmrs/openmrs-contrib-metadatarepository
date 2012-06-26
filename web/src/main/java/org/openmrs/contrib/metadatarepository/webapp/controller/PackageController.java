@@ -27,26 +27,31 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-
 public class PackageController {
-   
+
 	private PackageManager magr = null;
-	
+	private User user;
+
 	@Autowired
-	public void setPackageManager(PackageManager packagemanager){
-		this.magr= packagemanager;
+	public void setPackageManager(PackageManager packagemanager) {
+		this.magr = packagemanager;
 	}
-	
-	@RequestMapping(value="/mainMenu*", method = RequestMethod.GET)
-	 public ModelAndView handleRequest(@RequestParam(required = false, value = "q") String query) throws Exception { 
-		return new ModelAndView("/mainMenu",Constants.PACKAGE_LIST,magr.search(query));
-	 }
-	 
-	//need to change!
-	 @RequestMapping(value="/mypackages*", method = RequestMethod.GET)
-	 public ModelAndView myPackages(@RequestParam(required = false, value = "q") String query,HttpServletRequest request) throws Exception {		 
-		 return new ModelAndView("/mainMenu",Constants.PACKAGE_LIST,magr.searchByUser(request.getRemoteUser()));
-	 }
-	 
-	
+
+	@RequestMapping(value = "/mainMenu*", method = RequestMethod.GET)
+	public ModelAndView handleRequest(
+			@RequestParam(required = false, value = "q") String query)
+			throws Exception {
+		return new ModelAndView("/mainMenu", Constants.PACKAGE_LIST,
+				magr.search(query));
+	}
+
+	// need to change!
+	@RequestMapping(value = "/mypackages*", method = RequestMethod.GET)
+	public ModelAndView myPackages(
+			@RequestParam(required = false, value = "q") String query,
+			HttpServletRequest request) throws Exception {
+		return new ModelAndView("/mypackages", Constants.PACKAGE_LIST,
+				magr.searchByUser(request.getRemoteUser(), user));
+	}
+
 }
