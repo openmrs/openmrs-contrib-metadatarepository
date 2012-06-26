@@ -33,5 +33,6 @@ public interface PackageManager extends GenericManager<MetadataPackage, Long> {
 	public MetadataPackage loadPackage(Long id) throws IOException;
 	
 	List<MetadataPackage> search(String searchTerm);
+	public List searchByUser(String query);
 	
 }

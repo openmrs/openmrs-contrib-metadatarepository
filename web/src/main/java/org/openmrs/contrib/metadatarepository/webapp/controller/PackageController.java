@@ -14,7 +14,10 @@
 
 package org.openmrs.contrib.metadatarepository.webapp.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.openmrs.contrib.metadatarepository.Constants;
+import org.openmrs.contrib.metadatarepository.model.User;
 import org.openmrs.contrib.metadatarepository.service.PackageManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,14 +38,14 @@ public class PackageController {
 	}
 	
 	@RequestMapping(value="/mainMenu*", method = RequestMethod.GET)
-	 public ModelAndView handleRequest(@RequestParam(required = false, value = "q") String query) throws Exception {
-		 return new ModelAndView("/mainMenu",Constants.PACKAGE_LIST,magr.search(query));
+	 public ModelAndView handleRequest(@RequestParam(required = false, value = "q") String query) throws Exception { 
+		return new ModelAndView("/mainMenu",Constants.PACKAGE_LIST,magr.search(query));
 	 }
 	 
 	//need to change!
 	 @RequestMapping(value="/mypackages*", method = RequestMethod.GET)
-	 public ModelAndView myPackages(@RequestParam(required = false, value = "q") String query) throws Exception {
-		 return new ModelAndView("/mainMenu",Constants.PACKAGE_LIST,magr.search(query));
+	 public ModelAndView myPackages(@RequestParam(required = false, value = "q") String query,HttpServletRequest request) throws Exception {		 
+		 return new ModelAndView("/mainMenu",Constants.PACKAGE_LIST,magr.searchByUser(request.getRemoteUser()));
 	 }
 	 
 	

@@ -17,6 +17,7 @@ package org.openmrs.contrib.metadatarepository.service.impl;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.contrib.metadatarepository.dao.GenericDao;
+import org.openmrs.contrib.metadatarepository.model.User;
 import org.openmrs.contrib.metadatarepository.service.GenericManager;
 import org.compass.core.CompassHit;
 import org.compass.core.support.search.CompassSearchCommand;

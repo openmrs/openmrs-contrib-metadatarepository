@@ -23,6 +23,7 @@ import java.util.List;
 
 import org.openmrs.contrib.metadatarepository.dao.PackageDao;
 import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
+import org.openmrs.contrib.metadatarepository.model.User;
 import org.openmrs.contrib.metadatarepository.service.APIException;
 import org.openmrs.contrib.metadatarepository.service.PackageManager;
 import org.openmrs.contrib.metadatarepository.service.impl.GenericManagerImpl;
@@ -137,5 +138,16 @@ public class PackageManagerImpl extends
 	public List<MetadataPackage> search(String searchTerm) {
 		return super.search(searchTerm, MetadataPackage.class);
 	}
+	
+	public List searchByUser(String query){
+		List userList = search(query,User.class);
+		User id=(User)userList.get(0);
+		Long userId = id.getId();
+		List<MetadataPackage> packageList =search(userId+"",MetadataPackage.class);
+		log.debug("The data retrieved is "+packageList);
+		log.debug("Id is "+userId);
+		return packageList;
+	}
+
 	
 }
