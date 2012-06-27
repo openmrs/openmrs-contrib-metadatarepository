@@ -307,7 +307,8 @@
             <id>integration-test</id>
 			<activation>
 				<property>
-					<name>!skipTests</name>
+					<name>skipTests</name>
+					<value>false</value>
 				</property>
 			</activation>
             <build>

@@ -412,9 +412,24 @@
                 <cargo.container.url>http://easynews.dl.sourceforge.net/sourceforge/jboss/jboss-4.0.5.GA.zip</cargo.container.url>
             </properties>
         </profile>
+        
+        <profile>
+        	<id>noTests</id>
+        	<activation>
+        		<property>
+        			<name>maven.test.skip</name>
+        			<value>true</value>
+        		</property>
+        	</activation>
+        	<properties>
+        		<skipTests>true</skipTests>
+        	</properties>
+        </profile>
     </profiles>
 
     <properties>
+    	<skipTests>false</skipTests>
+    
         <!-- Application settings -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <copyright.year>2011</copyright.year>
@@ -489,7 +504,6 @@
         <struts.menu.version>2.4.3</struts.menu.version>
         <urlrewrite.version>3.1.0</urlrewrite.version>
         <velocity.version>1.4</velocity.version>
-
     </properties>
 
 
