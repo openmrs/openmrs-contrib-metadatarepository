@@ -50,6 +50,9 @@ public class PackageController {
 	public ModelAndView myPackages(
 			@RequestParam(required = false, value = "q") String query,
 			HttpServletRequest request) throws Exception {
+		System.out.println("The query is "+query);
+		System.out.println("The username is "+request.getRemoteUser());
+		System.out.println("The user is "+user);
 		return new ModelAndView("/mypackages", Constants.PACKAGE_LIST,
 				magr.searchByUser(request.getRemoteUser(), user));
 	}
