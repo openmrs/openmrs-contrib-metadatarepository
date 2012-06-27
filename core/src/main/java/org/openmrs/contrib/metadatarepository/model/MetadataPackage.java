@@ -42,7 +42,7 @@ public class MetadataPackage extends BaseObject {
 	private String description;
 	private Long version;
 	private byte[] file;
-
+	private String username;
 	@ManyToOne
 	private User user;
 
@@ -123,6 +123,15 @@ public class MetadataPackage extends BaseObject {
 		this.user = user;
 	}
 	
+	@Column(name = "username")
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
 	public boolean equals(Object o) {
 		if (this == o)
 			return true;
@@ -155,7 +164,6 @@ public class MetadataPackage extends BaseObject {
 		return sb.toString();
 	}
 
-	
 
 
 }

@@ -100,7 +100,8 @@
          <value description="name">HIV Lab</value>
          <value description="description"><![CDATA[ Rwanda HIV Lab Results]]></value>
          <value description="version">1</value>
-         <value description="user">admin</value>
+         <value description="username">admin</value>
+         <value description="user_id">-1</value>
          </row>
     </table>
 </dataset>
