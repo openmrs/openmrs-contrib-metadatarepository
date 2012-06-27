@@ -39,18 +39,15 @@
 	<display:column titleKey="package.download"
 		style="width: 16%; padding-left: 15px"
 		url="/packageform/packagedownload?from=list" paramId="id"
-		paramProperty="id">
-		<input type="button"
-			onclick="location.href='<c:url value="/packageform/packagedownload?from=list"/>'"
-			value="download" />
+		paramProperty="id" sortable="true">
+		<img src="/images/download.png" alt="download" />
 	</display:column>
 	<display:column titleKey="Edit" style="width: 16%; padding-left: 15px"
-		url="/packageform?from=list" paramId="id" paramProperty="id">
-		<input type="button"
-			onclick="location.href='<c:url value="/packageform?from=list"/>'"
-			value="edit" />
+		url="/packageform?from=list" paramId="id" paramProperty="id"
+		sortable="true">
+		<img src="/images/edit.png" alt="edit" />
 	</display:column>
-	<display:column property="user" sortable="true"
+	<display:column property="username" sortable="true"
 		titleKey="package.publisher" style="width: 25%" />
 	<display:setProperty name="paging.banner.item_name" value="package" />
 	<display:setProperty name="paging.banner.items_name" value="packages" />

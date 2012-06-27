@@ -45,7 +45,7 @@
 	<display:column titleKey="Edit" style="width: 16%; padding-left: 15px"
 		url="/packageform?from=list" paramId="id" paramProperty="id"
 		sortable="true">
-		<img src="/images/edit.png" alt="download" />
+		<img src="/images/edit.png" alt="edit" />
 	</display:column>
 	<display:column property="username" sortable="true"
 		titleKey="package.publisher" style="width: 25%" />

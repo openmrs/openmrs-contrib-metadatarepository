@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.openmrs.contrib.metadatarepository.Constants;
 import org.openmrs.contrib.metadatarepository.model.User;
 import org.openmrs.contrib.metadatarepository.service.PackageManager;
+import org.openmrs.contrib.metadatarepository.service.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +31,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class PackageController {
 
 	private PackageManager magr = null;
-	private User user;
+	private UserManager umagr=null;
+
+	
+   @Autowired
+	public void setUmagr(UserManager umagr) {
+		this.umagr = umagr;
+	}
 
 	@Autowired
 	public void setPackageManager(PackageManager packagemanager) {
@@ -51,7 +58,7 @@ public class PackageController {
 			@RequestParam(required = false, value = "q") String query,
 			HttpServletRequest request) throws Exception {
 		return new ModelAndView("/mypackages", Constants.PACKAGE_LIST,
-				magr.searchByUser(request.getRemoteUser(), user));
+				magr.searchByUser(request.getRemoteUser(), umagr.getUserByUsername(request.getRemoteUser())));
 	}
 
 }

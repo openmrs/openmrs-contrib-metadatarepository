@@ -124,6 +124,7 @@ public class MetadataPackage extends BaseObject {
 	}
 	
 	@Column(name = "username")
+	@SearchableProperty
 	public String getUsername() {
 		return username;
 	}
