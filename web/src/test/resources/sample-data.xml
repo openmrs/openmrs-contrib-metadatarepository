@@ -95,6 +95,7 @@
        <column>name</column>
        <column>description</column>
        <column>version</column>
+       <column>user_id</column>
        <row>
          <value description="id">1</value>
          <value description="name">HIV Lab</value>

@@ -45,7 +45,7 @@ public class PackageControllerTest extends BaseControllerTestCase {
 	 @Test
 	    public void testSearch() throws Exception {
 	        compassGps.index();
-	        ModelAndView mav = c.handleRequest("testpkg");
+	        ModelAndView mav = c.handleRequest("HIV Lab");
 	        Map m = mav.getModel();
 	        List results = (List) m.get(Constants.PACKAGE_LIST);
 	        assertNotNull(results);

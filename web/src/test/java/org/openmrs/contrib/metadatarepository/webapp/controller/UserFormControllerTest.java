@@ -75,7 +75,7 @@ public class UserFormControllerTest extends BaseControllerTestCase {
     public void testEdit() throws Exception {
         log.debug("testing edit...");
         request = newGet("/userform.html");
-        request.addParameter("id", "-1"); // regular user
+        request.addParameter("id", "1"); // regular user
         request.addUserRole(Constants.ADMIN_ROLE);
 
         User user = c.showForm(request, new MockHttpServletResponse());
@@ -86,7 +86,7 @@ public class UserFormControllerTest extends BaseControllerTestCase {
     public void testEditWithoutPermission() throws Exception {
         log.debug("testing edit...");
         request = newGet("/userform.html");
-        request.addParameter("id", "-1"); // regular user
+        request.addParameter("id", "1"); // regular user
 
         try {
             c.showForm(request, new MockHttpServletResponse());
@@ -111,7 +111,7 @@ public class UserFormControllerTest extends BaseControllerTestCase {
         request = newPost("/userform.html");
         // set updated properties first since adding them later will
         // result in multiple parameters with the same name getting sent
-        User user = ((UserManager) applicationContext.getBean("userManager")).getUser("-1");
+        User user = ((UserManager) applicationContext.getBean("userManager")).getUser("1");
         user.setConfirmPassword(user.getPassword());
         user.setLastName("Updated Last Name");
 
@@ -140,7 +140,7 @@ public class UserFormControllerTest extends BaseControllerTestCase {
         request = newPost("/userform.html");
         request.addParameter("delete", "");
         user = new User();
-        user.setId(-2L);
+        user.setId(2L);
 
         BindingResult errors = new DataBinder(user).getBindingResult();
         c.onSubmit(user, errors, request, new MockHttpServletResponse());
