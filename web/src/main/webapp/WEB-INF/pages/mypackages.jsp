@@ -36,6 +36,8 @@
 		titleKey="package.version" style="width: 25%" />
 	<display:column property="version" titleKey="package.version"
 		media="csv xml excel pdf" />
+		<display:column property="user.username" sortable="true"
+		titleKey="package.publisher" style="width: 25%" />
 	<display:column titleKey="package.download"
 		style="width: 16%; padding-left: 15px"
 		url="/packageform/packagedownload?from=list" paramId="id"
@@ -47,8 +49,7 @@
 		sortable="true">
 		<img src="/images/edit.png" alt="edit" />
 	</display:column>
-	<display:column property="user" sortable="true"
-		titleKey="package.publisher" style="width: 25%" />
+	
 	<display:setProperty name="paging.banner.item_name" value="package" />
 	<display:setProperty name="paging.banner.items_name" value="packages" />
 
