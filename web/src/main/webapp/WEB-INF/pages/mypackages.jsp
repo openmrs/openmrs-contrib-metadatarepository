@@ -38,16 +38,9 @@
 		media="csv xml excel pdf" />
 		<display:column property="user.username" sortable="true"
 		titleKey="package.publisher" style="width: 25%" />
-	<display:column titleKey="package.download"
-		style="width: 16%; padding-left: 15px"
-		url="/packageform/packagedownload?from=list" paramId="id"
-		paramProperty="id" sortable="true">
-		<img src="/images/download.png" alt="download" />
-	</display:column>
-	<display:column titleKey="Edit" style="width: 16%; padding-left: 15px"
-		url="/packageform?from=list" paramId="id" paramProperty="id"
-		sortable="true">
-		<img src="/images/edit.png" alt="edit" />
+	<display:column titleKey="Actions" sortable="true" style="width:34%; padding-left: 20px;" paramId="id" paramProperty="id">
+	<pre><img src="/images/download.png" alt="download" hspace="10" onclick="location.href='<c:url value="/packageform/packagedownload?id=${packages.id}" />'"/><img src="/images/edit.png" alt="edit" align="left" onclick="location.href='<c:url value="/packageform?id=${packages.id}" />'"/>
+	</pre>
 	</display:column>
 	
 	<display:setProperty name="paging.banner.item_name" value="package" />
