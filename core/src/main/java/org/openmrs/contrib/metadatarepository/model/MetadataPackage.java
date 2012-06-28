@@ -28,6 +28,7 @@ import javax.persistence.Transient;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.compass.annotations.Searchable;
+import org.compass.annotations.SearchableComponent;
 import org.compass.annotations.SearchableId;
 import org.compass.annotations.SearchableProperty;
 import org.openmrs.contrib.metadatarepository.model.BaseObject;
@@ -42,7 +43,7 @@ public class MetadataPackage extends BaseObject {
 	private String description;
 	private Long version;
 	private byte[] file;
-	private String username;
+
 	@ManyToOne
 	private User user;
 
@@ -115,6 +116,7 @@ public class MetadataPackage extends BaseObject {
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
+	@SearchableComponent
 	public User getUser() {
 		return user;
 	}
@@ -122,17 +124,7 @@ public class MetadataPackage extends BaseObject {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	@Column(name = "username")
-	@SearchableProperty
-	public String getUsername() {
-		return username;
-	}
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	
 	public boolean equals(Object o) {
 		if (this == o)
 			return true;
@@ -164,7 +156,5 @@ public class MetadataPackage extends BaseObject {
 
 		return sb.toString();
 	}
-
-
 
 }

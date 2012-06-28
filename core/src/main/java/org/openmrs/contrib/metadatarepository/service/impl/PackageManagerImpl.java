@@ -143,11 +143,12 @@ public class PackageManagerImpl extends
 	 * {@inheritDoc}
 	 */
 	public List searchByUser(String query, User user) {
-		String userquery = user.getUsername();
-		List<MetadataPackage> packageList = search(userquery + "",
-				MetadataPackage.class);
+		Long userquery = user.getId();
+		List<MetadataPackage> packageList = search(query + " user_id:" + userquery, MetadataPackage.class);
+		log.debug("The user is " + userquery);
+		log.debug("The data retrievd is" + packageList);
 		return packageList;
-		
+
 	}
 
 }

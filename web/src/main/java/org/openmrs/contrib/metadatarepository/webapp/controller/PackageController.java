@@ -57,8 +57,9 @@ public class PackageController {
 	public ModelAndView myPackages(
 			@RequestParam(required = false, value = "q") String query,
 			HttpServletRequest request) throws Exception {
+		User user= umagr.getUserByUsername(request.getRemoteUser());
 		return new ModelAndView("/mypackages", Constants.PACKAGE_LIST,
-				magr.searchByUser(request.getRemoteUser(), umagr.getUserByUsername(request.getRemoteUser())));
+				magr.searchByUser(request.getRemoteUser(), user));
 	}
 
 }

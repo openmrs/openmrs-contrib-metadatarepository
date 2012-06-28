@@ -103,7 +103,7 @@ public class PackageFormController extends BaseFormController {
 			User uname;
 			uname = userManager.getUserByUsername(request.getRemoteUser());
 			pkg.setUser(uname);
-			pkg.setUsername(uname.getUsername());
+
 			packageManager.save(pkg);
 
 			request.setAttribute("pkgName", pkg.getName());
@@ -112,7 +112,7 @@ public class PackageFormController extends BaseFormController {
 			request.setAttribute("pkgPublisher", request.getRemoteUser());
 
 		}
-         
+
 		return success;
 	}
 

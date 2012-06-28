@@ -22,7 +22,7 @@
 
 <input type="button" style="margin-right: 5px"
 	onclick="location.href='<c:url value="/packageupload"/>'"
-	value="<fmt:message key="button.add"/>" />
+	value="<fmt:message key="button.uploadpackage"/>" />
 
 
 <display:table name="packageList" cellspacing="0" cellpadding="0"
@@ -47,7 +47,7 @@
 		sortable="true">
 		<img src="/images/edit.png" alt="edit" />
 	</display:column>
-	<display:column property="username" sortable="true"
+	<display:column property="user.username" sortable="true"
 		titleKey="package.publisher" style="width: 25%" />
 	<display:setProperty name="paging.banner.item_name" value="package" />
 	<display:setProperty name="paging.banner.items_name" value="packages" />
@@ -59,11 +59,6 @@
 	<display:setProperty name="export.pdf.filename"
 		value="Package List.pdf" />
 </display:table>
-
-
-<input type="button" style="margin-right: 5px"
-	onclick="location.href='<c:url value="/packageupload"/>'"
-	value="<fmt:message key="button.add"/>" />
 
 <script type="text/javascript">
 	highlightTableRows("packages");
