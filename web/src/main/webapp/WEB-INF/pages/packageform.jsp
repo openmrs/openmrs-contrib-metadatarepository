@@ -26,7 +26,7 @@
      
     <li class="buttonBar bottom">
         <input type="submit" class="button" name="save" value="<fmt:message key="button.save"/>"/>
-        <c:if test="${not empty package.id}">
+        <c:if test="${empty package.id}">
         <input type="submit" class="button" name="delete" onclick="bCancel=true;return confirmDelete('package')"
             value="<fmt:message key="button.delete"/>" />
         </c:if>

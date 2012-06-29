@@ -59,7 +59,7 @@ public class PackageController {
 			HttpServletRequest request) throws Exception {
 		User user= umagr.getUserByUsername(request.getRemoteUser());
 		return new ModelAndView("/mypackages", Constants.PACKAGE_LIST,
-				magr.searchByUser(request.getRemoteUser(), user));
+				magr.searchByUser(query, user));
 	}
 
 }
