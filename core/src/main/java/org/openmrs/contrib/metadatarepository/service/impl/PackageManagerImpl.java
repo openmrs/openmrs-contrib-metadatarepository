@@ -147,7 +147,7 @@ public class PackageManagerImpl extends
 		if(query!= null && !(query.isEmpty())){
 			query="+"+query+" +user:"+user.getId();
 		}else{
-			query=" +user:"+user.getId();
+			query=" user:"+user.getId();
 		}
 		List<MetadataPackage> packageList = search(query, MetadataPackage.class);
 		return packageList;
