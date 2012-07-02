@@ -96,7 +96,7 @@ public class User extends BaseObject implements Serializable, UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @SearchableId
+    @SearchableId(name = "id")
     public Long getId() {
         return id;
     }

@@ -21,7 +21,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -31,7 +30,7 @@ import org.compass.annotations.Searchable;
 import org.compass.annotations.SearchableComponent;
 import org.compass.annotations.SearchableId;
 import org.compass.annotations.SearchableProperty;
-import org.openmrs.contrib.metadatarepository.model.BaseObject;
+import org.compass.annotations.SearchableReference;
 
 @Entity
 @Table(name = "package")
@@ -43,8 +42,6 @@ public class MetadataPackage extends BaseObject {
 	private String description;
 	private Long version;
 	private byte[] file;
-
-	@ManyToOne
 	private User user;
 
 	/**
@@ -66,7 +63,7 @@ public class MetadataPackage extends BaseObject {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@SearchableId
+	@SearchableId(name = "id")
 	public Long getId() {
 		return id;
 	}
@@ -116,13 +113,19 @@ public class MetadataPackage extends BaseObject {
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
-	@SearchableComponent
+	@SearchableReference
 	public User getUser() {
 		return user;
 	}
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	@Transient
+	@SearchableProperty
+	private Long getUserId() {
+		return user.getId();
 	}
 
 	public boolean equals(Object o) {
