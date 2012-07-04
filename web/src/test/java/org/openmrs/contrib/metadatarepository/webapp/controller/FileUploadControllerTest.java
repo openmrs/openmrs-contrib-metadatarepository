@@ -13,35 +13,41 @@
  */
 package org.openmrs.contrib.metadatarepository.webapp.controller;
 
-
-import junit.framework.Assert;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
-import org.openmrs.contrib.metadatarepository.service.PackageManager;
+import org.openmrs.contrib.metadatarepository.service.APIException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpServletRequest;
 
-
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.DataBinder;
 
 public class FileUploadControllerTest extends BaseControllerTestCase {
 
-	 @Autowired
-	 private FileUploadController f = null;
-     private MockHttpServletRequest request;
-     private PackageManager packageManager;
-	 private MetadataPackage pkg;
-	
+	@Autowired
+	private FileUploadController f = null;
+	private MockHttpServletRequest request;
+	private MetadataPackage pkg;
+
 	@Test
-	public void testOnSubmit() {
-		
+	public void testOnSubmit() throws Exception {
+
 		request = newPost("/packageupload.html");
 		request.addParameter("upload", "");
-	
-		 pkg = f.showForm();
-		 MetadataPackage pkg1 = packageManager.savePackage(pkg);
-		 Assert.assertEquals(1, pkg1.getId().intValue());		
-		
+		String test;
+		BindingResult errors = new DataBinder(pkg).getBindingResult();
+		try {
+			test = f.onSubmit(pkg, errors, request);
+		} catch (Exception e) {
+
+			throw new APIException("test failed", e);
+		}
+
+		assertEquals("redirect:/packageform", test);
+
 	}
 
 }
