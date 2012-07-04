@@ -15,9 +15,14 @@ package org.openmrs.contrib.metadatarepository.webapp.controller;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.File;
+import java.io.FileInputStream;
+
 import org.junit.Test;
 import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
+import org.openmrs.contrib.metadatarepository.model.User;
 import org.openmrs.contrib.metadatarepository.service.APIException;
+import org.openmrs.contrib.metadatarepository.service.UserManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -30,20 +35,33 @@ public class FileUploadControllerTest extends BaseControllerTestCase {
 	@Autowired
 	private FileUploadController f = null;
 	private MockHttpServletRequest request;
-	private MetadataPackage pkg;
+	private MetadataPackage pkg = new MetadataPackage();
+	@Autowired
+	private UserManager umagr;
 
 	@Test
 	public void testOnSubmit() throws Exception {
-
+		
+		
 		request = newPost("/packageupload.html");
+		pkg.setDescription("Labmodule");
+		pkg.setId(new Long(1));
+		pkg.setName("Lab");
+		pkg.setUser(umagr.getUserByUsername("user"));
+		pkg.setVersion(new Long(1));
+		File fu = new File("/Users/pamusriharsha/desktop/1.zip");
+
+		FileInputStream fis = new FileInputStream(fu);
+		byte[] data = new byte[fis.available()];
+		pkg.setFile(data);
 		request.addParameter("upload", "");
-		String test;
+		String test=null;
 		BindingResult errors = new DataBinder(pkg).getBindingResult();
 		try {
 			test = f.onSubmit(pkg, errors, request);
 		} catch (Exception e) {
 
-			throw new APIException("test failed", e);
+			e.printStackTrace();
 		}
 
 		assertEquals("redirect:/packageform", test);
