@@ -15,7 +15,9 @@
 package org.openmrs.contrib.metadatarepository.webapp.controller;
 
 import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
+import org.openmrs.contrib.metadatarepository.model.User;
 import org.openmrs.contrib.metadatarepository.service.PackageManager;
+import org.openmrs.contrib.metadatarepository.service.UserManager;
 import org.openmrs.contrib.metadatarepository.service.impl.PackageManagerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,6 +45,11 @@ public class FileUploadController extends BaseFormController {
 
 	@Autowired
 	private PackageManager packageManager;
+	private UserManager userManager = null;
+	@Autowired
+	public void setUserManager(UserManager userManager) {
+		this.userManager = userManager;
+	}
 
 	public FileUploadController() {
 		setCancelView("redirect:/mainMenu");
@@ -79,7 +86,13 @@ public class FileUploadController extends BaseFormController {
 
 			return "packageupload";
 		}
-          
+		
+		User uname;
+		
+		log.debug(""+userManager.getUserByUsername(request.getRemoteUser()));
+		uname = userManager.getUserByUsername(request.getRemoteUser());
+		metadataPackage.setUser(uname);
+		
 		MetadataPackage meta = packageManager.savePackage(metadataPackage);
 		Long id = meta.getId();
 		

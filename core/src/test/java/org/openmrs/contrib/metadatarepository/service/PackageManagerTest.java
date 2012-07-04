@@ -64,13 +64,13 @@ public class PackageManagerTest extends BaseManagerTestCase {
 
 	}
 
-	/*@Test
+	@Test
 	public void testSearchByUser() throws Exception {
 		User user = umagr.getUserByUsername("admin");
 		String query = "";
 
 		List<MetadataPackage> searchByUser = magr.searchByUser(query, user);
         Assert.assertEquals(1, searchByUser.size());
-	}*/
+	}
 
 }
