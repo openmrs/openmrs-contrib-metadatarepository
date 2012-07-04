@@ -20,7 +20,7 @@
         <property name="transactionManager" ref="transactionManager" />
         <property name="settings">
             <map>
-                <entry key="compass.engine.connection" value="${user.home}/temp/metadatarepository" />
+                <entry key="compass.engine.connection" value="${user.home}/temp/metadatarepository-web" />
             </map>
         </property>
     </bean>
