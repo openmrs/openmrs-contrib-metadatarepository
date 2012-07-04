@@ -17,6 +17,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.InputStream;
 
 import org.junit.Test;
 import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
@@ -45,24 +46,18 @@ public class FileUploadControllerTest extends BaseControllerTestCase {
 		
 		request = newPost("/packageupload.html");
 		pkg.setDescription("Labmodule");
-		pkg.setId(new Long(1));
+		
 		pkg.setName("Lab");
 		pkg.setUser(umagr.getUserByUsername("user"));
 		pkg.setVersion(new Long(1));
-		File fu = new File("/Users/pamusriharsha/desktop/1.zip");
-
-		FileInputStream fis = new FileInputStream(fu);
+		
+	    InputStream fis = getClass().getResourceAsStream("/src/test/resources/sample-data.xml");
 		byte[] data = new byte[fis.available()];
 		pkg.setFile(data);
 		request.addParameter("upload", "");
-		String test=null;
+		
 		BindingResult errors = new DataBinder(pkg).getBindingResult();
-		try {
-			test = f.onSubmit(pkg, errors, request);
-		} catch (Exception e) {
-
-			e.printStackTrace();
-		}
+		String test = f.onSubmit(pkg, errors, request);
 
 		assertEquals("redirect:/packageform", test);
 
