@@ -151,7 +151,7 @@ public class PackageManagerImpl extends
 			query += " userId:" + user.getId();
 		}
 		
-		List<MetadataPackage> packageList = search(query, MetadataPackage.class,new Long(3),new Long(5));
+		List<MetadataPackage> packageList = search(query, MetadataPackage.class,3L,5L);
 		return packageList;
 	}
 

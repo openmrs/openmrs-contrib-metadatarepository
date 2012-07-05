@@ -15,18 +15,14 @@ package org.openmrs.contrib.metadatarepository.webapp.controller;
 
 import static org.junit.Assert.assertEquals;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+
 import java.io.InputStream;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
-import org.openmrs.contrib.metadatarepository.model.User;
-import org.openmrs.contrib.metadatarepository.service.APIException;
+
 import org.openmrs.contrib.metadatarepository.service.UserManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,23 +42,23 @@ public class FileUploadControllerTest extends BaseControllerTestCase {
 
 	@Test
 	public void testOnSubmit() throws Exception {
-		
-		
+
 		request = newPost("/packageupload.html");
+		request.setRemoteUser("user");
 		pkg.setDescription("Labmodule");
-		
+
 		pkg.setName("Lab");
 		pkg.setUser(umagr.getUserByUsername("user"));
-		pkg.setVersion(new Long(1));
-		
-	    InputStream fis = getClass().getResourceAsStream("sample-data.xml");
-	    log.debug("NPE here"+fis.available());
+		pkg.setVersion(1L);
+
+		InputStream fis = getClass().getResourceAsStream("/sample-data.xml");
+
 		ByteArrayOutputStream data = new ByteArrayOutputStream(fis.available());
 		IOUtils.copy(fis, data);
 		pkg.setFile(data.toByteArray());
-		
+
 		request.addParameter("upload", "");
-		
+
 		BindingResult errors = new DataBinder(pkg).getBindingResult();
 		String test = f.onSubmit(pkg, errors, request);
 
