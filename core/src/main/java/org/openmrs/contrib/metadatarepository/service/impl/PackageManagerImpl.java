@@ -136,7 +136,7 @@ public class PackageManagerImpl extends
 	 * {@inheritDoc}
 	 */
 	public List<MetadataPackage> search(String searchTerm) {
-		return super.search(searchTerm, MetadataPackage.class);
+		return super.search(searchTerm, MetadataPackage.class,new Long(3),new Long(5));
 	}
 
 	/**
@@ -151,7 +151,7 @@ public class PackageManagerImpl extends
 			query += " userId:" + user.getId();
 		}
 		
-		List<MetadataPackage> packageList = search(query, MetadataPackage.class);
+		List<MetadataPackage> packageList = search(query, MetadataPackage.class,new Long(3),new Long(5));
 		return packageList;
 	}
 

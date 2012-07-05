@@ -19,10 +19,12 @@ import org.apache.commons.logging.LogFactory;
 import org.openmrs.contrib.metadatarepository.dao.GenericDao;
 import org.openmrs.contrib.metadatarepository.model.User;
 import org.openmrs.contrib.metadatarepository.service.GenericManager;
+import org.compass.core.Compass;
 import org.compass.core.CompassHit;
 import org.compass.core.support.search.CompassSearchCommand;
 import org.compass.core.support.search.CompassSearchHelper;
 import org.compass.core.support.search.CompassSearchResults;
+import org.compass.core.support.search.CompassSearchResults.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
@@ -74,8 +76,31 @@ public class GenericManagerImpl<T, PK extends Serializable> implements GenericMa
      */
     protected GenericDao<T, PK> dao;
 
+   /* @Autowired
+    private CompassSearchHelper compass;*/
     @Autowired
-    private CompassSearchHelper compass;
+    private Compass compass;
+    
+    /**
+     * Sets the page size for the pagination of the results. If not set, not
+     * pagination will be used.
+     */
+    public Long getPageSize() {
+		return pageSize;
+	}
+
+    /**
+     * Returns the page size for the pagination of the results. If not set, not
+     * pagination will be used.
+     * 
+     * @param pageSize
+     *            The page size when using paginated results
+     */
+	public void setPageSize(Long pageSize) {
+		this.pageSize = pageSize;
+	}
+
+	private Long pageSize;
 
     public GenericManagerImpl() {
     }
@@ -125,7 +150,7 @@ public class GenericManagerImpl<T, PK extends Serializable> implements GenericMa
      * Search implementation using Compass.
      */
     @SuppressWarnings("unchecked")
-    public List<T> search(String q, Class clazz) {
+    public List<T> search(String q, Class clazz,Long page, Long pageSize) {
         if (q == null || "".equals(q.trim())) {
             return getAll();
         }
@@ -133,14 +158,34 @@ public class GenericManagerImpl<T, PK extends Serializable> implements GenericMa
         List<T> results = new ArrayList<T>();
 
         CompassSearchCommand command = new CompassSearchCommand(q);
-        CompassSearchResults compassResults = compass.search(command);
-        CompassHit[] hits = compassResults.getHits();
+       // CompassSearchResults compassResults = compass.search(command);
+        //CompassHit[] hits = compassResults.getHits();
+        CompassSearchHelper searchHelper = new CompassSearchHelper(compass, 5);
+        CompassSearchResults compassResults = searchHelper.search(new CompassSearchCommand(q, new Integer(0)));
+        for (int i = 0; i < compassResults.getHits().length; i++) {
+        	  CompassHit hit = compassResults.getHits()[i];
+        	  if (clazz != null) {
+                  if (hit.data().getClass().equals(clazz)) {
+                      results.add((T) hit.data());
+                  }
+              } else {
+                  results.add((T) hit.data());
+              }
+        	log.debug("Results size is "+results.size());
+        	}
+
+        // iterate through the search results pages
+        for (int i = 0; i < compassResults.getPages().length; i++) {
+          Page pages = compassResults.getPages()[i];
+          log.debug("page size is "+pages.getSize());
+          
+        }
 
         if (log.isDebugEnabled() && clazz != null) {
             log.debug("Filtering by type: " + clazz.getName());
         }
 
-        for (CompassHit hit : hits) {
+      /*  for (CompassHit hit : hits) {
             if (clazz != null) {
                 if (hit.data().getClass().equals(clazz)) {
                     results.add((T) hit.data());
@@ -148,7 +193,7 @@ public class GenericManagerImpl<T, PK extends Serializable> implements GenericMa
             } else {
                 results.add((T) hit.data());
             }
-        }
+        }*/
 
         if (log.isDebugEnabled()) {
             log.debug("Number of results for '" + q + "': " + results.size());
@@ -156,4 +201,6 @@ public class GenericManagerImpl<T, PK extends Serializable> implements GenericMa
 
         return results;
     }
+
+	
 }
