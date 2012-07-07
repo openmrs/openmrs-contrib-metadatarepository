@@ -150,7 +150,7 @@ public class GenericManagerImpl<T, PK extends Serializable> implements GenericMa
      * Search implementation using Compass.
      */
     @SuppressWarnings("unchecked")
-    public List<T> search(String q, Class clazz,Long page, Long pageSize) {
+    public List<T> search(String q, Class clazz,Long pageSize) {
         if (q == null || "".equals(q.trim())) {
             return getAll();
         }
@@ -158,9 +158,8 @@ public class GenericManagerImpl<T, PK extends Serializable> implements GenericMa
         List<T> results = new ArrayList<T>();
 
         CompassSearchCommand command = new CompassSearchCommand(q);
-       // CompassSearchResults compassResults = compass.search(command);
-        //CompassHit[] hits = compassResults.getHits();
-        CompassSearchHelper searchHelper = new CompassSearchHelper(compass, 5);
+      
+        CompassSearchHelper searchHelper = new CompassSearchHelper(compass, 25);
         CompassSearchResults compassResults = searchHelper.search(new CompassSearchCommand(q, new Integer(0)));
         for (int i = 0; i < compassResults.getHits().length; i++) {
         	  CompassHit hit = compassResults.getHits()[i];
@@ -185,15 +184,6 @@ public class GenericManagerImpl<T, PK extends Serializable> implements GenericMa
             log.debug("Filtering by type: " + clazz.getName());
         }
 
-      /*  for (CompassHit hit : hits) {
-            if (clazz != null) {
-                if (hit.data().getClass().equals(clazz)) {
-                    results.add((T) hit.data());
-                }
-            } else {
-                results.add((T) hit.data());
-            }
-        }*/
 
         if (log.isDebugEnabled()) {
             log.debug("Number of results for '" + q + "': " + results.size());
