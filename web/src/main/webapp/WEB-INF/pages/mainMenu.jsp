@@ -43,6 +43,8 @@
 	<pre><img src="/images/download.png" alt="download" hspace="10" onclick="location.href='<c:url value="/packageform/packagedownload?id=${packages.id}" />'"/><c:if test="${packages.user.username eq pageContext.request.remoteUser}"><img src="/images/edit.png" alt="edit" align="left" onclick="location.href='<c:url value="/packageform?id=${packages.id}" />'"/></c:if>
 	</pre>
 	</display:column>
+	<display:column property="downloadCount" sortable="true"
+		titleKey="package.downloadcount" style="width: 25%" />
 	
 	
 	

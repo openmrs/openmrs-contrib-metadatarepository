@@ -27,7 +27,6 @@ import javax.persistence.Transient;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.compass.annotations.Searchable;
-import org.compass.annotations.SearchableComponent;
 import org.compass.annotations.SearchableId;
 import org.compass.annotations.SearchableProperty;
 import org.compass.annotations.SearchableReference;
@@ -43,6 +42,7 @@ public class MetadataPackage extends BaseObject {
 	private Long version;
 	private byte[] file;
 	private User user;
+	private Long downloadCount;
 
 	/**
 	 * Default constructor - creates a new instance with no values set.
@@ -126,6 +126,15 @@ public class MetadataPackage extends BaseObject {
 	@SearchableProperty
 	private Long getUserId() {
 		return user.getId();
+	}
+
+	@Transient
+	public Long getDownloadCount() {
+		return downloadCount;
+	}
+
+	public void setDownloadCount(Long downloadCount) {
+		this.downloadCount = downloadCount;
 	}
 
 	public boolean equals(Object o) {
