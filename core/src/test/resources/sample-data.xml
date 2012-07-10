@@ -105,12 +105,5 @@
 			<value description="version">3</value>
 			<value description="user_id">2</value>
 		</row>
-		<row>
-			<value description="id">2</value>
-			<value description="name">AIDS</value>
-			<value description="description"><![CDATA[AIDS]]></value>
-			<value description="version">4</value>
-			<value description="user_id">1</value>
-		</row>
 	</table>
 </dataset>

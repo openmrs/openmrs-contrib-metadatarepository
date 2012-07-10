@@ -146,14 +146,13 @@ public class PackageManagerImpl extends
 		if (query == null) {
 			query = "";
 		}
-		
+
 		if (user != null) {
 			query += " userId:" + user.getId();
 		}
-		
+
 		List<MetadataPackage> packageList = search(query, MetadataPackage.class);
 		return packageList;
 	}
-
 
 }

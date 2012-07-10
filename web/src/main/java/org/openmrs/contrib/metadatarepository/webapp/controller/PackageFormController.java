@@ -70,12 +70,17 @@ public class PackageFormController extends BaseFormController {
 	public void downloadPackage(@RequestParam(required = false) final Long id,
 			HttpServletResponse response) throws IOException {
 		MetadataPackage p = packageManager.loadPackage(id);
+
 		response.setContentType("application/x-zip-compressed");
 		response.setHeader("Content-disposition", "attatchment;filename=\""
 				+ id + ".zip");
 		IOUtils.copy(new ByteArrayInputStream(p.getFile()),
 				response.getOutputStream());
-
+		Long i = p.getDownloadCount();
+		log.debug("download count" + i);
+		p.setDownloadCount(i++);
+		log.debug("download count" + p.getDownloadCount());
+		packageManager.save(p);
 		response.flushBuffer();
 
 	}
