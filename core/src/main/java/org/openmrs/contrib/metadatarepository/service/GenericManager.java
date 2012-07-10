@@ -73,5 +73,5 @@ public interface GenericManager<T, PK extends Serializable> {
      * @param clazz type of class to search for.
      * @return a list of matched objects
      */
-    List<T> search(String searchTerm, Class clazz,Long pageSize);
+    List<T> search(String searchTerm, Class clazz);
 }

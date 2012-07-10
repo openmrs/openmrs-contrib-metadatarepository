@@ -139,6 +139,6 @@ public class UserManagerImpl extends GenericManagerImpl<User, Long> implements U
      * {@inheritDoc}
      */
     public List<User> search(String searchTerm) {
-        return super.search(searchTerm, User.class,25L);
+        return super.search(searchTerm, User.class);
     }
 }

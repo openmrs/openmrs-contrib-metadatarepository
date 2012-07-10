@@ -80,27 +80,7 @@ public class GenericManagerImpl<T, PK extends Serializable> implements GenericMa
     private CompassSearchHelper compass;*/
     @Autowired
     private Compass compass;
-    
-    /**
-     * Sets the page size for the pagination of the results. If not set, not
-     * pagination will be used.
-     */
-    public Long getPageSize() {
-		return pageSize;
-	}
-
-    /**
-     * Returns the page size for the pagination of the results. If not set, not
-     * pagination will be used.
-     * 
-     * @param pageSize
-     *            The page size when using paginated results
-     */
-	public void setPageSize(Long pageSize) {
-		this.pageSize = pageSize;
-	}
-
-	private Long pageSize;
+ 
 
     public GenericManagerImpl() {
     }
@@ -150,7 +130,7 @@ public class GenericManagerImpl<T, PK extends Serializable> implements GenericMa
      * Search implementation using Compass.
      */
     @SuppressWarnings("unchecked")
-    public List<T> search(String q, Class clazz,Long pageSize) {
+    public List<T> search(String q, Class clazz) {
         if (q == null || "".equals(q.trim())) {
             return getAll();
         }

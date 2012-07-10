@@ -128,7 +128,7 @@ public class MetadataPackage extends BaseObject {
 		return user.getId();
 	}
 
-	@Transient
+	
 	public Long getDownloadCount() {
 		return downloadCount;
 	}
