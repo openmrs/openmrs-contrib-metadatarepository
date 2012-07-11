@@ -26,8 +26,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
-
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -46,6 +44,7 @@ public class FileUploadController extends BaseFormController {
 	@Autowired
 	private PackageManager packageManager;
 	private UserManager userManager = null;
+
 	@Autowired
 	public void setUserManager(UserManager userManager) {
 		this.userManager = userManager;
@@ -86,16 +85,16 @@ public class FileUploadController extends BaseFormController {
 
 			return "packageupload";
 		}
-		
+
 		User uname;
-		
-		log.debug(""+userManager.getUserByUsername(request.getRemoteUser()));
+
+		log.debug("" + userManager.getUserByUsername(request.getRemoteUser()));
 		uname = userManager.getUserByUsername(request.getRemoteUser());
 		metadataPackage.setUser(uname);
-		
+
 		MetadataPackage meta = packageManager.savePackage(metadataPackage);
 		Long id = meta.getId();
-		
-		return getSuccessView()+ "?id=" + meta.getId();
-		}
+
+		return getSuccessView() + "?id=" + meta.getId();
+	}
 }

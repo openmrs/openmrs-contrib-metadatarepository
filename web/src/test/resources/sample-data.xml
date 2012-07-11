@@ -95,13 +95,15 @@
        <column>name</column>
        <column>description</column>
        <column>version</column>
-       <column>user_id</column>    
+       <column>user_id</column> 
+       <column>downloadCount</column>   
        <row>
          <value description="id">1</value>
          <value description="name">HIV Lab</value>
          <value description="description"><![CDATA[ Rwanda HIV Lab Results]]></value>
          <value description="version">1</value>
          <value description="user_id">1</value>
+         <value description="downloadCount">0</value>
          </row>
     </table>
 </dataset>

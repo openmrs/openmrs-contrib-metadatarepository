@@ -50,7 +50,7 @@ public class FileUploadControllerTest extends BaseControllerTestCase {
 		pkg.setName("Lab");
 		pkg.setUser(umagr.getUserByUsername("user"));
 		pkg.setVersion(1L);
-
+        pkg.setDownloadCount(0L);
 		InputStream fis = getClass().getResourceAsStream("/sample-data.xml");
 
 		ByteArrayOutputStream data = new ByteArrayOutputStream(fis.available());

@@ -77,9 +77,10 @@ public class PackageFormController extends BaseFormController {
 		IOUtils.copy(new ByteArrayInputStream(p.getFile()),
 				response.getOutputStream());
 		Long i = p.getDownloadCount();
-		log.debug("download count" + i);
-		p.setDownloadCount(i++);
-		log.debug("download count" + p.getDownloadCount());
+		log.debug("download count:" + i);
+		i = i + 1;
+		p.setDownloadCount(i);
+		log.debug("download count:" + p.getDownloadCount());
 		packageManager.save(p);
 		response.flushBuffer();
 
@@ -108,6 +109,7 @@ public class PackageFormController extends BaseFormController {
 			User uname;
 			uname = userManager.getUserByUsername(request.getRemoteUser());
 			pkg.setUser(uname);
+			pkg.setDownloadCount(0L);
 
 			packageManager.save(pkg);
 

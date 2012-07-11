@@ -128,7 +128,7 @@ public class MetadataPackage extends BaseObject {
 		return user.getId();
 	}
 
-	@Column(name = "downloadCount")
+	@Column(name = "downloadCount", columnDefinition = "Integer(10) default '0'", updatable = true)
 	public Long getDownloadCount() {
 		return downloadCount;
 	}
