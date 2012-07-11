@@ -42,7 +42,7 @@ public class MetadataPackage extends BaseObject {
 	private Long version;
 	private byte[] file;
 	private User user;
-	private Long downloadCount=0L;
+	private Long downloadCount = 0L;
 
 	/**
 	 * Default constructor - creates a new instance with no values set.
