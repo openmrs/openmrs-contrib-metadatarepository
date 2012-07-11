@@ -24,7 +24,6 @@
 	onclick="location.href='<c:url value="/packageupload"/>'"
 	value="<fmt:message key="button.uploadpackage"/>" />
 
-
 <display:table name="packageList" cellspacing="0" cellpadding="0"
 	requestURI="" defaultsort="1" id="packages" pagesize="25" class="table"
 	export="true">
@@ -45,9 +44,7 @@
 	</display:column>
 	<display:column property="downloadCount" sortable="true"
 		titleKey="package.downloadcount" style="width: 25%" />
-	
-	
-	
+		
 	<display:setProperty name="paging.banner.item_name" value="package" />
 	<display:setProperty name="paging.banner.items_name" value="packages" />
 
