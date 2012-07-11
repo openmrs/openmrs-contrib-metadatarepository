@@ -129,6 +129,7 @@ public class MetadataPackage extends BaseObject {
 	}
 
 	@Column(name = "downloadCount")
+	@SearchableProperty
 	public Long getDownloadCount() {
 		return downloadCount;
 	}
