@@ -42,7 +42,7 @@ public class MetadataPackage extends BaseObject {
 	private Long version;
 	private byte[] file;
 	private User user;
-	private Long downloadCount;
+	private Long downloadCount=0L;
 
 	/**
 	 * Default constructor - creates a new instance with no values set.
@@ -128,7 +128,7 @@ public class MetadataPackage extends BaseObject {
 		return user.getId();
 	}
 
-	@Column(name = "downloadCount", columnDefinition = "Integer(10) default '0'")
+	@Column(name = "downloadCount")
 	public Long getDownloadCount() {
 		return downloadCount;
 	}
