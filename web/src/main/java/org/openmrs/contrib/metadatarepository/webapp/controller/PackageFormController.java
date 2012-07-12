@@ -101,6 +101,7 @@ public class PackageFormController extends BaseFormController {
 
 		if (request.getParameter("delete") != null) {
 			packageManager.remove(pkg.getId());
+			packageManager.deleteFile(pkg.getId() + "");
 			saveMessage(request, getText("package.deleted", locale));
 		} else {
 

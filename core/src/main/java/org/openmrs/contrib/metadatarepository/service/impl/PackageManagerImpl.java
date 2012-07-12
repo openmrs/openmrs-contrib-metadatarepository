@@ -100,6 +100,13 @@ public class PackageManagerImpl extends
 
 	}
 
+	public void deleteFile(String filename) {
+
+		File f = new File(packagesStorageDir + "/" + filename + ".zip");
+		f.delete();
+
+	}
+
 	/**
 	 * @param id
 	 *            The id of the package.

@@ -34,6 +34,8 @@ public interface PackageManager extends GenericManager<MetadataPackage, Long> {
 
 	List<MetadataPackage> search(String searchTerm);
 
-	public List searchByUser(String query,User user);
+	public List searchByUser(String query, User user);
+
+	public void deleteFile(String filename);
 
 }
