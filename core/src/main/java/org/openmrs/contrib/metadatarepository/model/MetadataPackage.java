@@ -218,6 +218,7 @@ public class MetadataPackage extends BaseObject {
 	 * 
 	 */
 	@Column(name = "groupUuid")
+	@SearchableProperty
 	public String getGroupUuid() {
 		return groupUuid;
 	}
@@ -238,6 +239,7 @@ public class MetadataPackage extends BaseObject {
 	 * 
 	 */
 	@Column(name = "subscriptionUrl")
+	@SearchableProperty
 	public String getSubscriptionUrl() {
 		return subscriptionUrl;
 	}
