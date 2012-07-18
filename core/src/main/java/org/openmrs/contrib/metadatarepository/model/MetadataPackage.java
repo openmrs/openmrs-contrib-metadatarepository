@@ -14,6 +14,9 @@
 
 package org.openmrs.contrib.metadatarepository.model;
 
+import java.util.Date;
+import java.util.Map;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,9 +43,14 @@ public class MetadataPackage extends BaseObject {
 	private String name;
 	private String description;
 	private Long version;
+	private String openmrsVersion;
 	private byte[] file;
 	private User user;
 	private Long downloadCount = 0L;
+	private Date dateCreated;
+	private String groupUuid;
+	private String subscriptionUrl;
+	private Map<String, String> modules;
 
 	/**
 	 * Default constructor - creates a new instance with no values set.
@@ -72,34 +80,73 @@ public class MetadataPackage extends BaseObject {
 		this.id = id;
 	}
 
+	/**
+	 * @return the name
+	 */
 	@Column(name = "name", length = 50)
 	@SearchableProperty
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * @param name
+	 *            the name to set
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * @return the description
+	 */
 	@Column(name = "description", length = 255)
 	@SearchableProperty
 	public String getDescription() {
 		return description;
 	}
 
+	/**
+	 * @param description
+	 *            the description to set
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
+	/**
+	 * @return the version
+	 */
 	@Column(name = "version")
 	@SearchableProperty
 	public Long getVersion() {
 		return version;
 	}
 
+	/**
+	 * @param version
+	 *            the version to set
+	 */
 	public void setVersion(Long version) {
 		this.version = version;
+	}
+
+	/**
+	 * @return the openmrsVersion
+	 */
+
+	@Column(name = "openmrsVersion")
+	@SearchableProperty
+	public String getOpenmrsVersion() {
+		return openmrsVersion;
+	}
+
+	/**
+	 * @param openmrsVersion
+	 *            the openmrsVersion to set
+	 */
+	public void setOpenmrsVersion(String openmrsVersion) {
+		this.openmrsVersion = openmrsVersion;
 	}
 
 	public void setFile(byte[] file) {
@@ -128,14 +175,82 @@ public class MetadataPackage extends BaseObject {
 		return user.getId();
 	}
 
+	/**
+	 * @return the downloadCount
+	 */
 	@Column(name = "downloadCount")
 	@SearchableProperty
 	public Long getDownloadCount() {
 		return downloadCount;
 	}
 
+	/**
+	 * @param downloadCount
+	 *            the downloadCount to set
+	 * 
+	 */
 	public void setDownloadCount(Long downloadCount) {
 		this.downloadCount = downloadCount;
+	}
+
+	/**
+	 * @return the dateCreated
+	 * 
+	 */
+
+	@Column(name = "dateCreated")
+	@SearchableProperty
+	public Date getDateCreated() {
+		return dateCreated;
+	}
+
+	/**
+	 * @param dateCreated
+	 *            the dateCreated to set
+	 * 
+	 */
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+
+	/**
+	 * @return the groupUuid
+	 * 
+	 */
+	@Column(name = "groupUuid")
+	public String getGroupUuid() {
+		return groupUuid;
+	}
+
+	/**
+	 * @param groupUuid
+	 *            the groupUuid to set
+	 * 
+	 */
+	public void setGroupUuid(String groupUuid) {
+		this.groupUuid = groupUuid;
+	}
+
+	/**
+	 * The URL which points to the future package updates
+	 * 
+	 * @return the subscriptionUrl
+	 * 
+	 */
+	@Column(name = "subscriptionUrl")
+	public String getSubscriptionUrl() {
+		return subscriptionUrl;
+	}
+
+	/**
+	 * The URL which points to the future package updates
+	 * 
+	 * @param subscriptionUrl
+	 *            the subscriptionUrl to set
+	 * 
+	 */
+	public void setSubscriptionUrl(String subscriptionUrl) {
+		this.subscriptionUrl = subscriptionUrl;
 	}
 
 	public boolean equals(Object o) {
