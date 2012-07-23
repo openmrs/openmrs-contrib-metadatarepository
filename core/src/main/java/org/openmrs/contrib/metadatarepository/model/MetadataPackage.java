@@ -239,7 +239,6 @@ public class MetadataPackage extends BaseObject {
 	 * 
 	 */
 	@Column(name = "subscriptionUrl")
-	@SearchableProperty
 	public String getSubscriptionUrl() {
 		return subscriptionUrl;
 	}
@@ -253,6 +252,14 @@ public class MetadataPackage extends BaseObject {
 	 */
 	public void setSubscriptionUrl(String subscriptionUrl) {
 		this.subscriptionUrl = subscriptionUrl;
+	}
+
+	/**
+	 * @return the modules[moduleId, version]
+	 * 
+	 */
+	public Map<String, String> getModules() {
+		return modules;
 	}
 
 	public boolean equals(Object o) {
