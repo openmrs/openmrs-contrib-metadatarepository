@@ -2,21 +2,28 @@
 
 <head>
 <title><fmt:message key="mypackages.title" /></title>
-<meta name="heading" content="<fmt:message key='mypackages.heading'/>" />
 <meta name="menu" content="MyPackages" />
 </head>
-<div id="search">
-<form method="get" action="${ctx}/mypackages" id="searchForm">
-    <input type="text" size="20" name="q" id="query" value="${param.q}"
-           placeholder="Enter search terms"/>
-    <input type="submit" value="<fmt:message key="button.search"/>"/>
-</form>
+<div id="message">
+	<c:if test="${!empty pageContext.request.remoteUser}">
+		<p>
+			<fmt:message key="mypackages.message" />
+		</p>
+	</c:if>
 </div>
-<c:if test="${!empty pageContext.request.remoteUser}">
-	<p>
-		<fmt:message key="mypackages.message" />
-	</p>
-</c:if>
+<div id="search">
+	<form method="get" action="${ctx}/mypackages" id="searchForm"
+		align="center">
+		<table>
+			<tr>
+				<td><input type="text" size="40" name="q" id="query"
+					value="${param.q}" placeholder="Enter search terms" /></td>
+				<td><input type="submit"
+					value="<fmt:message key="button.search"/>" /></td>
+			</tr>
+		</table>
+	</form>
+</div>
 
 <div class="separator"></div>
 
@@ -36,24 +43,25 @@
 		titleKey="package.version" style="width: 25%" />
 	<display:column property="version" titleKey="package.version"
 		media="csv xml excel pdf" />
-		<display:column property="user.username" sortable="true"
+	<display:column property="user.username" sortable="true"
 		titleKey="package.publisher" style="width: 25%" />
-	<display:column titleKey="Actions" sortable="true" style="width:34%; padding-left: 20px;" paramId="id" paramProperty="id">
-	<pre><img src="/images/download.png" alt="download" onclick="location.href='<c:url value="/packageform/packagedownload?id=${packages.id}" />'"/><img src="/images/edit.png" alt="edit" align="left" onclick="location.href='<c:url value="/packageform?id=${packages.id}" />'"/>
-	</pre>
-	</display:column>
 	<display:column property="downloadCount" sortable="true"
 		titleKey="package.downloadcount" style="width: 25%" />
-	
-	<display:setProperty name="paging.banner.item_name" value="package" />
-	<display:setProperty name="paging.banner.items_name" value="packages" />
+	<display:column titleKey="Actions" sortable="true" style="width:34%"
+		paramId="id" paramProperty="id">
+		<table border="0">
+			<tr>
+				<td border="0" style="border: solid transparent"><img
+					src="/images/edit.png" alt="edit" align="left"
+					onclick="location.href='<c:url value="/packageform?id=${packages.id}" />'" /></td>
+				<td border="0" style="border: solid transparent"><img
+					src="/images/download.png" alt="download"
+					onclick="location.href='<c:url value="/packageform/packagedownload?id=${packages.id}" />'" /></td>
+			</tr>
+		</table>
 
-	<display:setProperty name="export.excel.filename"
-		value="Package List.xls" />
-	<display:setProperty name="export.csv.filename"
-		value="Package List.csv" />
-	<display:setProperty name="export.pdf.filename"
-		value="Package List.pdf" />
+	</display:column>
+
 </display:table>
 
 

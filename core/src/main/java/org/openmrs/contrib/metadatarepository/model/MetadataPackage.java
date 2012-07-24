@@ -50,7 +50,6 @@ public class MetadataPackage extends BaseObject {
 	private Date dateCreated;
 	private String groupUuid;
 	private String subscriptionUrl;
-	private Map<String, String> modules;
 
 	/**
 	 * Default constructor - creates a new instance with no values set.
@@ -252,14 +251,6 @@ public class MetadataPackage extends BaseObject {
 	 */
 	public void setSubscriptionUrl(String subscriptionUrl) {
 		this.subscriptionUrl = subscriptionUrl;
-	}
-
-	/**
-	 * @return the modules[moduleId, version]
-	 * 
-	 */
-	public Map<String, String> getModules() {
-		return modules;
 	}
 
 	public boolean equals(Object o) {
