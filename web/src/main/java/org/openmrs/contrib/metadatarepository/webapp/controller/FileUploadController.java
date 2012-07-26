@@ -14,6 +14,8 @@
 
 package org.openmrs.contrib.metadatarepository.webapp.controller;
 
+import java.util.Locale;
+
 import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
 import org.openmrs.contrib.metadatarepository.model.User;
 import org.openmrs.contrib.metadatarepository.service.PackageManager;
@@ -68,7 +70,7 @@ public class FileUploadController extends BaseFormController {
 		if (request.getParameter("cancel") != null) {
 			return getCancelView();
 		}
-
+		Locale locale = request.getLocale();
 		if (validator != null) { // validator is null during testing
 			validator.validate(metadataPackage, errors);
 
@@ -85,7 +87,7 @@ public class FileUploadController extends BaseFormController {
 
 			return "packageupload";
 		}
-
+		saveMessage(request, getText("package.saved", locale));
 		User uname;
 
 		log.debug("" + userManager.getUserByUsername(request.getRemoteUser()));

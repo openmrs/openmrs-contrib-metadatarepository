@@ -105,7 +105,7 @@ public class PackageFormController extends BaseFormController {
 			saveMessage(request, getText("package.deleted", locale));
 		} else {
 
-			saveMessage(request, getText("package.added", locale));
+			saveMessage(request, getText("package.uploaded", locale));
 
 			User uname;
 			uname = userManager.getUserByUsername(request.getRemoteUser());

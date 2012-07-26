@@ -1,9 +1,9 @@
 /* This is the style for the informational messages presented to the user */
 
 div.error, span.error, li.error, div.message {
-    background: #ffffcc;
-    border: 1px solid #000;
-    color: #000000;
+    background-color: #FFD;
+    border: 1px;
+    border-color: #F7D792;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
     margin: 10px auto;
