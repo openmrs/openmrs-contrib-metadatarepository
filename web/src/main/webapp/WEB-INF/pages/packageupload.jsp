@@ -3,7 +3,6 @@
 <head>
     <title><fmt:message key="upload.title"/></title>
     <meta name="heading" content="<fmt:message key='upload.heading'/>"/>
-    <meta name="menu" content="AdminMenu"/>
 </head>
 
 <!--
@@ -55,3 +54,4 @@
 </script>
 <v:javascript formName="fileUpload" staticJavascript="false"/>
 <script type="text/javascript" src="<c:url value="/scripts/validator.jsp"/>"></script>
+

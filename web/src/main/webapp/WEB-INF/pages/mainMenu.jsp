@@ -29,7 +29,7 @@
 <div class="separator"></div>
 
 <display:table name="packageList" cellspacing="0" cellpadding="0"
-	requestURI="" defaultsort="1" id="packages" pagesize="25" class="table"
+	requestURI="" defaultsort="5" id="packages" pagesize="25" class="table"
 	export="true">
 	<display:column property="name" escapeXml="true" sortable="true"
 		titleKey="package.name" style="width: 25%" />

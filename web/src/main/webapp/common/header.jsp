@@ -9,7 +9,7 @@
     <a href="<c:url value='/'/>"><img src="<c:url value="/images/openmrs-logo.png"/>" alt="<fmt:message key="webapp.name"/>"/></a>
 </td>
 <td>
-<div style="font-size: medium;color:#B4C24B;"><h2>OpenMRS Metadata Repository</h2></div></td>
+<div style="font-size: medium;color:#1465B7;background-color:transparent;"><h2>OpenMRS Metadata Repository</h2></div></td>
 </tr>
 </table>
 <hr />
