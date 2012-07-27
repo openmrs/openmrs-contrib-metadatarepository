@@ -6,7 +6,7 @@
 </head>
 <div id="message">
 	<c:if test="${!empty pageContext.request.remoteUser}">
-		<p>
+		<p id="messagecontent">
 			<fmt:message key="mainMenu.message" />
 			"<b>${pageContext.request.remoteUser}</b>"!
 		</p>
@@ -30,7 +30,7 @@
 
 <display:table name="packageList" cellspacing="0" cellpadding="0"
 	requestURI="" defaultsort="5" id="packages" pagesize="25" class="table"
-	export="true">
+	export="false">
 	<display:column property="name" escapeXml="true" sortable="true"
 		titleKey="package.name" style="width: 25%" />
 	<display:column property="description" escapeXml="true" sortable="true"

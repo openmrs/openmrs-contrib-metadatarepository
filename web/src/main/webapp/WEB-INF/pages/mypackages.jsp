@@ -34,7 +34,7 @@
 
 <display:table name="packageList" cellspacing="0" cellpadding="0"
 	requestURI="" defaultsort="1" id="packages" pagesize="25" class="table"
-	export="true">
+	export="false">
 	<display:column property="name" escapeXml="true" sortable="true"
 		titleKey="package.name" style="width: 25%" />
 	<display:column property="description" escapeXml="true" sortable="true"
