@@ -4,14 +4,7 @@
 <title><fmt:message key="mainMenu.title" /></title>
 <meta name="menu" content="MainMenu" />
 </head>
-<div id="message">
-	<c:if test="${!empty pageContext.request.remoteUser}">
-		<p id="messagecontent">
-			<fmt:message key="mainMenu.message" />
-			"<b>${pageContext.request.remoteUser}</b>"!
-		</p>
-	</c:if>
-</div>
+
 <div id="search">
 	<form method="get" action="${ctx}/mainMenu" id="searchForm"
 		align="center">

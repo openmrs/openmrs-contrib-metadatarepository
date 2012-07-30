@@ -87,7 +87,7 @@ public class FileUploadController extends BaseFormController {
 
 			return "packageupload";
 		}
-		saveMessage(request, getText("package.saved", locale));
+		saveMessage(request, getText("package.uploaded", locale));
 		User uname;
 
 		log.debug("" + userManager.getUserByUsername(request.getRemoteUser()));

@@ -52,7 +52,7 @@ public class PackageFormController extends BaseFormController {
 
 	public PackageFormController() {
 		setCancelView("redirect:mainMenu");
-		setSuccessView("uploadDisplay");
+		setSuccessView("redirect:/packageform");
 	}
 
 	@ModelAttribute
@@ -105,7 +105,7 @@ public class PackageFormController extends BaseFormController {
 			saveMessage(request, getText("package.deleted", locale));
 		} else {
 
-			saveMessage(request, getText("package.uploaded", locale));
+			saveMessage(request, getText("package.saved", locale));
 
 			User uname;
 			uname = userManager.getUserByUsername(request.getRemoteUser());
@@ -121,7 +121,7 @@ public class PackageFormController extends BaseFormController {
 
 		}
 
-		return success;
+		return success + "?id=" + pkg.getId();
 	}
 
 }

@@ -4,13 +4,7 @@
 <title><fmt:message key="mypackages.title" /></title>
 <meta name="menu" content="MyPackages" />
 </head>
-<div id="message">
-	<c:if test="${!empty pageContext.request.remoteUser}">
-		<p>
-			<fmt:message key="mypackages.message" />
-		</p>
-	</c:if>
-</div>
+
 <div id="search">
 	<form method="get" action="${ctx}/mypackages" id="searchForm"
 		align="center">
@@ -27,13 +21,8 @@
 
 <div class="separator"></div>
 
-<input type="button" style="margin-right: 5px"
-	onclick="location.href='<c:url value="/packageupload"/>'"
-	value="<fmt:message key="button.add"/>" />
-
-
 <display:table name="packageList" cellspacing="0" cellpadding="0"
-	requestURI="" defaultsort="1" id="packages" pagesize="25" class="table"
+	requestURI="" defaultsort="5" id="packages" pagesize="25" class="table"
 	export="false">
 	<display:column property="name" escapeXml="true" sortable="true"
 		titleKey="package.name" style="width: 25%" />
@@ -63,11 +52,6 @@
 	</display:column>
 
 </display:table>
-
-
-<input type="button" style="margin-right: 5px"
-	onclick="location.href='<c:url value="/packageupload"/>'"
-	value="<fmt:message key="button.add"/>" />
 
 <script type="text/javascript">
 	highlightTableRows("packages");

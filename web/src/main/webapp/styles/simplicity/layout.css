@@ -32,10 +32,7 @@
             padding: 10px 0 10px 30px;
             text-align: left;
         }
-        p#messagecontent{
-            background-color: #F7D792;
-            border: 2px  #FDD000 solid;
-        }
+       
         div#search {
             float: right;
             width: 49%;
