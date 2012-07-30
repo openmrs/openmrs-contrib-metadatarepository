@@ -96,7 +96,7 @@ public class UserFormController extends BaseFormController {
 
             // only attempt to change roles if user is admin for other users,
             // showForm() method will handle populating
-            if (request.isUserInRole(Constants.ADMIN_ROLE)) {
+            if (request.isUserInRole(Constants.ADMIN_ROLE)||request.isUserInRole(Constants.USER_ROLE)) {
                 String[] userRoles = request.getParameterValues("userRoles");
 
                 if (userRoles != null) {
