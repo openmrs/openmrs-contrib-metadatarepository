@@ -38,6 +38,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+
 /**
  * Implementation of PackageManager interface.
  */
@@ -170,31 +173,44 @@ public class PackageManagerImpl extends
 		List<MetadataPackage> packageList = search(query, MetadataPackage.class);
 		return packageList;
 	}
-	
+
 	public MetadataPackage deserializePackage(byte[] file) {
 		Map<String, String> files = new LinkedHashMap<String, String>();
+
 		InputStream input = new ByteArrayInputStream(file);
-		
+
 		ZipInputStream zip = new ZipInputStream(input);
 		try {
-			for (ZipEntry entry = zip.getNextEntry(); entry != null; entry = zip.getNextEntry()) {
-				String file1= IOUtils.toString(zip, ENCODING);
+			for (ZipEntry entry = zip.getNextEntry(); entry != null; entry = zip
+					.getNextEntry()) {
+				String file1 = IOUtils.toString(zip, ENCODING);
 				files.put(entry.getName(), file1);
 			}
-		}catch(IOException e){
-			throw new APIException("error",e);
-		}finally {
+		} catch (IOException e) {
+			throw new APIException("error", e);
+		} finally {
 			if (zip != null) {
 				try {
 					zip.close();
 				} catch (IOException e) {
-					
+
 					log.error(e);
 				}
 			}
 		}
 		String header = files.get(HEADER_FILE);
+		log.debug("Whats in the header: " + header);
+
+		XStream xstream = new XStream(new DomDriver());
+
 		MetadataPackage deserializedPackage = new MetadataPackage();
+		try {
+			FileInputStream fis = new FileInputStream(HEADER_FILE);
+			deserializedPackage = (MetadataPackage) xstream.fromXML(fis);
+
+		} catch (FileNotFoundException e) {
+			throw new APIException("file not found", e);
+		}
 		return deserializedPackage;
 	}
 
