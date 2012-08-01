@@ -37,5 +37,7 @@ public interface PackageManager extends GenericManager<MetadataPackage, Long> {
 	public List searchByUser(String query, User user);
 
 	public void deleteFile(String filename);
+	
+	public MetadataPackage deserializePackage(byte[] file);
 
 }

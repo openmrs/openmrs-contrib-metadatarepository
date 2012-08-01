@@ -14,13 +14,20 @@
 
 package org.openmrs.contrib.metadatarepository.service.impl;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
+import org.apache.commons.io.IOUtils;
 import org.openmrs.contrib.metadatarepository.dao.PackageDao;
 import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
 import org.openmrs.contrib.metadatarepository.model.User;
@@ -39,6 +46,8 @@ public class PackageManagerImpl extends
 		GenericManagerImpl<MetadataPackage, Long> implements PackageManager {
 
 	PackageDao packageDao;
+	public static final String ENCODING = "UTF-8";
+	public static final String HEADER_FILE = "header.xml";
 
 	@Autowired
 	public void setPackageDao(PackageDao packageDao) {
@@ -160,6 +169,33 @@ public class PackageManagerImpl extends
 
 		List<MetadataPackage> packageList = search(query, MetadataPackage.class);
 		return packageList;
+	}
+	
+	public MetadataPackage deserializePackage(byte[] file) {
+		Map<String, String> files = new LinkedHashMap<String, String>();
+		InputStream input = new ByteArrayInputStream(file);
+		
+		ZipInputStream zip = new ZipInputStream(input);
+		try {
+			for (ZipEntry entry = zip.getNextEntry(); entry != null; entry = zip.getNextEntry()) {
+				String file1= IOUtils.toString(zip, ENCODING);
+				files.put(entry.getName(), file1);
+			}
+		}catch(IOException e){
+			throw new APIException("error",e);
+		}finally {
+			if (zip != null) {
+				try {
+					zip.close();
+				} catch (IOException e) {
+					
+					log.error(e);
+				}
+			}
+		}
+		String header = files.get(HEADER_FILE);
+		MetadataPackage deserializedPackage = new MetadataPackage();
+		return deserializedPackage;
 	}
 
 }

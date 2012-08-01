@@ -92,6 +92,7 @@ public class FileUploadController extends BaseFormController {
 
 		log.debug("" + userManager.getUserByUsername(request.getRemoteUser()));
 		uname = userManager.getUserByUsername(request.getRemoteUser());
+		packageManager.deserializePackage(metadataPackage.getFile());
 		metadataPackage.setUser(uname);
 
 		MetadataPackage meta = packageManager.savePackage(metadataPackage);
