@@ -28,6 +28,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import org.apache.commons.io.IOUtils;
+import org.openmrs.contrib.metadatarepository.DateTimeConverter;
 import org.openmrs.contrib.metadatarepository.dao.PackageDao;
 import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
 import org.openmrs.contrib.metadatarepository.model.User;
@@ -204,6 +205,7 @@ public class PackageManagerImpl extends
 		XStream xstream = new XStream(new DomDriver());
 
 		MetadataPackage deserializedPackage = new MetadataPackage();
+		xstream.registerConverter(new DateTimeConverter());
 		xstream.alias("package", MetadataPackage.class);
 		xstream.omitField(MetadataPackage.class, "file");
 		xstream.omitField(MetadataPackage.class, "user");
