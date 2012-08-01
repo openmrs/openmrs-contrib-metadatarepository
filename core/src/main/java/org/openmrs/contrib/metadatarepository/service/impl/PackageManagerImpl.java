@@ -204,13 +204,17 @@ public class PackageManagerImpl extends
 		XStream xstream = new XStream(new DomDriver());
 
 		MetadataPackage deserializedPackage = new MetadataPackage();
-		try {
-			FileInputStream fis = new FileInputStream(HEADER_FILE);
-			deserializedPackage = (MetadataPackage) xstream.fromXML(fis);
+		    xstream.alias("package", MetadataPackage.class);
+		  //xstream.omitField(MetadataPackage.class, "openmrsVersion");
+		    xstream.omitField(MetadataPackage.class, "file");
+		    xstream.omitField(MetadataPackage.class, "user");
+		    xstream.omitField(MetadataPackage.class, "downloadCount");
+		   xstream.omitField(MetadataPackage.class, "serializedPackage");
+		    xstream.omitField(MetadataPackage.class, "modules");
+		    xstream.omitField(MetadataPackage.class, "items");
+		    xstream.omitField(MetadataPackage.class, "relatedItems");
+			deserializedPackage = (MetadataPackage) xstream.fromXML(header);
 
-		} catch (FileNotFoundException e) {
-			throw new APIException("file not found", e);
-		}
 		return deserializedPackage;
 	}
 
