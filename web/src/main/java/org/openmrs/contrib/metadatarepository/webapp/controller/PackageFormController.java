@@ -85,6 +85,15 @@ public class PackageFormController extends BaseFormController {
 		response.flushBuffer();
 
 	}
+	
+	@RequestMapping(value= "/viewPackage")
+	public void viewPackage(@RequestParam(required=false) final Long id,HttpServletRequest request,MetadataPackage pkg){
+		log.debug("View Package called");
+		/*request.setAttribute("pkgName", pkg.getName());
+		request.setAttribute("pkgDescription", pkg.getDescription());
+		request.setAttribute("pkgVersion", pkg.getVersion());
+		request.setAttribute("pkgPublisher", request.getRemoteUser());*/
+	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String onSubmit(MetadataPackage pkg, BindingResult errors,
