@@ -24,17 +24,13 @@
 		<th>Package Version:</th>
 		<td><c:out value="${pkgVersion}" /></td>
 	</tr>
-	<tr>
-		<th>Package Publisher:</th>
-		<td><c:out value="${pkgPublisher}" /></td>
-	</tr>
 
 	<tr>
 		<td></td>
 		<td class="buttonBar"><input type="button" name="done" id="done"
 			value="Done" onclick="location.href='mainMenu'" /> <c:if
 				test="${packages.user.username eq pageContext.request.remoteUser}">
-				<input type="button" style="width: 20px" value="Edit"
+				<input type="button" style="width: 50px" value="Edit"
 					onclick="location.href='<c:url value="/packageform?id=${packages.id}" />'" />
 			</c:if></td>
 	</tr>

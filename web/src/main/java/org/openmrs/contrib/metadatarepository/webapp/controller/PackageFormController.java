@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/packageform*")
@@ -85,14 +86,14 @@ public class PackageFormController extends BaseFormController {
 		response.flushBuffer();
 
 	}
-	
-	@RequestMapping(value= "/viewPackage*")
-	public void viewPackage(@RequestParam(required=false) final Long id,HttpServletRequest request,MetadataPackage pkg){
+
+	@RequestMapping(value = "/viewPackage")
+	public ModelAndView viewPackage(
+			@RequestParam(required = false) final Long id,
+			HttpServletRequest request, MetadataPackage pkg) {
 		log.debug("View Package called");
-		/*request.setAttribute("pkgName", pkg.getName());
-		request.setAttribute("pkgDescription", pkg.getDescription());
-		request.setAttribute("pkgVersion", pkg.getVersion());
-		request.setAttribute("pkgPublisher", request.getRemoteUser());*/
+		
+		return new ModelAndView("/viewPackage");
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
@@ -122,11 +123,6 @@ public class PackageFormController extends BaseFormController {
 			pkg.setDownloadCount(0L);
 
 			packageManager.save(pkg);
-
-			request.setAttribute("pkgName", pkg.getName());
-			request.setAttribute("pkgDescription", pkg.getDescription());
-			request.setAttribute("pkgVersion", pkg.getVersion());
-			request.setAttribute("pkgPublisher", request.getRemoteUser());
 
 		}
 
