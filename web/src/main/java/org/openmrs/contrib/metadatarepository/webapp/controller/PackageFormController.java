@@ -86,7 +86,7 @@ public class PackageFormController extends BaseFormController {
 
 	}
 	
-	@RequestMapping(value= "/viewPackage")
+	@RequestMapping(value= "/viewPackage*")
 	public void viewPackage(@RequestParam(required=false) final Long id,HttpServletRequest request,MetadataPackage pkg){
 		log.debug("View Package called");
 		/*request.setAttribute("pkgName", pkg.getName());
