@@ -51,7 +51,7 @@
 			<c:if
 				test="${metadataPackage.user.username eq pageContext.request.remoteUser}">
 				<input type="button" style="width: 50px" value="Edit"
-					onclick="location.href='<c:url value="/packageform?id=${packages.id}" />'" />
+					onclick="location.href='<c:url value="/packageform?id=${metadataPackage.id}" />'" />
 			</c:if></td>
 	</tr>
 </table>

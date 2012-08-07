@@ -54,7 +54,7 @@ public class FileUploadController extends BaseFormController {
 
 	public FileUploadController() {
 		setCancelView("redirect:/mainMenu");
-		setSuccessView("redirect:/packageform");
+		setSuccessView("redirect:/packageform/viewPackage");
 	}
 
 	@ModelAttribute
