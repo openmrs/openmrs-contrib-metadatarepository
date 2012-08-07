@@ -140,18 +140,18 @@ public class GenericManagerImpl<T, PK extends Serializable> implements
 	 */
 	@SuppressWarnings("unchecked")
 	public List<T> search(String q, Class clazz) {
-		
+
 		if (q == null || "".equals(q.trim())) {
 			return getAll();
 		}
-		//String startWithQ = q +"*";
+
 		String startWithQ = "";
-		for(String word: q.split(" ")) {
-		  startWithQ += " " + word;
-		  if (!StringUtils.isNumeric(word)) {
-		  //If we are not looking for a version
-		    startWithQ += "* ";
-		  }
+		for (String word : q.split(" ")) {
+			startWithQ += " " + word;
+			if (!StringUtils.isNumeric(word)) {
+				// If we are not looking for a version
+				startWithQ += "* ";
+			}
 		}
 		List<T> results = new ArrayList<T>();
 
@@ -184,7 +184,8 @@ public class GenericManagerImpl<T, PK extends Serializable> implements
 		}
 
 		if (log.isDebugEnabled()) {
-			log.debug("Number of results for '" + startWithQ + "': " + results.size());
+			log.debug("Number of results for '" + startWithQ + "': "
+					+ results.size());
 		}
 
 		return results;
