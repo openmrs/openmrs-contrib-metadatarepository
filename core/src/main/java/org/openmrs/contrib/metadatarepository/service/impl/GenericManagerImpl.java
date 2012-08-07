@@ -14,6 +14,7 @@
 
 package org.openmrs.contrib.metadatarepository.service.impl;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.contrib.metadatarepository.dao.GenericDao;
@@ -143,7 +144,15 @@ public class GenericManagerImpl<T, PK extends Serializable> implements
 		if (q == null || "".equals(q.trim())) {
 			return getAll();
 		}
-		String startWithQ = q +"*";
+		//String startWithQ = q +"*";
+		String startWithQ = "";
+		for(String word: q.split(" ")) {
+		  startWithQ += " " + word;
+		  if (!StringUtils.isNumeric(word)) {
+		  //If we are not looking for a version
+		    startWithQ += "* ";
+		  }
+		}
 		List<T> results = new ArrayList<T>();
 
 		CompassSearchCommand command = new CompassSearchCommand(startWithQ);
