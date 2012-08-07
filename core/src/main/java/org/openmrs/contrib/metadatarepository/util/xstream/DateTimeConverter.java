@@ -12,9 +12,11 @@
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
 
-package org.openmrs.contrib.metadatarepository;
+package org.openmrs.contrib.metadatarepository.util.xstream;
 
 import java.util.Date;
+
+import org.openmrs.contrib.metadatarepository.Constants;
 
 import com.thoughtworks.xstream.converters.basic.DateConverter;
 

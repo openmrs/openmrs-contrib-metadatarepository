@@ -98,10 +98,14 @@ public final class Constants {
 	 */
 	public static final String CSS_THEME = "csstheme";
 
+	/**
+	 * The request scope attribute that holds the package list.It is used in the
+	 * PackageController.
+	 */
 	public static final String PACKAGE_LIST = "packageList";
 
 	/**
-	 * Default simple date format for date
+	 * Default simple date format for date.It is used in DateTimeConverter.
 	 */
 	public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 }

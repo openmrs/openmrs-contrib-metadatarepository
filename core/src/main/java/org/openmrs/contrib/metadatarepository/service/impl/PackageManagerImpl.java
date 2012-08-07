@@ -28,13 +28,14 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import org.apache.commons.io.IOUtils;
-import org.openmrs.contrib.metadatarepository.DateTimeConverter;
+
 import org.openmrs.contrib.metadatarepository.dao.PackageDao;
 import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
 import org.openmrs.contrib.metadatarepository.model.User;
 import org.openmrs.contrib.metadatarepository.service.APIException;
 import org.openmrs.contrib.metadatarepository.service.PackageManager;
 import org.openmrs.contrib.metadatarepository.service.impl.GenericManagerImpl;
+import org.openmrs.contrib.metadatarepository.util.xstream.DateTimeConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -200,7 +201,6 @@ public class PackageManagerImpl extends
 			}
 		}
 		String header = files.get(HEADER_FILE);
-		log.debug("Whats in the header: " + header);
 
 		XStream xstream = new XStream(new DomDriver());
 

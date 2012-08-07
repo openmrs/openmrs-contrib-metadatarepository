@@ -139,18 +139,18 @@ public class GenericManagerImpl<T, PK extends Serializable> implements
 	 */
 	@SuppressWarnings("unchecked")
 	public List<T> search(String q, Class clazz) {
-		String newq = q + "*";
+		
 		if (q == null || "".equals(q.trim())) {
 			return getAll();
 		}
-
+		String startWithQ = q +"*";
 		List<T> results = new ArrayList<T>();
 
-		CompassSearchCommand command = new CompassSearchCommand(newq);
+		CompassSearchCommand command = new CompassSearchCommand(startWithQ);
 
 		CompassSearchHelper searchHelper = new CompassSearchHelper(compass, 25);
 		CompassSearchResults compassResults = searchHelper
-				.search(new CompassSearchCommand(newq, new Integer(0)));
+				.search(new CompassSearchCommand(startWithQ, new Integer(0)));
 		for (int i = 0; i < compassResults.getHits().length; i++) {
 			CompassHit hit = compassResults.getHits()[i];
 			if (clazz != null) {
@@ -175,7 +175,7 @@ public class GenericManagerImpl<T, PK extends Serializable> implements
 		}
 
 		if (log.isDebugEnabled()) {
-			log.debug("Number of results for '" + newq + "': " + results.size());
+			log.debug("Number of results for '" + startWithQ + "': " + results.size());
 		}
 
 		return results;

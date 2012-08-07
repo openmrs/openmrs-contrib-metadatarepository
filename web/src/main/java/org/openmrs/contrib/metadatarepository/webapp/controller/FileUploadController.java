@@ -96,11 +96,9 @@ public class FileUploadController extends BaseFormController {
 		MetadataPackage pkg = packageManager.deserializePackage(metadataPackage
 				.getFile());
 		metadataPackage.setUser(uname);
-
-		metadataPackage.setName(pkg.getName());
-		metadataPackage.setDescription(pkg.getDescription());
-		metadataPackage.setVersion(pkg.getVersion());
-
+		log.debug(""+ pkg.getGroupUuid());
+		
+		metadataPackage.setFields(pkg);
 		MetadataPackage meta = packageManager.savePackage(metadataPackage);
 		Long id = meta.getId();
 

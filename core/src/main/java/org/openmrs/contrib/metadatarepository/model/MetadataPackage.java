@@ -285,4 +285,20 @@ public class MetadataPackage extends BaseObject {
 		return sb.toString();
 	}
 
+	/**
+	 * It sets all fields from the uploaded Metadata Package.
+	 * 
+	 * @param metadataPackage
+	 */
+	public void setFields(MetadataPackage metadataPackage) {
+		setName(metadataPackage.getName());
+		setDescription(metadataPackage.getDescription());
+		setVersion(metadataPackage.getVersion());
+		setOpenmrsVersion(metadataPackage.getOpenmrsVersion());
+		setDateCreated(metadataPackage.getDateCreated());
+		setGroupUuid(metadataPackage.getGroupUuid());
+		setSubscriptionUrl(metadataPackage.getSubscriptionUrl());
+		
+	}
+
 }

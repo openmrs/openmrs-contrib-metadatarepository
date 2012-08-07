@@ -27,6 +27,7 @@ import org.openmrs.contrib.metadatarepository.service.PackageManager;
 import org.openmrs.contrib.metadatarepository.service.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -87,12 +88,12 @@ public class PackageFormController extends BaseFormController {
 
 	}
 
-	@RequestMapping(value = "/viewPackage")
-	public ModelAndView viewPackage(
-			@RequestParam(required = false) final Long id,
-			HttpServletRequest request, MetadataPackage pkg) {
-		log.debug("View Package called");
-		
+	@RequestMapping(value = "/viewPackage*")
+	public ModelAndView viewPackage(MetadataPackage pkg, ModelMap map) {
+		log.debug("ID IS: "+pkg.getId());
+		log.debug("NAME IS: "+pkg.getName());
+		map.addAttribute("metadataPackage", packageManager.get(pkg.getId()));
+
 		return new ModelAndView("/viewPackage");
 	}
 

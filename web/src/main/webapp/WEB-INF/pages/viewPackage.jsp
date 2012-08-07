@@ -6,30 +6,50 @@
 <meta name="menu" content="AdminMenu" />
 </head>
 
-<p>Below is a list of attributes that were gathered in
-	PackageFormController.java.</p>
+
 
 <div class="separator"></div>
 
 <table class="detail" cellpadding="5">
 	<tr>
-		<th>Package Name:</th>
-		<td><c:out value="${pkgName}" /></td>
+		<th>Name:</th>
+		<td><c:out value="${metadataPackage.name}" /></td>
 	</tr>
 	<tr>
-		<th>Package Description:</th>
-		<td><c:out value="${pkgDescription}" /></td>
+		<th>Description:</th>
+		<td><c:out value="${metadataPackage.description}" /></td>
 	</tr>
 	<tr>
-		<th>Package Version:</th>
-		<td><c:out value="${pkgVersion}" /></td>
+		<th>Publisher:</th>
+		<td><c:out value="${metadataPackage.user.username}" /></td>
+	</tr>
+	<tr>
+		<th>Version:</th>
+		<td><c:out value="${metadataPackage.version}" /></td>
+	</tr>
+	<tr>
+		<th>OpenMRS Version:</th>
+		<td><c:out value="${metadataPackage.openmrsVersion}" /></td>
+	</tr>
+	<tr>
+		<th>Date Created:</th>
+		<td><c:out value="${metadataPackage.dateCreated}" /></td>
+	</tr>
+	<tr>
+		<th>Group UUID:</th>
+		<td><c:out value="${metadataPackage.groupUuid}" /></td>
+	</tr>
+	<tr>
+		<th>Subscription URL:</th>
+		<td><c:out value="${metadataPackage.subscriptionUrl}" /></td>
 	</tr>
 
 	<tr>
 		<td></td>
-		<td class="buttonBar"><input type="button" name="done" id="done"
-			value="Done" onclick="location.href='mainMenu'" /> <c:if
-				test="${packages.user.username eq pageContext.request.remoteUser}">
+		<td class="buttonBar"><input type="button" name="back" id="back"
+			value="Back" onclick="location.href='<c:url value="/mainMenu"/>'" /> 
+			<c:if
+				test="${metadataPackage.user.username eq pageContext.request.remoteUser}">
 				<input type="button" style="width: 50px" value="Edit"
 					onclick="location.href='<c:url value="/packageform?id=${packages.id}" />'" />
 			</c:if></td>

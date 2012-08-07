@@ -31,10 +31,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class PackageController {
 
 	private PackageManager magr = null;
-	private UserManager umagr=null;
+	private UserManager umagr = null;
 
-	
-   @Autowired
+	@Autowired
 	public void setUmagr(UserManager umagr) {
 		this.umagr = umagr;
 	}
@@ -52,12 +51,11 @@ public class PackageController {
 				magr.search(query));
 	}
 
-	// need to change!
 	@RequestMapping(value = "/mypackages*", method = RequestMethod.GET)
 	public ModelAndView myPackages(
 			@RequestParam(required = false, value = "q") String query,
 			HttpServletRequest request) throws Exception {
-		User user= umagr.getUserByUsername(request.getRemoteUser());
+		User user = umagr.getUserByUsername(request.getRemoteUser());
 		return new ModelAndView("/mypackages", Constants.PACKAGE_LIST,
 				magr.searchByUser(query, user));
 	}
