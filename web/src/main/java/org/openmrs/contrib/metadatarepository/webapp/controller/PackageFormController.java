@@ -90,8 +90,7 @@ public class PackageFormController extends BaseFormController {
 
 	@RequestMapping(value = "/viewPackage*")
 	public ModelAndView viewPackage(MetadataPackage pkg, ModelMap map) {
-		log.debug("ID IS: "+pkg.getId());
-		log.debug("NAME IS: "+pkg.getName());
+
 		map.addAttribute("metadataPackage", packageManager.get(pkg.getId()));
 
 		return new ModelAndView("/viewPackage");
