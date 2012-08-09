@@ -131,7 +131,17 @@
         <testResources>
             <testResource>
                 <directory>src/test/resources</directory>
+                <excludes>
+                	<exclude>**/*.zip</exclude>
+                </excludes>
                 <filtering>true</filtering>
+            </testResource>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <includes>
+                	<include>**/*.zip</include>
+                </includes>
+                <filtering>false</filtering>
             </testResource>
             <testResource>
                 <directory>src/main/webapp</directory>
