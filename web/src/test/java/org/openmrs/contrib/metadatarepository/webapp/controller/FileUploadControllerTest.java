@@ -18,7 +18,6 @@ import static org.junit.Assert.assertNotNull;
 import java.io.ByteArrayOutputStream;
 
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.commons.io.IOUtils;
@@ -47,7 +46,7 @@ public class FileUploadControllerTest extends BaseControllerTestCase {
 
 		request = newPost("/packageupload.html");
 		request.setRemoteUser("user");
-		
+
 		pkg.setName("Surgery");
 		pkg.setDescription("Hospital Albert Schweitzer Haiti Surgery Form");
 		pkg.setUser(umagr.getUserByUsername("user"));
@@ -56,12 +55,13 @@ public class FileUploadControllerTest extends BaseControllerTestCase {
 		pkg.setDateCreated(new Date());
 		pkg.setGroupUuid("6ca304bf-9b70-4063-a669-c57d710d55aa");
 		pkg.setSubscriptionUrl("");
-        pkg.setDownloadCount(0L);
+		pkg.setDownloadCount(0L);
 		InputStream fis = getClass().getResourceAsStream("/Surgery.zip");
-		if(fis!=null){
-		ByteArrayOutputStream data = new ByteArrayOutputStream(fis.available());
-		IOUtils.copy(fis, data);
-		pkg.setFile(data.toByteArray());
+		if (fis != null) {
+			ByteArrayOutputStream data = new ByteArrayOutputStream(
+					fis.available());
+			IOUtils.copy(fis, data);
+			pkg.setFile(data.toByteArray());
 		}
 		request.addParameter("upload", "");
 
