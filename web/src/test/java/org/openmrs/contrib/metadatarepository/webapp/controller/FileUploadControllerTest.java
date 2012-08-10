@@ -16,14 +16,14 @@ package org.openmrs.contrib.metadatarepository.webapp.controller;
 import static org.junit.Assert.assertNotNull;
 
 import java.io.ByteArrayOutputStream;
-
 import java.io.InputStream;
+
 import java.util.Date;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
-import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
 
+import org.openmrs.contrib.metadatarepository.model.MetadataPackage;
 import org.openmrs.contrib.metadatarepository.service.UserManager;
 
 import org.springframework.beans.factory.annotation.Autowired;

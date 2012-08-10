@@ -46,6 +46,9 @@
 				<td border="0" style="border: solid transparent"><img
 					src="/images/download.png" alt="download"
 					onclick="location.href='<c:url value="/packageform/packagedownload?id=${packages.id}" />'" /></td>
+					<td border="0" style="border: solid transparent"><img
+					src="/images/view.png" alt="view package"
+					onclick="location.href='<c:url value="/packageform/viewPackage?id=${packages.id}"/>'" /></td>
 			</tr>
 		</table>
 
