@@ -42,6 +42,7 @@
         <appfuse:label styleClass="desc" key="package.subscriptionurl"/>
         <form:errors path="subscriptionUrl" cssClass="fieldError"/>
         <form:input path="subscriptionUrl" id="subscriptionUrl" cssClass="text medium" cssErrorClass="text medium error" maxlength="10" readonly="true"/>
+  
     </li>
      
      

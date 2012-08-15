@@ -54,7 +54,7 @@ public class PackageFormController extends BaseFormController {
 
 	public PackageFormController() {
 		setCancelView("redirect:mainMenu");
-		setSuccessView("redirect:/packageform");
+		setSuccessView("redirect:/mainMenu");
 	}
 
 	@ModelAttribute
