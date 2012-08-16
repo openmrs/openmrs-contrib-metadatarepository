@@ -98,8 +98,8 @@ public class PackageFormController extends BaseFormController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String onSubmit(MetadataPackage pkg, BindingResult errors,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+			HttpServletRequest request, HttpServletResponse response,
+			ModelMap model) throws Exception {
 		if (request.getParameter("cancel") != null) {
 			return getCancelView();
 		}
@@ -119,12 +119,9 @@ public class PackageFormController extends BaseFormController {
 			MetadataPackage metadataPackage = packageManager.get(pkg.getId());
 			metadataPackage.setName(pkg.getName());
 			metadataPackage.setDescription(pkg.getDescription());
-			
-			/*User uname;
-			uname = userManager.getUserByUsername(request.getRemoteUser());
-			pkg.setUser(uname);
-			pkg.setDownloadCount(0L);
-			packageManager.save(pkg); */
+
+			packageManager.save(metadataPackage);
+			model.addAttribute("metadataPackage", metadataPackage);
 
 		}
 

@@ -22,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.DataBinder;
 
@@ -62,7 +63,7 @@ public class PackageFormControllerTest extends BaseControllerTestCase {
 		// update required fields
 
 		BindingResult errors = new DataBinder(pkg).getBindingResult();
-		form.onSubmit(pkg, errors, request, new MockHttpServletResponse());
+		form.onSubmit(pkg, errors, request, new MockHttpServletResponse(),new ModelMap());
 		assertFalse(errors.hasErrors());
 		assertNotNull(request.getSession().getAttribute("successMessages"));
 	}
@@ -75,7 +76,7 @@ public class PackageFormControllerTest extends BaseControllerTestCase {
 		pkg.setId(1L);
 
 		BindingResult errors = new DataBinder(pkg).getBindingResult();
-		form.onSubmit(pkg, errors, request, new MockHttpServletResponse());
+		form.onSubmit(pkg, errors, request, new MockHttpServletResponse(),new ModelMap());
 
 		assertNotNull(request.getSession().getAttribute("successMessages"));
 	}

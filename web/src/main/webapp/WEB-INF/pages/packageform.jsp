@@ -20,28 +20,23 @@
     </li>
     <li>
         <appfuse:label styleClass="desc" key="package.version"/>
-        <form:errors path="version" cssClass="fieldError"/>
         <c:out value="${metadataPackage.version}" />
     </li>
      <li>
         <appfuse:label styleClass="desc" key="package.openmrsversion"/>
-        <form:errors path="openmrsVersion" cssClass="fieldError"/>
         <c:out value="${metadataPackage.openmrsVersion}" />
     </li>
      <li>
         <appfuse:label styleClass="desc" key="package.datecreated"/>
-        <form:errors path="dateCreated" cssClass="fieldError"/>
-        <c:out value="${metadataPackage.dateCreated}" />
+          <c:out value="${metadataPackage.dateCreated}" />
     </li>
      <li>
         <appfuse:label styleClass="desc" key="package.groupuuid"/>
-        <form:errors path="groupUuid" cssClass="fieldError"/>
         <c:out value="${metadataPackage.groupUuid}" />
     </li>
      <li>
         <appfuse:label styleClass="desc" key="package.subscriptionurl"/>
-        <form:errors path="subscriptionUrl" cssClass="fieldError"/>
-       <c:out value="${metadataPackage.subscriptionUrl}" />
+        <c:out value="${metadataPackage.subscriptionUrl}" />
   
     </li>
      
