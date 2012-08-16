@@ -116,13 +116,15 @@ public class PackageFormController extends BaseFormController {
 		} else {
 
 			saveMessage(request, getText("package.saved", locale));
-
-			User uname;
+			MetadataPackage metadataPackage = packageManager.get(pkg.getId());
+			metadataPackage.setName(pkg.getName());
+			metadataPackage.setDescription(pkg.getDescription());
+			
+			/*User uname;
 			uname = userManager.getUserByUsername(request.getRemoteUser());
 			pkg.setUser(uname);
 			pkg.setDownloadCount(0L);
-
-			packageManager.save(pkg);
+			packageManager.save(pkg); */
 
 		}
 

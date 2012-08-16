@@ -21,27 +21,27 @@
     <li>
         <appfuse:label styleClass="desc" key="package.version"/>
         <form:errors path="version" cssClass="fieldError"/>
-        <form:input path="version" id="version" cssClass="text medium" cssErrorClass="text medium error" maxlength="10" readonly="true"/>
+        <c:out value="${metadataPackage.version}" />
     </li>
      <li>
         <appfuse:label styleClass="desc" key="package.openmrsversion"/>
         <form:errors path="openmrsVersion" cssClass="fieldError"/>
-        <form:input path="openmrsVersion" id="openmrsVersion" cssClass="text medium" cssErrorClass="text medium error" maxlength="10" readonly="true"/>
+        <c:out value="${metadataPackage.openmrsVersion}" />
     </li>
      <li>
         <appfuse:label styleClass="desc" key="package.datecreated"/>
         <form:errors path="dateCreated" cssClass="fieldError"/>
-        <form:input path="dateCreated" id="dateCreated" cssClass="text medium" cssErrorClass="text medium error" maxlength="10" readonly="true"/>
+        <c:out value="${metadataPackage.dateCreated}" />
     </li>
      <li>
         <appfuse:label styleClass="desc" key="package.groupuuid"/>
         <form:errors path="groupUuid" cssClass="fieldError"/>
-        <form:input path="groupUuid" id="groupUuid" cssClass="text medium" cssErrorClass="text medium error" maxlength="30" readonly="true"/>
+        <c:out value="${metadataPackage.groupUuid}" />
     </li>
      <li>
         <appfuse:label styleClass="desc" key="package.subscriptionurl"/>
         <form:errors path="subscriptionUrl" cssClass="fieldError"/>
-        <form:input path="subscriptionUrl" id="subscriptionUrl" cssClass="text medium" cssErrorClass="text medium error" maxlength="10" readonly="true"/>
+       <c:out value="${metadataPackage.subscriptionUrl}" />
   
     </li>
      
